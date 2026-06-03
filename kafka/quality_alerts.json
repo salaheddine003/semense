@@ -1,0 +1,152 @@
+[
+  {
+    "alert_type": "OUTLIER",
+    "experiment_id": "57892",
+    "trait": "YD15QH",
+    "value": 133.8,
+    "threshold_min": 18.9467,
+    "threshold_max": 133.30660000000003,
+    "severity": "WARNING",
+    "timestamp": "2026-05-19T11:11:08.004119"
+  },
+  {
+    "alert_type": "OUTLIER",
+    "experiment_id": "57892",
+    "trait": "YD15QH",
+    "value": 136.67,
+    "threshold_min": 18.9467,
+    "threshold_max": 133.30660000000003,
+    "severity": "WARNING",
+    "timestamp": "2026-05-19T11:11:08.004119"
+  },
+  {
+    "alert_type": "OUTLIER",
+    "experiment_id": "57892",
+    "trait": "YD15QH",
+    "value": 136.56,
+    "threshold_min": 18.9467,
+    "threshold_max": 133.30660000000003,
+    "severity": "WARNING",
+    "timestamp": "2026-05-19T11:11:08.004119"
+  },
+  {
+    "alert_type": "OUTLIER",
+    "experiment_id": "57892",
+    "trait": "YD15QH",
+    "value": 137.61,
+    "threshold_min": 18.9467,
+    "threshold_max": 133.30660000000003,
+    "severity": "WARNING",
+    "timestamp": "2026-05-19T11:11:08.004119"
+  },
+  {
+    "alert_type": "OUTLIER",
+    "experiment_id": "57892",
+    "trait": "YD15QH",
+    "value": 133.45,
+    "threshold_min": 18.9467,
+    "threshold_max": 133.30660000000003,
+    "severity": "WARNING",
+    "timestamp": "2026-05-19T11:11:08.005675"
+  },
+  {
+    "alert_type": "OUTLIER",
+    "experiment_id": "58619",
+    "trait": "YD16QH",
+    "value": 137.27,
+    "threshold_min": 27.49,
+    "threshold_max": 134.66509999999997,
+    "severity": "WARNING",
+    "timestamp": "2026-05-19T11:11:08.041002"
+  },
+  {
+    "alert_type": "OUTLIER",
+    "experiment_id": "58668",
+    "trait": "YD16QH",
+    "value": 136.61,
+    "threshold_min": 27.49,
+    "threshold_max": 134.66509999999997,
+    "severity": "WARNING",
+    "timestamp": "2026-05-19T11:11:08.041002"
+  },
+  {
+    "alert_type": "OUTLIER",
+    "experiment_id": "58668",
+    "trait": "YD16QH",
+    "value": 145.04,
+    "threshold_min": 27.49,
+    "threshold_max": 134.66509999999997,
+    "severity": "WARNING",
+    "timestamp": "2026-05-19T11:11:08.041002"
+  },
+  {
+    "alert_type": "OUTLIER",
+    "experiment_id": "58668",
+    "trait": "YD16QH",
+    "value": 141.93,
+    "threshold_min": 27.49,
+    "threshold_max": 134.66509999999997,
+    "severity": "WARNING",
+    "timestamp": "2026-05-19T11:11:08.041002"
+  },
+  {
+    "alert_type": "OUTLIER",
+    "experiment_id": "58668",
+    "trait": "YD16QH",
+    "value": 136.3,
+    "threshold_min": 27.49,
+    "threshold_max": 134.66509999999997,
+    "severity": "WARNING",
+    "timestamp": "2026-05-19T11:11:08.041002"
+  },
+  {
+    "alert_type": "OUTLIER",
+    "experiment_id": "58200",
+    "trait": "%MOIS",
+    "value": 9.94,
+    "threshold_min": 10.14,
+    "threshold_max": 23.94,
+    "severity": "WARNING",
+    "timestamp": "2026-05-19T11:11:08.081141"
+  },
+  {
+    "alert_type": "OUTLIER",
+    "experiment_id": "58200",
+    "trait": "%MOIS",
+    "value": 9.14,
+    "threshold_min": 10.14,
+    "threshold_max": 23.94,
+    "severity": "WARNING",
+    "timestamp": "2026-05-19T11:11:08.081141"
+  },
+  {
+    "alert_type": "OUTLIER",
+    "experiment_id": "58200",
+    "trait": "%MOIS",
+    "value": 9.84,
+    "threshold_min": 10.14,
+    "threshold_max": 23.94,
+    "severity": "WARNING",
+    "timestamp": "2026-05-19T11:11:08.081141"
+  },
+  {
+    "alert_type": "OUTLIER",
+    "experiment_id": "58387",
+    "trait": "%MOIS",
+    "value": 8.34,
+    "threshold_min": 10.14,
+    "threshold_max": 23.94,
+    "severity": "WARNING",
+    "timestamp": "2026-05-19T11:11:08.082652"
+  },
+  {
+    "alert_type": "OUTLIER",
+    "experiment_id": "58387",
+    "trait": "%MOIS",
+    "value": 9.74,
+    "threshold_min": 10.14,
+    "threshold_max": 23.94,
+    "severity": "WARNING",
+    "timestamp": "2026-05-19T11:11:08.082652"
+  }
+]

@@ -1,0 +1,1556 @@
+{
+  "essai": {
+    "nom": "essai",
+    "nb_lignes": 492,
+    "nb_colonnes": 35,
+    "colonnes": {
+      "LK_EXPERIMENT_EXPERIMENT_ID": {
+        "dtype": "float64",
+        "nulls": 1,
+        "pct_null": 0.2,
+        "uniques": 485,
+        "min": 6171.0,
+        "max": 59975.0,
+        "mean": 42147.2037
+      },
+      "SPECIES": {
+        "dtype": "object",
+        "nulls": 1,
+        "pct_null": 0.2,
+        "uniques": 4,
+        "top_values": {
+          "O": 203,
+          "B": 110,
+          "S": 101,
+          "T": 77
+        }
+      },
+      "SPECIES_SPECIFICITY": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 3,
+        "top_values": {
+          "-": 289,
+          "H": 134,
+          "P": 69
+        }
+      },
+      "YEAR": {
+        "dtype": "int64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 4,
+        "min": 2015.0,
+        "max": 2018.0,
+        "mean": 2016.5325
+      },
+      "ML_TRIAL": {
+        "dtype": "object",
+        "nulls": 2,
+        "pct_null": 0.41,
+        "uniques": 250,
+        "top_values": {
+          "OR_P5": 21,
+          "OR_AA": 7,
+          "OR_K7": 7,
+          "TD_TD": 7,
+          "SD_BA": 7
+        }
+      },
+      "SL_TRIAL": {
+        "dtype": "object",
+        "nulls": 1,
+        "pct_null": 0.2,
+        "uniques": 426,
+        "top_values": {
+          "SD_BA_05": 7,
+          "OR_HL_02": 3,
+          "TD_TD_09": 3,
+          "SG_EC_05": 3,
+          "OR_PP_05": 3
+        }
+      },
+      "ORIGIN": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 1,
+        "top_values": {
+          "RC": 492
+        }
+      },
+      "RESPONSIBILITY": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 4,
+        "top_values": {
+          "PREM": 203,
+          "LOUV": 110,
+          "GAIL": 94,
+          "DRUE": 85
+        }
+      },
+      "TEAM": {
+        "dtype": "object",
+        "nulls": 312,
+        "pct_null": 63.41,
+        "uniques": 4,
+        "top_values": {
+          "LOUV": 108,
+          "GAIL": 50,
+          "PREM": 20,
+          "DRUE": 2
+        }
+      },
+      "CULTURE_PLACE": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 46,
+        "top_values": {
+          "LOUVILLE-LA-CHENARD": 106,
+          "PREMESQUES": 88,
+          "CUPERLY": 34,
+          "GAILLAC": 19,
+          "MONTBARTIER": 19
+        }
+      },
+      "CULTURE_UNIT": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 200,
+        "top_values": {
+          "18PPREOHTRESCO": 10,
+          "13GDIJ_ESS": 8,
+          "16LLOUPPCp": 8,
+          "18RLOPBBTT": 8,
+          "18GDAU_ESS": 8
+        }
+      },
+      "COUNTRY": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 2,
+        "top_values": {
+          "FRANCE": 485,
+          "HUNGARY": 7
+        }
+      },
+      "REGION": {
+        "dtype": "object",
+        "nulls": 19,
+        "pct_null": 3.86,
+        "uniques": 17,
+        "top_values": {
+          "CENTRE": 135,
+          "MIDI-PYRÉNÉES": 110,
+          "NORD-PAS-DE-CALAIS": 88,
+          "CHAMPAGNE-ARDENNE": 46,
+          "BRETAGNE": 24
+        }
+      },
+      "DEPARTMENT": {
+        "dtype": "object",
+        "nulls": 19,
+        "pct_null": 3.86,
+        "uniques": 30,
+        "top_values": {
+          "EURE-ET-LOIR": 118,
+          "NORD": 88,
+          "MARNE": 37,
+          "AVEYRON": 34,
+          "TARN": 30
+        }
+      },
+      "COMMUNE": {
+        "dtype": "float64",
+        "nulls": 492,
+        "pct_null": 100.0,
+        "uniques": 0,
+        "min": NaN,
+        "max": NaN,
+        "mean": NaN
+      },
+      "CULTURE_UNIT_LATITUDE": {
+        "dtype": "float64",
+        "nulls": 467,
+        "pct_null": 94.92,
+        "uniques": 10,
+        "min": 43.52779,
+        "max": 47.91903,
+        "mean": 44.6043
+      },
+      "CULTURE_UNIT_LONGITUDE": {
+        "dtype": "float64",
+        "nulls": 467,
+        "pct_null": 94.92,
+        "uniques": 10,
+        "min": 0.22917,
+        "max": 7.4812,
+        "mean": 2.3933
+      },
+      "CULTURE_PLACE_LATITUDE": {
+        "dtype": "float64",
+        "nulls": 19,
+        "pct_null": 3.86,
+        "uniques": 43,
+        "min": 43.52919,
+        "max": 50.6555,
+        "mean": 47.5383
+      },
+      "CULTURE_PLACE_LONGITUDE": {
+        "dtype": "float64",
+        "nulls": 19,
+        "pct_null": 3.86,
+        "uniques": 43,
+        "min": -2.96706,
+        "max": 18.59764,
+        "mean": 2.3954
+      },
+      "LATITUDE": {
+        "dtype": "float64",
+        "nulls": 19,
+        "pct_null": 3.86,
+        "uniques": 52,
+        "min": 43.52779,
+        "max": 50.6555,
+        "mean": 47.5385
+      },
+      "LONGITUDE": {
+        "dtype": "float64",
+        "nulls": 19,
+        "pct_null": 3.86,
+        "uniques": 52,
+        "min": -2.96706,
+        "max": 18.59764,
+        "mean": 2.3983
+      },
+      "TRANSFER_APPY": {
+        "dtype": "int64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 2,
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.5264
+      },
+      "SPECIES_GROUP": {
+        "dtype": "int64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 1,
+        "min": 7.0,
+        "max": 7.0,
+        "mean": 7.0
+      },
+      "MATERIAL_NB": {
+        "dtype": "int64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 40,
+        "min": 0.0,
+        "max": 72.0,
+        "mean": 28.3557
+      },
+      "REPLICATION_NB": {
+        "dtype": "int64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 4,
+        "min": 1.0,
+        "max": 4.0,
+        "mean": 1.6667
+      },
+      "SL_TRIAL_HASH": {
+        "dtype": "float64",
+        "nulls": 492,
+        "pct_null": 100.0,
+        "uniques": 0,
+        "min": NaN,
+        "max": NaN,
+        "mean": NaN
+      },
+      "DESIGN": {
+        "dtype": "object",
+        "nulls": 21,
+        "pct_null": 4.27,
+        "uniques": 254,
+        "top_values": {
+          "24BCN01_1R_002": 35,
+          "07LBC07_1R_002": 18,
+          "36BCN01_1R_001": 13,
+          "34BCN01_1R_001": 9,
+          "12BCN02_2R_014": 8
+        }
+      },
+      "DESIGN_TYPE": {
+        "dtype": "object",
+        "nulls": 21,
+        "pct_null": 4.27,
+        "uniques": 4,
+        "top_values": {
+          "RCB": 386,
+          "LAD": 36,
+          "PBL": 31,
+          "BLS": 18
+        }
+      },
+      "SPECIES_ID": {
+        "dtype": "float64",
+        "nulls": 1,
+        "pct_null": 0.2,
+        "uniques": 4,
+        "min": 6.0,
+        "max": 12.0,
+        "mean": 8.7902
+      },
+      "SPECIES_SPECIFICITY_ID": {
+        "dtype": "float64",
+        "nulls": 1,
+        "pct_null": 0.2,
+        "uniques": 6,
+        "min": 12.0,
+        "max": 80.0,
+        "mean": 44.3218
+      },
+      "FIABILITY_SYSTEM": {
+        "dtype": "float64",
+        "nulls": 487,
+        "pct_null": 98.98,
+        "uniques": 2,
+        "min": 1.0,
+        "max": 3.0,
+        "mean": 2.2
+      },
+      "FIABILITY_EXPERIMENTAL": {
+        "dtype": "float64",
+        "nulls": 487,
+        "pct_null": 98.98,
+        "uniques": 3,
+        "min": 1.0,
+        "max": 3.0,
+        "mean": 2.0
+      },
+      "FIABILITY_BREEDER": {
+        "dtype": "float64",
+        "nulls": 487,
+        "pct_null": 98.98,
+        "uniques": 2,
+        "min": 1.0,
+        "max": 3.0,
+        "mean": 1.4
+      },
+      "FIABILITY_EXPERIMENTAL_REASON": {
+        "dtype": "float64",
+        "nulls": 489,
+        "pct_null": 99.39,
+        "uniques": 3,
+        "min": 14.0,
+        "max": 17.0,
+        "mean": 15.3333
+      },
+      "FIABILITY_BREEDER_REASON": {
+        "dtype": "float64",
+        "nulls": 491,
+        "pct_null": 99.8,
+        "uniques": 1,
+        "min": 15.0,
+        "max": 15.0,
+        "mean": 15.0
+      }
+    }
+  },
+  "materiel": {
+    "nom": "materiel",
+    "nb_lignes": 112886,
+    "nb_colonnes": 36,
+    "colonnes": {
+      "LK_STOCK_S1_DATA_ID": {
+        "dtype": "float64",
+        "nulls": 1,
+        "pct_null": 0.0,
+        "uniques": 112877,
+        "min": 9.0,
+        "max": 1144830.0,
+        "mean": 570209.1302
+      },
+      "LK_STOCK_S1_ID_S1": {
+        "dtype": "float64",
+        "nulls": 1,
+        "pct_null": 0.0,
+        "uniques": 112877,
+        "min": 9.0,
+        "max": 1150459.0,
+        "mean": 579815.8306
+      },
+      "ROWS_NB": {
+        "dtype": "float64",
+        "nulls": 104664,
+        "pct_null": 92.72,
+        "uniques": 3,
+        "min": 1.0,
+        "max": 6.0,
+        "mean": 3.1548
+      },
+      "HYBRID_SPECIFICITY": {
+        "dtype": "object",
+        "nulls": 112791,
+        "pct_null": 99.92,
+        "uniques": 9,
+        "top_values": {
+          "D": 21,
+          "G": 19,
+          "S": 16,
+          "T": 15,
+          "L": 12
+        }
+      },
+      "CROSS_NB": {
+        "dtype": "float64",
+        "nulls": 81784,
+        "pct_null": 72.45,
+        "uniques": 27,
+        "min": 0.0,
+        "max": 26.0,
+        "mean": 1.5346
+      },
+      "GENE": {
+        "dtype": "object",
+        "nulls": 111880,
+        "pct_null": 99.11,
+        "uniques": 535,
+        "top_values": {
+          "Sumai 3B (?)": 22,
+          "FHB SF 4D (-ve)": 19,
+          "FHB SF 4D (+ve)": 18,
+          "TaGW2 (-ve), 6AL good yield (+ve), Rht1 (+ve), Rht2 (-ve), Ppd1 (+ve), Vern-A1 (-ve)": 15,
+          "TaGW2 (+ve), 6AL medium Yield (+ve), Rht1 (+ve), Rht2 (-ve), Ppd1 (+ve), Vern-A1 (-ve)": 14
+        }
+      },
+      "P1_ID": {
+        "dtype": "float64",
+        "nulls": 38753,
+        "pct_null": 34.33,
+        "uniques": 5222,
+        "min": 0.0,
+        "max": 1091372.0,
+        "mean": 191595.1862
+      },
+      "P2_ID": {
+        "dtype": "float64",
+        "nulls": 19555,
+        "pct_null": 17.32,
+        "uniques": 4096,
+        "min": 0.0,
+        "max": 1091366.0,
+        "mean": 153825.1394
+      },
+      "MAIN_NAME": {
+        "dtype": "object",
+        "nulls": 1,
+        "pct_null": 0.0,
+        "uniques": 105687,
+        "top_values": {
+          "E1": 31,
+          "15308": 30,
+          "R7": 30,
+          "R8": 29,
+          "ORSSUR": 29
+        }
+      },
+      "PEDIGREE": {
+        "dtype": "object",
+        "nulls": 1,
+        "pct_null": 0.0,
+        "uniques": 112884,
+        "top_values": {
+          "8PP30-1-1G": 2,
+          "SG_PRIMOR8": 1,
+          "07OD0009": 1,
+          "07OD0015": 1,
+          "16WL4387:@.[pl01]@.$2.@.": 1
+        }
+      },
+      "STRUCTURE": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 7,
+        "top_values": {
+          "SG": 74054,
+          "FL": 16660,
+          "SD": 7342,
+          "SC": 6591,
+          "HD": 5916
+        }
+      },
+      "SPECIES": {
+        "dtype": "object",
+        "nulls": 1,
+        "pct_null": 0.0,
+        "uniques": 10,
+        "top_values": {
+          "W": 57312,
+          "T": 15838,
+          "O": 13469,
+          "D": 13022,
+          "S": 7162
+        }
+      },
+      "SEVNB": {
+        "dtype": "float64",
+        "nulls": 60709,
+        "pct_null": 53.78,
+        "uniques": 44274,
+        "min": 49.0,
+        "max": 2621718.0,
+        "mean": 1068906.9762
+      },
+      "FAMILY": {
+        "dtype": "object",
+        "nulls": 7337,
+        "pct_null": 6.5,
+        "uniques": 32622,
+        "top_values": {
+          "PREMIO_A2W1SSD05/MERCATO_SSD05": 360,
+          "28SAWSN3013/RUBISKO*2": 325,
+          "BELLAC/PREMIO//TRIBECA": 312,
+          "GOBELIN@_SSD04/CAPHORN//MERCATO_SSD05": 204,
+          "OAKLEY/BATTALION": 171
+        }
+      },
+      "P1_DIRECT": {
+        "dtype": "object",
+        "nulls": 15454,
+        "pct_null": 13.69,
+        "uniques": 56483,
+        "top_values": {
+          "09SG2768:@.@.T@.": 143,
+          "10SG2689:@.@.P@.": 132,
+          "09SG2765:@.@.T@.": 119,
+          "10SG2702:@.@.T@.": 107,
+          "13WL2071:@.$2.-.": 105
+        }
+      },
+      "P2_DIRECT": {
+        "dtype": "object",
+        "nulls": 105532,
+        "pct_null": 93.49,
+        "uniques": 3290,
+        "top_values": {
+          "OAKLEY": 39,
+          "RGT_KILIMANJARO": 30,
+          "RGT_SACRAMENTO": 29,
+          "ANVERGUR": 27,
+          "PANORAMA": 26
+        }
+      },
+      "P1_DIRECT_ID": {
+        "dtype": "float64",
+        "nulls": 23322,
+        "pct_null": 20.66,
+        "uniques": 50017,
+        "min": 53.0,
+        "max": 1143998.0,
+        "mean": 518449.3107
+      },
+      "P2_DIRECT_ID": {
+        "dtype": "float64",
+        "nulls": 105950,
+        "pct_null": 93.86,
+        "uniques": 3016,
+        "min": 322.0,
+        "max": 1089944.0,
+        "mean": 323061.833
+      },
+      "NEXT_STAGE": {
+        "dtype": "object",
+        "nulls": 23522,
+        "pct_null": 20.84,
+        "uniques": 401,
+        "top_values": {
+          "P5": 11444,
+          "P4": 8574,
+          "P3": 7441,
+          "SSD1": 6729,
+          "F1": 6475
+        }
+      },
+      "SELF_NB": {
+        "dtype": "float64",
+        "nulls": 13790,
+        "pct_null": 12.22,
+        "uniques": 15,
+        "min": 0.0,
+        "max": 14.0,
+        "mean": 3.1848
+      },
+      "NEXT_SUB_STAGE": {
+        "dtype": "object",
+        "nulls": 90920,
+        "pct_null": 80.54,
+        "uniques": 1264,
+        "top_values": {
+          "MP2": 970,
+          "NL-2": 746,
+          "NL-3": 678,
+          "F4FAM": 623,
+          "17NL-3": 430
+        }
+      },
+      "RESPONSIBILITY": {
+        "dtype": "object",
+        "nulls": 729,
+        "pct_null": 0.65,
+        "uniques": 12,
+        "top_values": {
+          "L": 26396,
+          "C": 18545,
+          "D": 17671,
+          "M": 12915,
+          "R": 12793
+        }
+      },
+      "P1": {
+        "dtype": "object",
+        "nulls": 7607,
+        "pct_null": 6.74,
+        "uniques": 11863,
+        "top_values": {
+          "PREMIO_A2W1SSD05": 740,
+          "SUMATRA": 724,
+          "ANVERGUR": 723,
+          "OAKLEY": 580,
+          "VUKA": 484
+        }
+      },
+      "P2": {
+        "dtype": "object",
+        "nulls": 7576,
+        "pct_null": 6.71,
+        "uniques": 7383,
+        "top_values": {
+          "RUBISKO": 1132,
+          "TRIBECA": 1016,
+          "OAKLEY": 989,
+          "VUKA": 942,
+          "PREMIO": 866
+        }
+      },
+      "TRIAL_CODE": {
+        "dtype": "float64",
+        "nulls": 88783,
+        "pct_null": 78.65,
+        "uniques": 12753,
+        "min": 0.0,
+        "max": 201999051.0,
+        "mean": 47419238.9845
+      },
+      "HARVEST_CODE": {
+        "dtype": "object",
+        "nulls": 78821,
+        "pct_null": 69.82,
+        "uniques": 28771,
+        "top_values": {
+          "G-0007": 12,
+          "08V1_CA": 12,
+          "G-0015": 11,
+          "G-0001": 9,
+          "G-0005": 9
+        }
+      },
+      "BACK_CROSS_NB": {
+        "dtype": "float64",
+        "nulls": 50874,
+        "pct_null": 45.07,
+        "uniques": 9,
+        "min": 0.0,
+        "max": 9.0,
+        "mean": 0.1378
+      },
+      "GID": {
+        "dtype": "float64",
+        "nulls": 676,
+        "pct_null": 0.6,
+        "uniques": 104366,
+        "min": 9.0,
+        "max": 1137761.0,
+        "mean": 548602.1382
+      },
+      "BIRD": {
+        "dtype": "float64",
+        "nulls": 676,
+        "pct_null": 0.6,
+        "uniques": 104366,
+        "min": 9.0,
+        "max": 1137761.0,
+        "mean": 548602.1382
+      },
+      "RAW_FIXED_LINE": {
+        "dtype": "object",
+        "nulls": 110410,
+        "pct_null": 97.81,
+        "uniques": 1133,
+        "top_values": {
+          "0": 219,
+          "BOOMER (1), SANKARA - 3B SUMAY (4), SANKARA (4), 06PD10102.0017:0016.@.0005.@. (4), PREMIO (1)": 26,
+          "OAKLEY (3)": 20,
+          "ARMADA (1), RUBISKO (3)": 20,
+          "PREMIO (3)": 17
+        }
+      },
+      "BREEDING_START_CODE": {
+        "dtype": "object",
+        "nulls": 12772,
+        "pct_null": 11.31,
+        "uniques": 31084,
+        "top_values": {
+          "05WL0027": 359,
+          "13WL2071": 325,
+          "10TD0244": 312,
+          "05WL0124": 204,
+          "05WL0039": 170
+        }
+      },
+      "VARIETY_ID": {
+        "dtype": "float64",
+        "nulls": 112886,
+        "pct_null": 100.0,
+        "uniques": 0,
+        "min": NaN,
+        "max": NaN,
+        "mean": NaN
+      },
+      "IS_VARIETY": {
+        "dtype": "float64",
+        "nulls": 109310,
+        "pct_null": 96.83,
+        "uniques": 1,
+        "min": 0.0,
+        "max": 0.0,
+        "mean": 0.0
+      },
+      "SPECIES_ID": {
+        "dtype": "float64",
+        "nulls": 10,
+        "pct_null": 0.01,
+        "uniques": 10,
+        "min": 5.0,
+        "max": 15.0,
+        "mean": 11.053
+      },
+      "MATERIAL_HASH": {
+        "dtype": "float64",
+        "nulls": 112886,
+        "pct_null": 100.0,
+        "uniques": 0,
+        "min": NaN,
+        "max": NaN,
+        "mean": NaN
+      },
+      "CUD_STATUT": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 1,
+        "top_values": {
+          "C": 112886
+        }
+      }
+    }
+  },
+  "parcelle": {
+    "nom": "parcelle",
+    "nb_lignes": 74805,
+    "nb_colonnes": 22,
+    "colonnes": {
+      "LK_SL_TRIAL_L4_DATA_ID": {
+        "dtype": "float64",
+        "nulls": 1,
+        "pct_null": 0.0,
+        "uniques": 74799,
+        "min": 302031.0,
+        "max": 5777575.0,
+        "mean": 3329850.4555
+      },
+      "LK_EXPERIMENT_EXPERIMENT_ID": {
+        "dtype": "int64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 2393,
+        "min": 6973.0,
+        "max": 59999.0,
+        "mean": 41344.0573
+      },
+      "YEAR": {
+        "dtype": "float64",
+        "nulls": 1,
+        "pct_null": 0.0,
+        "uniques": 5,
+        "min": 2015.0,
+        "max": 2019.0,
+        "mean": 2016.5396
+      },
+      "SPECIES_GROUP": {
+        "dtype": "int64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 1,
+        "min": 7.0,
+        "max": 7.0,
+        "mean": 7.0
+      },
+      "SPECIES": {
+        "dtype": "object",
+        "nulls": 1,
+        "pct_null": 0.0,
+        "uniques": 8,
+        "top_values": {
+          "W": 33096,
+          "O": 12857,
+          "B": 8961,
+          "D": 5810,
+          "T": 5247
+        }
+      },
+      "SPECIES_SPECIFICITY": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 3,
+        "top_values": {
+          "-": 61948,
+          "P": 6660,
+          "H": 6197
+        }
+      },
+      "ORIGIN": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 1,
+        "top_values": {
+          "RC": 74805
+        }
+      },
+      "SL_TRIAL": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 1886,
+        "top_values": {
+          "WC_GpE_05": 3494,
+          "OR_HS_05": 473,
+          "WS_OBS1_05": 349,
+          "WC_70_05": 290,
+          "WC_44_05": 288
+        }
+      },
+      "REPLICATION_NUM": {
+        "dtype": "float64",
+        "nulls": 1,
+        "pct_null": 0.0,
+        "uniques": 30,
+        "min": 1.0,
+        "max": 30.0,
+        "mean": 1.4768
+      },
+      "ENTRY_NUM": {
+        "dtype": "float64",
+        "nulls": 1,
+        "pct_null": 0.0,
+        "uniques": 2782,
+        "min": 1.0,
+        "max": 3796.0,
+        "mean": 102.3331
+      },
+      "LK_STOCK_S1_DATA_ID": {
+        "dtype": "int64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 33345,
+        "min": 339.0,
+        "max": 1143658.0,
+        "mean": 676924.8253
+      },
+      "STATUS": {
+        "dtype": "object",
+        "nulls": 65837,
+        "pct_null": 88.01,
+        "uniques": 32,
+        "top_values": {
+          "T": 8674,
+          "A1_R2": 80,
+          "RE": 40,
+          "PD": 34,
+          "A1 ES": 24
+        }
+      },
+      "CULTURE_UNIT_X": {
+        "dtype": "float64",
+        "nulls": 9928,
+        "pct_null": 13.27,
+        "uniques": 255,
+        "min": 1.0,
+        "max": 260.0,
+        "mean": 39.175
+      },
+      "CULTURE_UNIT_Y": {
+        "dtype": "float64",
+        "nulls": 9928,
+        "pct_null": 13.27,
+        "uniques": 84,
+        "min": 1.0,
+        "max": 113.0,
+        "mean": 8.5469
+      },
+      "CULTURE_UNIT_ROUTE_NUM": {
+        "dtype": "float64",
+        "nulls": 36740,
+        "pct_null": 49.11,
+        "uniques": 3306,
+        "min": 1.0,
+        "max": 4475.0,
+        "mean": 643.5353
+      },
+      "DESIGN_PLOT_CODE": {
+        "dtype": "float64",
+        "nulls": 10886,
+        "pct_null": 14.55,
+        "uniques": 461,
+        "min": 101.0,
+        "max": 3105.0,
+        "mean": 166.9816
+      },
+      "DESIGN_X": {
+        "dtype": "float64",
+        "nulls": 6207,
+        "pct_null": 8.3,
+        "uniques": 74,
+        "min": 1.0,
+        "max": 77.0,
+        "mean": 10.0188
+      },
+      "DESIGN_Y": {
+        "dtype": "float64",
+        "nulls": 6207,
+        "pct_null": 8.3,
+        "uniques": 12,
+        "min": 1.0,
+        "max": 12.0,
+        "mean": 2.0327
+      },
+      "TRANSFER_APPY": {
+        "dtype": "int64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 2,
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.3863
+      },
+      "SPECIES_ID": {
+        "dtype": "int64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 8,
+        "min": 5.0,
+        "max": 13.0,
+        "mean": 10.2087
+      },
+      "SPECIES_SPECIFICITY_ID": {
+        "dtype": "int64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 9,
+        "min": 9.0,
+        "max": 80.0,
+        "mean": 31.4801
+      },
+      "PLOT_DEFINITION_HASH": {
+        "dtype": "float64",
+        "nulls": 74805,
+        "pct_null": 100.0,
+        "uniques": 0,
+        "min": NaN,
+        "max": NaN,
+        "mean": NaN
+      }
+    }
+  },
+  "especes": {
+    "nom": "especes",
+    "nb_lignes": 10,
+    "nb_colonnes": 24,
+    "colonnes": {
+      "DB_SOURCE": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 2,
+        "top_values": {
+          "LK_CRISP": 6,
+          "LK_H0": 4
+        }
+      },
+      "SPECIES_GROUP": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 2,
+        "top_values": {
+          "R7": 6,
+          "R1": 4
+        }
+      },
+      "POWER_TYPREC": {
+        "dtype": "float64",
+        "nulls": 1,
+        "pct_null": 10.0,
+        "uniques": 2,
+        "min": 1.0,
+        "max": 7.0,
+        "mean": 5.0
+      },
+      "POWER_SSESPECE": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 2,
+        "top_values": {
+          "S": 6,
+          "0": 4
+        }
+      },
+      "LK_NAME": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 2,
+        "top_values": {
+          "Soybean": 6,
+          "Maize": 4
+        }
+      },
+      "LK_SHORT_NAME": {
+        "dtype": "object",
+        "nulls": 4,
+        "pct_null": 40.0,
+        "uniques": 1,
+        "top_values": {
+          "S": 6
+        }
+      },
+      "GEVES_NAME": {
+        "dtype": "float64",
+        "nulls": 10,
+        "pct_null": 100.0,
+        "uniques": 0,
+        "min": NaN,
+        "max": NaN,
+        "mean": NaN
+      },
+      "LATIN_NAME": {
+        "dtype": "float64",
+        "nulls": 10,
+        "pct_null": 100.0,
+        "uniques": 0,
+        "min": NaN,
+        "max": NaN,
+        "mean": NaN
+      },
+      "COMMON_NAME_EN": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 2,
+        "top_values": {
+          "Soybean": 6,
+          "Maize": 4
+        }
+      },
+      "COMMON_NAME_FR": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 2,
+        "top_values": {
+          "Soja": 6,
+          "Maïs": 4
+        }
+      },
+      "SPECIFICITIES_NAME": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 3,
+        "top_values": {
+          "-": 7,
+          "GRAIN": 2,
+          "SILAGE": 1
+        }
+      },
+      "SPECIES_SPECIFICITY": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 3,
+        "top_values": {
+          "-": 7,
+          "G": 2,
+          "E": 1
+        }
+      },
+      "TRAIT": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 7,
+        "top_values": {
+          "%MOIS": 3,
+          "VER": 2,
+          "PTT": 1,
+          "DT": 1,
+          "SR1": 1
+        }
+      },
+      "TRAIT_DESCRIPTION": {
+        "dtype": "float64",
+        "nulls": 10,
+        "pct_null": 100.0,
+        "uniques": 0,
+        "min": NaN,
+        "max": NaN,
+        "mean": NaN
+      },
+      "LK_CODE": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 7,
+        "top_values": {
+          "C2044": 3,
+          "C0637": 2,
+          "C0648": 1,
+          "C0114": 1,
+          "C3096": 1
+        }
+      },
+      "GEVES_CODE": {
+        "dtype": "float64",
+        "nulls": 10,
+        "pct_null": 100.0,
+        "uniques": 0,
+        "min": NaN,
+        "max": NaN,
+        "mean": NaN
+      },
+      "TYPE": {
+        "dtype": "object",
+        "nulls": 4,
+        "pct_null": 40.0,
+        "uniques": 2,
+        "top_values": {
+          "AGRO": 5,
+          "DISEASE": 1
+        }
+      },
+      "STATISTICAL_CATEGORY": {
+        "dtype": "float64",
+        "nulls": 10,
+        "pct_null": 100.0,
+        "uniques": 0,
+        "min": NaN,
+        "max": NaN,
+        "mean": NaN
+      },
+      "MIN": {
+        "dtype": "float64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 7,
+        "min": 0.0,
+        "max": 13.0,
+        "mean": 3.2
+      },
+      "MAX": {
+        "dtype": "float64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 7,
+        "min": 0.0,
+        "max": 85.0,
+        "mean": 20.8
+      },
+      "R2N_USE": {
+        "dtype": "int64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 2,
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.8
+      },
+      "SDT_USE": {
+        "dtype": "float64",
+        "nulls": 9,
+        "pct_null": 90.0,
+        "uniques": 1,
+        "min": 1.0,
+        "max": 1.0,
+        "mean": 1.0
+      },
+      "SPECIES_ID": {
+        "dtype": "float64",
+        "nulls": 1,
+        "pct_null": 10.0,
+        "uniques": 2,
+        "min": 1.0,
+        "max": 11.0,
+        "mean": 6.5556
+      },
+      "SPECIES_SPECIFICITY_ID": {
+        "dtype": "float64",
+        "nulls": 1,
+        "pct_null": 10.0,
+        "uniques": 4,
+        "min": 1.0,
+        "max": 24.0,
+        "mean": 14.2222
+      }
+    }
+  },
+  "resultats": {
+    "nom": "resultats",
+    "nb_lignes": 136358,
+    "nb_colonnes": 20,
+    "colonnes": {
+      "LK_SL_TRIAL_L2_DATA_ID": {
+        "dtype": "int64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 61579,
+        "min": 302031.0,
+        "max": 5759998.0,
+        "mean": 3155802.2579
+      },
+      "LK_EXPERIMENT_EXPERIMENT_ID": {
+        "dtype": "int64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 2116,
+        "min": 6180.0,
+        "max": 59999.0,
+        "mean": 42524.5069
+      },
+      "YEAR": {
+        "dtype": "float64",
+        "nulls": 1,
+        "pct_null": 0.0,
+        "uniques": 4,
+        "min": 2015.0,
+        "max": 2018.0,
+        "mean": 2016.4801
+      },
+      "SPECIES_GROUP": {
+        "dtype": "int64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 1,
+        "min": 7.0,
+        "max": 7.0,
+        "mean": 7.0
+      },
+      "SPECIES": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 8,
+        "top_values": {
+          "W": 59224,
+          "O": 21523,
+          "B": 16560,
+          "T": 13420,
+          "D": 8622
+        }
+      },
+      "SPECIES_SPECIFICITY": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 3,
+        "top_values": {
+          "-": 114835,
+          "H": 11427,
+          "P": 10096
+        }
+      },
+      "ORIGIN": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 1,
+        "top_values": {
+          "RC": 136358
+        }
+      },
+      "SL_TRIAL": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 1729,
+        "top_values": {
+          "WC_GpE_05": 3319,
+          "WC_44_05": 933,
+          "WC_70_05": 834,
+          "WC_27_05": 588,
+          "WC_04_01": 489
+        }
+      },
+      "REPLICATION_NUM": {
+        "dtype": "int64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 4,
+        "min": 1.0,
+        "max": 4.0,
+        "mean": 1.4075
+      },
+      "ENTRY_NUM": {
+        "dtype": "int64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 2682,
+        "min": 1.0,
+        "max": 3796.0,
+        "mean": 61.7096
+      },
+      "TRANSFER_APPY": {
+        "dtype": "int64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 2,
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.4195
+      },
+      "TRAIT": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 6,
+        "top_values": {
+          "YD15QH": 55268,
+          "%MOIS": 31377,
+          "YD16QH": 24250,
+          "LOD1": 19639,
+          "CT": 3357
+        }
+      },
+      "RESULT": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 12179,
+        "top_values": {
+          "3,24": 11741,
+          "4,24": 3308,
+          "5,24": 2373,
+          "17,24": 1293,
+          "6,24": 1224
+        }
+      },
+      "FIABILITY_SYSTEM": {
+        "dtype": "float64",
+        "nulls": 136355,
+        "pct_null": 100.0,
+        "uniques": 2,
+        "min": 1.0,
+        "max": 3.0,
+        "mean": 1.6667
+      },
+      "FIABILITY_EXPERIMENTAL": {
+        "dtype": "float64",
+        "nulls": 136332,
+        "pct_null": 99.98,
+        "uniques": 3,
+        "min": 1.0,
+        "max": 3.0,
+        "mean": 2.1923
+      },
+      "FIABILITY_EXPERIMENTAL_REASON": {
+        "dtype": "float64",
+        "nulls": 136342,
+        "pct_null": 99.99,
+        "uniques": 9,
+        "min": 11.0,
+        "max": 21.0,
+        "mean": 16.25
+      },
+      "FIABILITY_BREEDER": {
+        "dtype": "float64",
+        "nulls": 136332,
+        "pct_null": 99.98,
+        "uniques": 2,
+        "min": 1.0,
+        "max": 3.0,
+        "mean": 1.9231
+      },
+      "FIABILITY_BREEDER_REASON": {
+        "dtype": "float64",
+        "nulls": 136346,
+        "pct_null": 99.99,
+        "uniques": 7,
+        "min": 11.0,
+        "max": 21.0,
+        "mean": 17.4167
+      },
+      "SPECIES_ID": {
+        "dtype": "int64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 8,
+        "min": 5.0,
+        "max": 13.0,
+        "mean": 10.2902
+      },
+      "SPECIES_SPECIFICITY_ID": {
+        "dtype": "int64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 9,
+        "min": 9.0,
+        "max": 80.0,
+        "mean": 30.7817
+      }
+    }
+  },
+  "qualification": {
+    "nom": "qualification",
+    "nb_lignes": 2137,
+    "nb_colonnes": 11,
+    "colonnes": {
+      "YEAR": {
+        "dtype": "float64",
+        "nulls": 1,
+        "pct_null": 0.05,
+        "uniques": 5,
+        "min": 2015.0,
+        "max": 2019.0,
+        "mean": 2016.5787
+      },
+      "SPECIES": {
+        "dtype": "object",
+        "nulls": 2,
+        "pct_null": 0.09,
+        "uniques": 8,
+        "top_values": {
+          "W": 1332,
+          "O": 381,
+          "B": 150,
+          "D": 91,
+          "S": 65
+        }
+      },
+      "SPECIES_SPECIFICITY": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 3,
+        "top_values": {
+          "-": 1756,
+          "H": 259,
+          "P": 122
+        }
+      },
+      "ORIGIN": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 1,
+        "top_values": {
+          "RC": 2137
+        }
+      },
+      "SL_TRIAL": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 670,
+        "top_values": {
+          "WL_04_09": 12,
+          "WL_26_01": 12,
+          "WL_50_07": 12,
+          "WL_59_07": 12,
+          "WO_06_05": 12
+        }
+      },
+      "TRANSFER_APPY": {
+        "dtype": "int64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 2,
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.4057
+      },
+      "SL_TRIAL_HASH": {
+        "dtype": "float64",
+        "nulls": 2137,
+        "pct_null": 100.0,
+        "uniques": 0,
+        "min": NaN,
+        "max": NaN,
+        "mean": NaN
+      },
+      "QUALIFICATION": {
+        "dtype": "object",
+        "nulls": 3,
+        "pct_null": 0.14,
+        "uniques": 6,
+        "top_values": {
+          "SOWING_DATE": 731,
+          "HARVEST_DATE": 423,
+          "SPRAY": 280,
+          "FHB_INO": 235,
+          "PHOSPHATE": 235
+        }
+      },
+      "RESULT": {
+        "dtype": "object",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 243,
+        "top_values": {
+          "N": 587,
+          "NO": 159,
+          "Y": 149,
+          "SPRAYING": 76,
+          "18/10/2017": 27
+        }
+      },
+      "SPECIES_ID": {
+        "dtype": "int64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 8,
+        "min": 5.0,
+        "max": 13.0,
+        "mean": 11.0646
+      },
+      "SPECIES_SPECIFICITY_ID": {
+        "dtype": "int64",
+        "nulls": 0,
+        "pct_null": 0.0,
+        "uniques": 9,
+        "min": 9.0,
+        "max": 80.0,
+        "mean": 33.5395
+      }
+    }
+  }
+}

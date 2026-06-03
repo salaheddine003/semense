@@ -1,0 +1,38 @@
+{
+  "engine": "PySpark",
+  "steps": [
+    {
+      "step": "agg_espece_trait",
+      "rows": 38,
+      "engine": "PySpark"
+    },
+    {
+      "step": "top_materiels",
+      "rows": 30,
+      "engine": "PySpark"
+    },
+    {
+      "step": "correlation_yd_humidity",
+      "value": 0.2464,
+      "engine": "PySpark"
+    },
+    {
+      "step": "data_quality",
+      "null_counts": {
+        "RESULT_NUM": 0,
+        "YEAR": 1,
+        "ESPECE_FR": 0,
+        "REGION": 110952,
+        "LAT": 110952,
+        "LON": 110952
+      },
+      "engine": "PySpark"
+    }
+  ],
+  "elapsed_s": 40.01,
+  "outputs": {
+    "agg_espece_trait": "data/enriched/spark/spark_agg_espece_trait.parquet",
+    "top_materiels": "data/enriched/spark/spark_top_materiels.parquet"
+  },
+  "timestamp": "2026-05-19T11:12:23.289448"
+}

@@ -1,0 +1,1002 @@
+[
+  {
+    "experiment_id": "57476",
+    "sl_trial": "WW_PL_02",
+    "trait": "%MOIS",
+    "result": 18.14,
+    "year": 2015,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "58066",
+    "sl_trial": "WL_12_05",
+    "trait": "%MOIS",
+    "result": 14.54,
+    "year": 2015,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "21987",
+    "sl_trial": "WC_GpE_05",
+    "trait": "%MOIS",
+    "result": 17.64,
+    "year": 2017,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "49741",
+    "sl_trial": "WC_46_05",
+    "trait": "YD16QH",
+    "result": 71.72,
+    "year": 2017,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "53174",
+    "sl_trial": "WC_27_05",
+    "trait": "%MOIS",
+    "result": 18.54,
+    "year": 2015,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "53738",
+    "sl_trial": "B1_17_05",
+    "trait": "YD16QH",
+    "result": 67.96,
+    "year": 2015,
+    "species": "Blé dur/Orge",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "25775",
+    "sl_trial": "TD_04",
+    "trait": "LOD1",
+    "result": 4.24,
+    "year": 2018,
+    "species": "Triticale",
+    "region": "MIDI-PYRÉNÉES",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "22099",
+    "sl_trial": "B4_05_05",
+    "trait": "YD15QH",
+    "result": 68.24,
+    "year": 2018,
+    "species": "Blé dur/Orge",
+    "region": "POITOU-CHARENTES",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "41396",
+    "sl_trial": "SG_DA_07",
+    "trait": "%MOIS",
+    "result": 15.44,
+    "year": 2016,
+    "species": "Tournesol",
+    "region": "AQUITAINE",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "43118",
+    "sl_trial": "WR_75_06",
+    "trait": "YD16QH",
+    "result": 105.21,
+    "year": 2017,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "25711",
+    "sl_trial": "TC_08",
+    "trait": "YD16QH",
+    "result": 99.71,
+    "year": 2018,
+    "species": "Triticale",
+    "region": "BRETAGNE",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "25332",
+    "sl_trial": "VW_05",
+    "trait": "YD16QH",
+    "result": 57.62,
+    "year": 2018,
+    "species": "Triticale",
+    "region": "MIDI-PYRÉNÉES",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "47937",
+    "sl_trial": "WL_05_04",
+    "trait": "YD15QH",
+    "result": 75.98,
+    "year": 2017,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "46093",
+    "sl_trial": "TD_TH_01",
+    "trait": "YD15QH",
+    "result": 83.92,
+    "year": 2017,
+    "species": "Triticale",
+    "region": "LIMOUSIN",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "56677",
+    "sl_trial": "SG_DG_02",
+    "trait": "YD16QH",
+    "result": 46.52,
+    "year": 2015,
+    "species": "Tournesol",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "44134",
+    "sl_trial": "WC_26_01",
+    "trait": "YD15QH",
+    "result": 122.33,
+    "year": 2016,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "46758",
+    "sl_trial": "OR_QB_04",
+    "trait": "%MOIS",
+    "result": 15.74,
+    "year": 2016,
+    "species": "Colza",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "46071",
+    "sl_trial": "TD_TD_03",
+    "trait": "YD15QH",
+    "result": 78.13,
+    "year": 2017,
+    "species": "Triticale",
+    "region": "LIMOUSIN",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "43842",
+    "sl_trial": "OR_QG_06",
+    "trait": "YD15QH",
+    "result": 88.26,
+    "year": 2017,
+    "species": "Colza",
+    "region": "CENTRE",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "53225",
+    "sl_trial": "WC_29_05",
+    "trait": "%MOIS",
+    "result": 16.34,
+    "year": 2015,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "40210",
+    "sl_trial": "WL_02_07",
+    "trait": "YD15QH",
+    "result": 62.17,
+    "year": 2016,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "41641",
+    "sl_trial": "B1_51_05",
+    "trait": "%MOIS",
+    "result": 14.24,
+    "year": 2016,
+    "species": "Blé dur/Orge",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "58962",
+    "sl_trial": "WC_05_03",
+    "trait": "YD16QH",
+    "result": 102.87,
+    "year": 2015,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "42084",
+    "sl_trial": "WC_27_05",
+    "trait": "%MOIS",
+    "result": 14.74,
+    "year": 2016,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "46973",
+    "sl_trial": "DM_EF_05",
+    "trait": "%MOIS",
+    "result": 14.44,
+    "year": 2017,
+    "species": "D",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "45383",
+    "sl_trial": "DM_IC_04",
+    "trait": "YD15QH",
+    "result": 63.51,
+    "year": 2016,
+    "species": "D",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "56547",
+    "sl_trial": "DM_IJ_05",
+    "trait": "YD15QH",
+    "result": 68.07,
+    "year": 2015,
+    "species": "D",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "47804",
+    "sl_trial": "OR_PH_02",
+    "trait": "YD15QH",
+    "result": 80.91,
+    "year": 2016,
+    "species": "Colza",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "45181",
+    "sl_trial": "OR_C2_05",
+    "trait": "YD15QH",
+    "result": 36.3,
+    "year": 2016,
+    "species": "Colza",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "49985",
+    "sl_trial": "B4_02_09",
+    "trait": "YD15QH",
+    "result": 27.85,
+    "year": 2017,
+    "species": "Blé dur/Orge",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "21987",
+    "sl_trial": "WC_GpE_05",
+    "trait": "%MOIS",
+    "result": 18.84,
+    "year": 2017,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "40365",
+    "sl_trial": "WS_55_05",
+    "trait": "YD16QH",
+    "result": 98.48,
+    "year": 2016,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "40346",
+    "sl_trial": "WL_56_08",
+    "trait": "YD15QH",
+    "result": 55.64,
+    "year": 2016,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "42147",
+    "sl_trial": "B4_06_05",
+    "trait": "YD15QH",
+    "result": 24.76,
+    "year": 2016,
+    "species": "Blé dur/Orge",
+    "region": "CENTRE",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "24841",
+    "sl_trial": "DM_TF_05",
+    "trait": "%MOIS",
+    "result": 12.74,
+    "year": 2018,
+    "species": "D",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "58590",
+    "sl_trial": "OR_AA_02",
+    "trait": "YD16QH",
+    "result": 77.08,
+    "year": 2015,
+    "species": "Colza",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "53235",
+    "sl_trial": "AR_85_01",
+    "trait": "YD16QH",
+    "result": 78.86,
+    "year": 2015,
+    "species": "A",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "22576",
+    "sl_trial": "WC_23_05",
+    "trait": "%MOIS",
+    "result": 15.74,
+    "year": 2018,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "45765",
+    "sl_trial": "AR_04_04",
+    "trait": "LOD1",
+    "result": 6.24,
+    "year": 2016,
+    "species": "A",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "25332",
+    "sl_trial": "VW_05",
+    "trait": "LOD1",
+    "result": 3.24,
+    "year": 2018,
+    "species": "Triticale",
+    "region": "MIDI-PYRÉNÉES",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "44267",
+    "sl_trial": "TD_TH_03",
+    "trait": "%MOIS",
+    "result": 16.64,
+    "year": 2016,
+    "species": "Triticale",
+    "region": "BRETAGNE",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "49685",
+    "sl_trial": "WC_28_02",
+    "trait": "%MOIS",
+    "result": 17.54,
+    "year": 2017,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "40650",
+    "sl_trial": "WO_88_05",
+    "trait": "LOD1",
+    "result": 8.24,
+    "year": 2016,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "46814",
+    "sl_trial": "DM_MF_05",
+    "trait": "%MOIS",
+    "result": 14.04,
+    "year": 2017,
+    "species": "D",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "48451",
+    "sl_trial": "B2_05_05",
+    "trait": "YD15QH",
+    "result": 53.79,
+    "year": 2017,
+    "species": "Blé dur/Orge",
+    "region": "BOURGOGNE",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "44284",
+    "sl_trial": "TD_TG_05",
+    "trait": "YD15QH",
+    "result": 74.55,
+    "year": 2016,
+    "species": "Triticale",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "43662",
+    "sl_trial": "SG_EB_02",
+    "trait": "YD16QH",
+    "result": 33.74,
+    "year": 2017,
+    "species": "Tournesol",
+    "region": "MIDI-PYRÉNÉES",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "59934",
+    "sl_trial": "OR_PK_01",
+    "trait": "CT",
+    "result": 4.24,
+    "year": 2015,
+    "species": "Colza",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "21693",
+    "sl_trial": "AR_89_02",
+    "trait": "%MOIS",
+    "result": 16.24,
+    "year": 2018,
+    "species": "A",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "41782",
+    "sl_trial": "SG_O1_05",
+    "trait": "LOD1",
+    "result": 5.24,
+    "year": 2016,
+    "species": "Tournesol",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "45544",
+    "sl_trial": "OR_PJ_07",
+    "trait": "YD16QH",
+    "result": 81.77,
+    "year": 2015,
+    "species": "Colza",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "44230",
+    "sl_trial": "TD_TJ_04",
+    "trait": "YD15QH",
+    "result": 121.91,
+    "year": 2016,
+    "species": "Triticale",
+    "region": "BRETAGNE",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "59331",
+    "sl_trial": "B4_08_02",
+    "trait": "YD16QH",
+    "result": 42.93,
+    "year": 2015,
+    "species": "Blé dur/Orge",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "43799",
+    "sl_trial": "OR_HJ_06",
+    "trait": "LOD1",
+    "result": 4.24,
+    "year": 2017,
+    "species": "Colza",
+    "region": "PICARDIE",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "44217",
+    "sl_trial": "TD_TD_09",
+    "trait": "YD15QH",
+    "result": 73.43,
+    "year": 2016,
+    "species": "Triticale",
+    "region": "PAYS DE LA LOIRE",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "46344",
+    "sl_trial": "DM_CD_07",
+    "trait": "YD15QH",
+    "result": 48.78,
+    "year": 2017,
+    "species": "D",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "48527",
+    "sl_trial": "WL_19_04",
+    "trait": "%MOIS",
+    "result": 15.04,
+    "year": 2017,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "49985",
+    "sl_trial": "B4_02_09",
+    "trait": "YD15QH",
+    "result": 32.32,
+    "year": 2017,
+    "species": "Blé dur/Orge",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "49418",
+    "sl_trial": "WC_04_01",
+    "trait": "YD16QH",
+    "result": 67.63,
+    "year": 2017,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "43118",
+    "sl_trial": "WR_75_06",
+    "trait": "YD16QH",
+    "result": 104.08,
+    "year": 2017,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "56373",
+    "sl_trial": "OR_C4_45",
+    "trait": "%MOIS",
+    "result": 14.54,
+    "year": 2015,
+    "species": "Colza",
+    "region": "CENTRE",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "57883",
+    "sl_trial": "WL_58_07",
+    "trait": "LOD1",
+    "result": 8.24,
+    "year": 2015,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "20382",
+    "sl_trial": "WO_61_05",
+    "trait": "%MOIS",
+    "result": 14.74,
+    "year": 2018,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "58962",
+    "sl_trial": "WC_05_03",
+    "trait": "YD16QH",
+    "result": 91.16,
+    "year": 2015,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "57717",
+    "sl_trial": "WL_08_04",
+    "trait": "%MOIS",
+    "result": 17.84,
+    "year": 2015,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "47314",
+    "sl_trial": "WL_02_06",
+    "trait": "%MOIS",
+    "result": 15.34,
+    "year": 2017,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "42240",
+    "sl_trial": "B5_85_04",
+    "trait": "YD15QH",
+    "result": 20.53,
+    "year": 2016,
+    "species": "Blé dur/Orge",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "22508",
+    "sl_trial": "B4_04_03",
+    "trait": "YD15QH",
+    "result": 61.44,
+    "year": 2018,
+    "species": "Blé dur/Orge",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "25301",
+    "sl_trial": "OR_OA_05",
+    "trait": "CT",
+    "result": 11.24,
+    "year": 2018,
+    "species": "Colza",
+    "region": "NORD-PAS-DE-CALAIS",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "59493",
+    "sl_trial": "OR_QI_04",
+    "trait": "YD16QH",
+    "result": 106.87,
+    "year": 2015,
+    "species": "Colza",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "20355",
+    "sl_trial": "WO_13_05",
+    "trait": "YD16QH",
+    "result": 92.68,
+    "year": 2018,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "59970",
+    "sl_trial": "B2_04_05",
+    "trait": "YD15QH",
+    "result": 51.75,
+    "year": 2015,
+    "species": "Blé dur/Orge",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "24632",
+    "sl_trial": "WC_14_09",
+    "trait": "YD15QH",
+    "result": 106.11,
+    "year": 2018,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "48037",
+    "sl_trial": "WL_23_01",
+    "trait": "YD15QH",
+    "result": 79.57,
+    "year": 2017,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "41363",
+    "sl_trial": "SG_CE_05",
+    "trait": "YD16QH",
+    "result": 43.7,
+    "year": 2016,
+    "species": "Tournesol",
+    "region": "BARANYA",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "22576",
+    "sl_trial": "WC_23_05",
+    "trait": "YD15QH",
+    "result": 82.77,
+    "year": 2018,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "46300",
+    "sl_trial": "AR_04_04",
+    "trait": "YD15QH",
+    "result": 78.2,
+    "year": 2017,
+    "species": "A",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "20634",
+    "sl_trial": "WL_41_01",
+    "trait": "LOD1",
+    "result": 3.24,
+    "year": 2018,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "44987",
+    "sl_trial": "WL_10_09",
+    "trait": "LOD1",
+    "result": 3.24,
+    "year": 2016,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "24901",
+    "sl_trial": "WC_14_53",
+    "trait": "YD15QH",
+    "result": 109.42,
+    "year": 2018,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "22866",
+    "sl_trial": "B4_08_08",
+    "trait": "YD15QH",
+    "result": 41.69,
+    "year": 2018,
+    "species": "Blé dur/Orge",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "42180",
+    "sl_trial": "B4_07_08",
+    "trait": "YD15QH",
+    "result": 56.05,
+    "year": 2016,
+    "species": "Blé dur/Orge",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "24806",
+    "sl_trial": "DM_BB_02",
+    "trait": "YD15QH",
+    "result": 65.06,
+    "year": 2018,
+    "species": "D",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "24774",
+    "sl_trial": "DM_FD_05",
+    "trait": "LOD1",
+    "result": 4.24,
+    "year": 2018,
+    "species": "D",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "21987",
+    "sl_trial": "WC_GpE_05",
+    "trait": "%MOIS",
+    "result": 18.94,
+    "year": 2017,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "40915",
+    "sl_trial": "WL_25_04",
+    "trait": "YD15QH",
+    "result": 54.41,
+    "year": 2016,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "41806",
+    "sl_trial": "B1_10_04",
+    "trait": "YD15QH",
+    "result": 18.73,
+    "year": 2016,
+    "species": "Blé dur/Orge",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "21987",
+    "sl_trial": "WC_GpE_05",
+    "trait": "%MOIS",
+    "result": 16.34,
+    "year": 2017,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "49711",
+    "sl_trial": "OR_PH_04",
+    "trait": "YD15QH",
+    "result": 81.95,
+    "year": 2017,
+    "species": "Colza",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "40352",
+    "sl_trial": "WL_57_08",
+    "trait": "LOD1",
+    "result": 3.24,
+    "year": 2016,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "44289",
+    "sl_trial": "TD_TH_04",
+    "trait": "YD15QH",
+    "result": 64.01,
+    "year": 2016,
+    "species": "Triticale",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "24074",
+    "sl_trial": "OR_G6_01",
+    "trait": "YD15QH",
+    "result": 74.41,
+    "year": 2018,
+    "species": "Colza",
+    "region": "NORD-PAS-DE-CALAIS",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "57830",
+    "sl_trial": "WL_26_01",
+    "trait": "LOD1",
+    "result": 5.24,
+    "year": 2015,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "49671",
+    "sl_trial": "WC_59_07",
+    "trait": "YD15QH",
+    "result": 119.13,
+    "year": 2017,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "25719",
+    "sl_trial": "TC_50",
+    "trait": "YD16QH",
+    "result": 101.94,
+    "year": 2018,
+    "species": "Triticale",
+    "region": "LIMOUSIN",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "41018",
+    "sl_trial": "OR_PY_04",
+    "trait": "YD16QH",
+    "result": 64.21,
+    "year": 2016,
+    "species": "Colza",
+    "region": "CHAMPAGNE-ARDENNE",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "46736",
+    "sl_trial": "DM_GP_05",
+    "trait": "YD15QH",
+    "result": 39.67,
+    "year": 2017,
+    "species": "D",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "21713",
+    "sl_trial": "OR_P5_08",
+    "trait": "CT",
+    "result": 3.24,
+    "year": 2018,
+    "species": "Colza",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "21480",
+    "sl_trial": "WL_05_53",
+    "trait": "LOD1",
+    "result": 4.24,
+    "year": 2018,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  },
+  {
+    "experiment_id": "48598",
+    "sl_trial": "WS_82_05",
+    "trait": "LOD1",
+    "result": 3.24,
+    "year": 2017,
+    "species": "Blé tendre",
+    "region": "None",
+    "event_type": "NEW_RESULT"
+  }
+]

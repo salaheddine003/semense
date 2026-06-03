@@ -1,0 +1,92 @@
+{
+  "database": "semences_db",
+  "metastore": {
+    "database": "semences_db",
+    "tables": {
+      "fact_table": {
+        "location": "data/enriched/fact_table.parquet",
+        "format": "PARQUET",
+        "partitioned_by": [
+          "YEAR",
+          "ESPECE_FR"
+        ],
+        "tblproperties": {
+          "created_by": "Talend ETL v5",
+          "source": "CRISP"
+        }
+      },
+      "essai_raw": {
+        "location": "data/raw/essai.parquet",
+        "format": "PARQUET"
+      },
+      "resultat_raw": {
+        "location": "data/raw/resultat_essais.parquet",
+        "format": "PARQUET"
+      },
+      "material_raw": {
+        "location": "data/raw/lk_crisp_material.parquet",
+        "format": "PARQUET"
+      }
+    }
+  },
+  "execution": [
+    {
+      "query_id": "Q1_rendement_moyen_espece_annee",
+      "rows": 26,
+      "elapsed_s": 0.083,
+      "status": "OK"
+    },
+    {
+      "query_id": "Q2_top_materiels_rendement",
+      "rows": 20,
+      "elapsed_s": 0.076,
+      "status": "OK"
+    },
+    {
+      "query_id": "Q3_analyse_regionale",
+      "rows": 96,
+      "elapsed_s": 0.049,
+      "status": "OK"
+    },
+    {
+      "query_id": "Q4_evolution_tendance",
+      "rows": 26,
+      "elapsed_s": 0.038,
+      "status": "OK"
+    },
+    {
+      "query_id": "Q5_qualification_trials",
+      "rows": 31,
+      "elapsed_s": 0.047,
+      "status": "OK"
+    }
+  ],
+  "outputs": [
+    {
+      "query": "Q1_rendement_moyen_espece_annee",
+      "rows": 26,
+      "file": "C:\\Users\\HOME\\Desktop\\Semance\\hive\\Q1_rendement_moyen_espece_annee.csv"
+    },
+    {
+      "query": "Q2_top_materiels_rendement",
+      "rows": 20,
+      "file": "C:\\Users\\HOME\\Desktop\\Semance\\hive\\Q2_top_materiels_rendement.csv"
+    },
+    {
+      "query": "Q3_analyse_regionale",
+      "rows": 96,
+      "file": "C:\\Users\\HOME\\Desktop\\Semance\\hive\\Q3_analyse_regionale.csv"
+    },
+    {
+      "query": "Q4_evolution_tendance",
+      "rows": 26,
+      "file": "C:\\Users\\HOME\\Desktop\\Semance\\hive\\Q4_evolution_tendance.csv"
+    },
+    {
+      "query": "Q5_qualification_trials",
+      "rows": 31,
+      "file": "C:\\Users\\HOME\\Desktop\\Semance\\hive\\Q5_qualification_trials.csv"
+    }
+  ],
+  "timestamp": "2026-05-19T11:11:42.906065"
+}

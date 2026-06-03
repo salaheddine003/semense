@@ -1,0 +1,32 @@
+{
+  "db": "C:\\Users\\HOME\\Desktop\\Semance\\hbase\\semences_hbase.db",
+  "tables": {
+    "experiments": {
+      "rows": 2116,
+      "column_families": [
+        "info",
+        "geo",
+        "quality",
+        "meta"
+      ]
+    },
+    "results": {
+      "rows": 50000,
+      "column_families": [
+        "measurement",
+        "metadata",
+        "meta"
+      ]
+    },
+    "materials": {
+      "rows": 20000,
+      "column_families": [
+        "identity",
+        "genetics",
+        "taxonomy",
+        "meta"
+      ]
+    }
+  },
+  "timestamp": "2026-05-19T11:11:07.677254"
+}

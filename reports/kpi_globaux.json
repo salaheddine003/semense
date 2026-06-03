@@ -1,0 +1,32 @@
+{
+  "nb_essais": 2116,
+  "nb_materiels": 28697,
+  "nb_mesures": 136358,
+  "nb_traits": 6,
+  "nb_especes": 8,
+  "nb_regions": 17,
+  "annees_couvertes": [
+    2015,
+    2016,
+    2017,
+    2018
+  ],
+  "especes": {
+    "Blé tendre": 59224,
+    "Colza": 21523,
+    "Blé dur/Orge": 16560,
+    "Triticale": 13420,
+    "D": 8622,
+    "Tournesol": 8480,
+    "A": 7435,
+    "F": 1094
+  },
+  "traits_top20": {
+    "YD15QH": 55268,
+    "%MOIS": 31377,
+    "YD16QH": 24250,
+    "LOD1": 19639,
+    "CT": 3357,
+    "MT_DAT": 2467
+  }
+}

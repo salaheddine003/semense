@@ -1,0 +1,82 @@
+{
+  "broker": "localhost:9092",
+  "topics": [
+    {
+      "topic": "experimental-results",
+      "partitions": 3,
+      "produced": 500,
+      "consumed": 500,
+      "queued": 0,
+      "offsets": [
+        159,
+        158,
+        183
+      ]
+    },
+    {
+      "topic": "material-updates",
+      "partitions": 2,
+      "produced": 0,
+      "consumed": 0,
+      "queued": 0,
+      "offsets": [
+        0,
+        0
+      ]
+    },
+    {
+      "topic": "quality-alerts",
+      "partitions": 1,
+      "produced": 15,
+      "consumed": 15,
+      "queued": 0,
+      "offsets": [
+        15
+      ]
+    },
+    {
+      "topic": "geo-stream",
+      "partitions": 2,
+      "produced": 20,
+      "consumed": 20,
+      "queued": 0,
+      "offsets": [
+        8,
+        12
+      ]
+    }
+  ],
+  "log": [
+    [
+      "producer_results",
+      500
+    ],
+    [
+      "producer_quality_alerts",
+      15
+    ],
+    [
+      "producer_geo_stream",
+      20
+    ],
+    [
+      "consumer_results_sink",
+      500
+    ],
+    [
+      "consumer_alerts_sink",
+      15
+    ],
+    [
+      "consumer_geo_sink",
+      20
+    ]
+  ],
+  "summary": {
+    "total_produced": 535,
+    "total_consumed": 535,
+    "quality_alerts": 15,
+    "geo_events": 20
+  },
+  "timestamp": "2026-05-19T11:11:42.198614"
+}

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌱 Semences R&D — Portail du Projet Big Data</title>
+<style>
+  :root {
+    --green: #1a7a1a; --green2: #2ecc71; --dark: #1a1a2e;
+    --blue: #0f3460; --accent: #e94560; --gold: #f39c12;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #0d1117; color: #e6edf3; min-height: 100vh; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #0d1117 0%, #0f3460 50%, #1a7a1a 100%);
+    padding: 60px 40px 50px; text-align: center; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(46,204,113,.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 50%, rgba(15,52,96,.3) 0%, transparent 60%);
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-logo { font-size: 4rem; margin-bottom: 12px; }
+  .hero h1 { font-size: 2.4rem; font-weight: 800; background: linear-gradient(90deg, #2ecc71, #3498db, #9b59b6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero p { font-size: 1.1rem; color: rgba(255,255,255,.7); margin: 12px 0 30px; }
+  .hero-badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .badge { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-radius: 20px; padding: 6px 18px; font-size: 12px; color: rgba(255,255,255,.8); }
+  .badge.green { border-color: #2ecc71; color: #2ecc71; background: rgba(46,204,113,.1); }
+  .badge.blue  { border-color: #3498db; color: #3498db; background: rgba(52,152,219,.1); }
+  .badge.gold  { border-color: #f39c12; color: #f39c12; background: rgba(243,156,18,.1); }
+
+  /* STATUS BAR */
+  .status-bar {
+    background: rgba(46,204,113,.08); border-top: 1px solid rgba(46,204,113,.2);
+    border-bottom: 1px solid rgba(46,204,113,.2); padding: 14px 40px;
+    display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; font-size: 13px;
+  }
+  .stat { display: flex; align-items: center; gap: 8px; }
+  .stat .dot { width: 8px; height: 8px; border-radius: 50%; background: #2ecc71; box-shadow: 0 0 6px #2ecc71; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1}50%{opacity:.4} }
+
+  /* MAIN GRID */
+  .container { max-width: 1400px; margin: 0 auto; padding: 40px; }
+  h2.section-title { font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; color: #2ecc71; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  h2.section-title::after { content: ''; flex: 1; height: 1px; background: rgba(46,204,113,.2); }
+
+  /* CARDS */
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-bottom: 48px; }
+
+  .card {
+    background: #161b22; border: 1px solid #30363d; border-radius: 14px;
+    overflow: hidden; transition: transform .2s, border-color .2s, box-shadow .2s;
+    text-decoration: none; color: inherit; display: block;
+  }
+  .card:hover { transform: translateY(-4px); border-color: #2ecc71; box-shadow: 0 8px 32px rgba(46,204,113,.15); }
+
+  .card-header { padding: 20px 22px 14px; display: flex; align-items: center; gap: 14px; }
+  .card-icon { font-size: 2rem; width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .card-header h3 { font-size: 1rem; font-weight: 700; margin: 0; }
+  .card-header small { font-size: 11px; color: #8b949e; display: block; margin-top: 3px; }
+
+  .card-body { padding: 0 22px 20px; font-size: 13px; color: #8b949e; line-height: 1.6; }
+  .card-footer { padding: 12px 22px; background: rgba(255,255,255,.03); border-top: 1px solid #30363d; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #8b949e; }
+  .card-footer .arrow { color: #2ecc71; transition: transform .2s; }
+  .card:hover .card-footer .arrow { transform: translateX(4px); }
+
+  /* color classes */
+  .icon-green  { background: rgba(46,204,113,.15); }
+  .icon-blue   { background: rgba(52,152,219,.15); }
+  .icon-orange { background: rgba(243,156,18,.15); }
+  .icon-purple { background: rgba(155,89,182,.15); }
+  .icon-red    { background: rgba(231,76,60,.15); }
+  .icon-teal   { background: rgba(26,188,156,.15); }
+  .icon-gold   { background: rgba(241,196,15,.15); }
+
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; margin-right: 4px; margin-top: 4px; }
+  .tag-view   { background: rgba(46,204,113,.15); color: #2ecc71; }
+  .tag-data   { background: rgba(52,152,219,.15); color: #3498db; }
+  .tag-report { background: rgba(155,89,182,.15); color: #9b59b6; }
+
+  /* IMAGES PREVIEW */
+  .img-preview { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-bottom: 48px; }
+  .img-thumb { background: #161b22; border: 1px solid #30363d; border-radius: 10px; overflow: hidden; cursor: pointer; transition: transform .2s, border-color .2s; text-decoration: none; display: block; }
+  .img-thumb:hover { transform: scale(1.03); border-color: #3498db; }
+  .img-thumb img { width: 100%; display: block; height: 150px; object-fit: cover; }
+  .img-thumb .cap { padding: 8px 12px; font-size: 11px; color: #8b949e; }
+
+  /* JSON TABLE */
+  .json-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin-bottom: 48px; }
+  .json-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 16px 18px; text-decoration: none; color: inherit; display: block; transition: border-color .2s; }
+  .json-card:hover { border-color: #f39c12; }
+  .json-card h4 { font-size: 13px; color: #e6edf3; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+  .json-card p  { font-size: 12px; color: #8b949e; }
+  .json-card .size { font-size: 11px; color: #f39c12; float: right; }
+
+  /* SOURCE FILES */
+  .src-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin-bottom: 48px; }
+  .src-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 14px 18px; display: flex; align-items: center; gap: 12px; }
+  .src-card .ext { font-weight: 700; font-size: 11px; padding: 3px 8px; border-radius: 6px; flex-shrink: 0; }
+  .ext-py  { background: rgba(52,152,219,.2); color: #3498db; }
+  .ext-r   { background: rgba(155,89,182,.2); color: #9b59b6; }
+  .ext-csv { background: rgba(46,204,113,.2); color: #2ecc71; }
+  .ext-par { background: rgba(243,156,18,.2); color: #f39c12; }
+  .src-card .name { font-size: 13px; font-weight: 600; }
+  .src-card .desc { font-size: 11px; color: #8b949e; }
+
+  /* PIPELINE TIMELINE */
+  .timeline { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 48px; }
+  .phase-box { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 12px 16px; text-align: center; min-width: 100px; flex: 1; }
+  .phase-box .num { font-size: 11px; color: #8b949e; }
+  .phase-box .name { font-size: 12px; font-weight: 700; color: #e6edf3; margin: 4px 0; }
+  .phase-box .dur { font-size: 11px; color: #2ecc71; font-weight: 600; }
+  .phase-box .ok { font-size: 16px; }
+
+  /* FOOTER */
+  footer { background: #0d1117; border-top: 1px solid #21262d; padding: 30px 40px; text-align: center; font-size: 12px; color: #8b949e; }
+  footer strong { color: #2ecc71; }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══════════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-logo">🌱</div>
+    <h1>Plateforme Big Data Semences R&amp;D</h1>
+    <p>Portail de visualisation de la réalisation du projet — Pipeline 12 phases</p>
+    <div class="hero-badges">
+      <span class="badge green">✔ 12/12 phases OK</span>
+      <span class="badge blue">183.8 secondes</span>
+      <span class="badge gold">326 688 lignes ingérées</span>
+      <span class="badge">2 116 essais · 8 espèces · 17 régions</span>
+      <span class="badge">PySpark 3.5.5 · DuckDB · Kafka · HBase</span>
+    </div>
+  </div>
+</div>
+
+<div class="status-bar">
+  <div class="stat"><div class="dot"></div>Pipeline opérationnel</div>
+  <div class="stat">📊 136 358 mesures analysées</div>
+  <div class="stat">🗄️ 72 116 rows en HBase</div>
+  <div class="stat">⚡ 535 messages Kafka consommés</div>
+  <div class="stat">🗺️ 424 points géolocalisés</div>
+</div>
+
+<div class="container">
+
+  <!-- ══ VUES PRINCIPALES ══════════════════════════ -->
+  <h2 class="section-title">🚀 Vues principales — Ouvrir dans le navigateur</h2>
+  <div class="cards">
+
+    <a class="card" href="reports/RAPPORT_TECHNIQUE.html" target="_blank">
+      <div class="card-header">
+        <div class="card-icon icon-purple">📋</div>
+        <div>
+          <h3>Rapport Technique Complet</h3>
+          <small>reports/RAPPORT_TECHNIQUE.html</small>
+        </div>
+      </div>
+      <div class="card-body">
+        Rapport complet en 10 sections : contexte, architecture Big Data, justifications de tous les choix technologiques (Sqoop, NiFi, Talend, HBase, Kafka, Hive, Spark, Drill, R, Tableau), visualisations, statistiques et conclusions.
+        <br><br>
+        <span class="tag tag-report">Rapport principal</span>
+        <span class="tag tag-view">HTML autonome</span>
+      </div>
+      <div class="card-footer"><span>71 KB — Ouvrir ↗</span><span class="arrow">→</span></div>
+    </a>
+
+    <a class="card" href="reports/dashboard.html" target="_blank">
+      <div class="card-header">
+        <div class="card-icon icon-green">📊</div>
+        <div>
+          <h3>Dashboard Analytique</h3>
+          <small>reports/dashboard.html</small>
+        </div>
+      </div>
+      <div class="card-body">
+        Dashboard style Spotfire/Tableau avec KPIs en temps réel, graphiques interactifs (rendements par espèce, tendances annuelles, top matériels génétiques), filtres dynamiques et tableaux comparatifs.
+        <br><br>
+        <span class="tag tag-view">Dashboard interactif</span>
+        <span class="tag tag-data">Chart.js</span>
+      </div>
+      <div class="card-footer"><span>665 KB — Ouvrir ↗</span><span class="arrow">→</span></div>
+    </a>
+
+    <a class="card" href="reports/carte_essais.html" target="_blank">
+      <div class="card-header">
+        <div class="card-icon icon-blue">🗺️</div>
+        <div>
+          <h3>Carte Interactive des Essais</h3>
+          <small>reports/carte_essais.html</small>
+        </div>
+      </div>
+      <div class="card-body">
+        Carte de France interactive (Folium/Leaflet) avec les 424 essais géolocalisés. Chaque point est cliquable et affiche les métadonnées : espèce, région, année, coordonnées GPS. Filtrage et zoom disponible.
+        <br><br>
+        <span class="tag tag-view">Carte Folium</span>
+        <span class="tag tag-data">424 points GPS</span>
+      </div>
+      <div class="card-footer"><span>647 KB — Ouvrir ↗</span><span class="arrow">→</span></div>
+    </a>
+
+  </div>
+
+  <!-- ══ PIPELINE PHASES ══════════════════════════ -->
+  <h2 class="section-title">⚙️ Pipeline Big Data — 12 phases exécutées</h2>
+  <div class="timeline">
+    <div class="phase-box"><div class="num">Phase 01</div><div class="name">Sqoop</div><div class="dur">5.5s</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 02</div><div class="name">Profiling</div><div class="dur">8.6s</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 03</div><div class="name">NiFi</div><div class="dur">10.7s</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 04</div><div class="name">Talend ETL</div><div class="dur">7.1s</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 05</div><div class="name">HBase</div><div class="dur">57.7s</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 06</div><div class="name">Kafka</div><div class="dur">34.5s</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 07</div><div class="name">Hive</div><div class="dur">0.7s</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 08</div><div class="name">Spark</div><div class="dur">40.4s</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 09</div><div class="name">Drill</div><div class="dur">0.3s</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 10</div><div class="name">Analyse R</div><div class="dur">5.7s</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 11</div><div class="name">Visualisation</div><div class="dur">12.5s</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 12</div><div class="name">Dashboard</div><div class="dur">0.1s</div><div class="ok">✔</div></div>
+  </div>
+
+  <!-- ══ GRAPHIQUES ══════════════════════════ -->
+  <h2 class="section-title">📈 Graphiques générés (Tableau / Spotfire style)</h2>
+  <div class="img-preview">
+    <a class="img-thumb" href="reports/images/01_essais_par_espece.png" target="_blank">
+      <img src="reports/images/01_essais_par_espece.png" alt="Essais par espèce">
+      <div class="cap">01 — Distribution essais par espèce</div>
+    </a>
+    <a class="img-thumb" href="reports/images/02_essais_par_annee.png" target="_blank">
+      <img src="reports/images/02_essais_par_annee.png" alt="Essais par année">
+      <div class="cap">02 — Évolution annuelle (2015–2018)</div>
+    </a>
+    <a class="img-thumb" href="reports/images/03_boxplot_rendement_espece.png" target="_blank">
+      <img src="reports/images/03_boxplot_rendement_espece.png" alt="Boxplot rendement">
+      <div class="cap">03 — Boxplot rendement par espèce</div>
+    </a>
+    <a class="img-thumb" href="reports/images/04_evolution_annuelle.png" target="_blank">
+      <img src="reports/images/04_evolution_annuelle.png" alt="Évolution annuelle">
+      <div class="cap">04 — Évolution du rendement annuel</div>
+    </a>
+    <a class="img-thumb" href="reports/images/05_top_regions.png" target="_blank">
+      <img src="reports/images/05_top_regions.png" alt="Top régions">
+      <div class="cap">05 — Top régions par volume d'essais</div>
+    </a>
+    <a class="img-thumb" href="reports/images/06_heatmap_region_espece.png" target="_blank">
+      <img src="reports/images/06_heatmap_region_espece.png" alt="Heatmap">
+      <div class="cap">06 — Heatmap région × espèce</div>
+    </a>
+    <a class="img-thumb" href="reports/images/07_correlation_Blé_tendre.png" target="_blank">
+      <img src="reports/images/07_correlation_Blé_tendre.png" alt="Corrélations">
+      <div class="cap">07 — Matrice corrélations Blé tendre</div>
+    </a>
+    <a class="img-thumb" href="reports/images/08_top_materiels.png" target="_blank">
+      <img src="reports/images/08_top_materiels.png" alt="Top matériels">
+      <div class="cap">08 — Top 20 matériels génétiques</div>
+    </a>
+  </div>
+
+  <!-- ══ RAPPORTS JSON ══════════════════════════ -->
+  <h2 class="section-title">📄 Rapports JSON — Données brutes des phases</h2>
+  <div class="json-grid">
+    <a class="json-card" href="reports/kpi_globaux.json" target="_blank">
+      <h4>📊 kpi_globaux.json <span class="size">54 KB</span></h4>
+      <p>KPIs globaux du pipeline : 2 116 essais, 28 697 matériels, 136 358 mesures, 8 espèces, 17 régions, années 2015-2018, tops traits et espèces.</p>
+    </a>
+    <a class="json-card" href="reports/sqoop_jobs.json" target="_blank">
+      <h4>🔌 sqoop_jobs.json <span class="size">80 KB</span></h4>
+      <p>6 jobs Sqoop : statuts SUCCESS, durées, nombre de lignes importées par source (total : 326 688 lignes), configuration JDBC et Parquet.</p>
+    </a>
+    <a class="json-card" href="reports/kafka_report.json" target="_blank">
+      <h4>⚡ kafka_report.json <span class="size">54 KB</span></h4>
+      <p>4 topics Kafka, 535 messages produits/consommés (taux 100%), 15 alertes qualité outliers, 20 événements géo NDVI/drones.</p>
+    </a>
+    <a class="json-card" href="reports/spark_report.json" target="_blank">
+      <h4>🔥 spark_report.json <span class="size">37 KB</span></h4>
+      <p>PySpark 3.5.5 local[*], 40.01s, corrélation YD×humidité = 0.2464, 38 agrégats espèce×trait, top 30 matériels exportés.</p>
+    </a>
+    <a class="json-card" href="reports/hive_report.json" target="_blank">
+      <h4>🐝 hive_report.json <span class="size">45 KB</span></h4>
+      <p>5 requêtes HiveQL exécutées via DuckDB (Q1–Q5), toutes succès, durées 0.05–0.10s chacune, résultats agrégés par espèce/année.</p>
+    </a>
+    <a class="json-card" href="reports/drill_report.json" target="_blank">
+      <h4>🔍 drill_report.json <span class="size">51 KB</span></h4>
+      <p>6 requêtes Drill SQL ad-hoc sur fichiers Parquet sans schéma prédéfini : schema discovery, cross-file join, outliers, TOP-N régions.</p>
+    </a>
+    <a class="json-card" href="reports/nifi_provenance.json" target="_blank">
+      <h4>🔀 nifi_provenance.json <span class="size">89 KB</span></h4>
+      <p>Traçabilité complète NiFi : 6 FlowFiles avec UUID, horodatages, provenance par processeur (GetFile→ValidateRecord→RouteOnAttribute→...).</p>
+    </a>
+    <a class="json-card" href="reports/profiling.json" target="_blank">
+      <h4>🔬 profiling.json <span class="size">58 KB</span></h4>
+      <p>Qualité des données par source : taux de remplissage, types détectés, valeurs min/max/mean, nulls, doublons par colonne.</p>
+    </a>
+    <a class="json-card" href="reports/hbase_summary.json" target="_blank">
+      <h4>🗄️ hbase_summary.json <span class="size">10 KB</span></h4>
+      <p>Résumé des 3 tables HBase : experiments (2 116), results (~50K), materials (~20K). Row keys, familles de colonnes, schéma.</p>
+    </a>
+    <a class="json-card" href="reports/correlations.json" target="_blank">
+      <h4>🔗 correlations.json <span class="size">21 KB</span></h4>
+      <p>Matrices de corrélation entre traits agronomiques par espèce. YD15QH × %MOIS = 0.2464 (Blé tendre, Spark).</p>
+    </a>
+  </div>
+
+  <!-- ══ DONNÉES CSV ══════════════════════════ -->
+  <h2 class="section-title">📋 Données CSV — Résultats des analyses</h2>
+  <div class="json-grid">
+    <a class="json-card" href="data/enriched/fact_table.csv" target="_blank">
+      <h4>📦 fact_table.csv</h4>
+      <p>Table de faits principale — 136 358 lignes × 47 colonnes. Résultat final du pipeline ETL Talend. Base de toutes les analyses.</p>
+    </a>
+    <a class="json-card" href="data/enriched/stats_espece_trait.csv" target="_blank">
+      <h4>📊 stats_espece_trait.csv</h4>
+      <p>Statistiques descriptives par espèce × trait : count, mean, std, min, 25%, 50%, 75%, max.</p>
+    </a>
+    <a class="json-card" href="data/enriched/top_materiels.csv" target="_blank">
+      <h4>🏆 top_materiels.csv</h4>
+      <p>Classement des meilleurs matériels génétiques par rendement YD15QH. Données de sélection variétale.</p>
+    </a>
+    <a class="json-card" href="data/enriched/evolution_annuelle.csv" target="_blank">
+      <h4>📅 evolution_annuelle.csv</h4>
+      <p>Évolution du rendement moyen par espèce de 2015 à 2018. Détection des années favorables/défavorables.</p>
+    </a>
+    <a class="json-card" href="data/enriched/essais_par_region.csv" target="_blank">
+      <h4>🗺️ essais_par_region.csv</h4>
+      <p>Nombre d'essais par région × espèce. Données source du Top 17 régions.</p>
+    </a>
+    <a class="json-card" href="data/enriched/anova_region.csv" target="_blank">
+      <h4>📐 anova_region.csv</h4>
+      <p>Résultats ANOVA par région : F-statistic, p-value, significativité. Détecte si les différences régionales sont significatives.</p>
+    </a>
+  </div>
+
+  <!-- ══ CODE SOURCE ══════════════════════════ -->
+  <h2 class="section-title">💻 Code source — Scripts du pipeline</h2>
+  <div class="src-grid">
+    <div class="src-card">
+      <span class="ext ext-py">PY</span>
+      <div><div class="name">main.py</div><div class="desc">Orchestrateur 12 phases</div></div>
+    </div>
+    <div class="src-card">
+      <span class="ext ext-py">PY</span>
+      <div><div class="name">src/06_sqoop_import.py</div><div class="desc">Apache Sqoop — Import CSV→Parquet</div></div>
+    </div>
+    <div class="src-card">
+      <span class="ext ext-py">PY</span>
+      <div><div class="name">src/07_nifi_flow.py</div><div class="desc">Apache NiFi — 6 processors FlowFile</div></div>
+    </div>
+    <div class="src-card">
+      <span class="ext ext-py">PY</span>
+      <div><div class="name">src/08_hbase_store.py</div><div class="desc">Apache HBase — Column Families NoSQL</div></div>
+    </div>
+    <div class="src-card">
+      <span class="ext ext-py">PY</span>
+      <div><div class="name">src/09_kafka_streaming.py</div><div class="desc">Apache Kafka — 4 topics Producer/Consumer</div></div>
+    </div>
+    <div class="src-card">
+      <span class="ext ext-py">PY</span>
+      <div><div class="name">src/10_hive_queries.py</div><div class="desc">Apache Hive — 5 requêtes HiveQL (DuckDB)</div></div>
+    </div>
+    <div class="src-card">
+      <span class="ext ext-py">PY</span>
+      <div><div class="name">src/11_spark_analysis.py</div><div class="desc">Apache Spark — PySpark 3.5.5 local[*]</div></div>
+    </div>
+    <div class="src-card">
+      <span class="ext ext-py">PY</span>
+      <div><div class="name">src/12_drill_queries.py</div><div class="desc">Apache Drill — SQL ad-hoc on files</div></div>
+    </div>
+    <div class="src-card">
+      <span class="ext ext-r">R</span>
+      <div><div class="name">R/analyse_statistique.R</div><div class="desc">ANOVA, Tukey HSD, ggplot2</div></div>
+    </div>
+    <div class="src-card">
+      <span class="ext ext-csv">CSV</span>
+      <div><div class="name">CSV/ESSAI.csv</div><div class="desc">Source — 492 essais (métadonnées)</div></div>
+    </div>
+    <div class="src-card">
+      <span class="ext ext-csv">CSV</span>
+      <div><div class="name">CSV/RESULTAT_ESSAIS.csv</div><div class="desc">Source — 136 358 mesures traits</div></div>
+    </div>
+    <div class="src-card">
+      <span class="ext ext-par">PAR</span>
+      <div><div class="name">data/enriched/fact_table.parquet</div><div class="desc">Table de faits 136K×47 (compress Snappy)</div></div>
+    </div>
+  </div>
+
+  <!-- ══ TECHNOLOGIES ══════════════════════════ -->
+  <h2 class="section-title">🛠️ Stack technologique complète</h2>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:48px;">
+    <span style="background:rgba(52,152,219,.15);color:#3498db;border:1px solid rgba(52,152,219,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">🐘 Hadoop / HDFS</span>
+    <span style="background:rgba(243,156,18,.15);color:#f39c12;border:1px solid rgba(243,156,18,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">🔌 Apache Sqoop</span>
+    <span style="background:rgba(155,89,182,.15);color:#9b59b6;border:1px solid rgba(155,89,182,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">🔀 Apache NiFi</span>
+    <span style="background:rgba(26,188,156,.15);color:#1abc9c;border:1px solid rgba(26,188,156,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">⚙️ Talend ETL</span>
+    <span style="background:rgba(231,76,60,.15);color:#e74c3c;border:1px solid rgba(231,76,60,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">🗄️ Apache HBase</span>
+    <span style="background:rgba(241,196,15,.15);color:#f1c40f;border:1px solid rgba(241,196,15,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">⚡ Apache Kafka</span>
+    <span style="background:rgba(52,152,219,.15);color:#3498db;border:1px solid rgba(52,152,219,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">🐝 Apache Hive</span>
+    <span style="background:rgba(46,204,113,.15);color:#2ecc71;border:1px solid rgba(46,204,113,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">🔥 Apache Spark</span>
+    <span style="background:rgba(52,73,94,.3);color:#bdc3c7;border:1px solid rgba(189,195,199,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">🔍 Apache Drill</span>
+    <span style="background:rgba(142,68,173,.15);color:#8e44ad;border:1px solid rgba(142,68,173,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">📐 Langage R</span>
+    <span style="background:rgba(41,128,185,.15);color:#2980b9;border:1px solid rgba(41,128,185,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">📊 Tableau Style</span>
+    <span style="background:rgba(39,174,96,.15);color:#27ae60;border:1px solid rgba(39,174,96,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">📈 Spotfire Style</span>
+    <span style="background:rgba(52,152,219,.15);color:#3498db;border:1px solid rgba(52,152,219,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">🗺️ Folium / Leaflet</span>
+    <span style="background:rgba(243,156,18,.15);color:#f39c12;border:1px solid rgba(243,156,18,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">🦆 DuckDB</span>
+    <span style="background:rgba(46,204,113,.15);color:#2ecc71;border:1px solid rgba(46,204,113,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">🐍 Python 3.12</span>
+    <span style="background:rgba(231,76,60,.15);color:#e74c3c;border:1px solid rgba(231,76,60,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">☕ Java 11</span>
+  </div>
+
+</div>
+
+<footer>
+  <strong>🌱 Plateforme Big Data Semences R&amp;D</strong> — Mai 2026 —
+  300+ experts · 6 sources CSV · 12 phases · 326 688 lignes · 183.8s
+  <br><br>
+  <span style="color:#3498db;">📋 Rapport</span> &nbsp;|&nbsp;
+  <span style="color:#2ecc71;">📊 Dashboard</span> &nbsp;|&nbsp;
+  <span style="color:#f39c12;">🗺️ Carte</span> &nbsp;|&nbsp;
+  <span style="color:#9b59b6;">📈 Graphiques</span> &nbsp;|&nbsp;
+  <span style="color:#1abc9c;">📄 JSON Reports</span>
+</footer>
+
+</body>
+</html>

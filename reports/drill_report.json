@@ -1,0 +1,51 @@
+{
+  "drillbit": "localhost:31010",
+  "storage": "dfs",
+  "workspaces": [
+    "dfs.raw.essai",
+    "dfs.raw.resultat",
+    "dfs.raw.material",
+    "dfs.raw.parcelle",
+    "dfs.enriched.fact_table",
+    "dfs.enriched.spark_agg"
+  ],
+  "queries": [
+    {
+      "query": "DQ1_schema_discovery",
+      "rows": 47,
+      "elapsed_s": 0.013,
+      "status": "OK"
+    },
+    {
+      "query": "DQ2_exploration_rapide",
+      "rows": 8,
+      "elapsed_s": 0.014,
+      "status": "OK"
+    },
+    {
+      "query": "DQ3_cross_file_join",
+      "rows": 0,
+      "elapsed_s": 0.03,
+      "status": "IO Error: No files found that match the pattern \"C:/Users/HOME/Desktop/Semance/data/raw/resultat_essais.parquet\"\n\nLINE 6: JOIN read_parquet('C:/Users/HOME/Desktop/Semance/data/raw/result...\n             ^"
+    },
+    {
+      "query": "DQ4_outliers_detection",
+      "rows": 20,
+      "elapsed_s": 0.044,
+      "status": "OK"
+    },
+    {
+      "query": "DQ5_topN_by_region",
+      "rows": 57,
+      "elapsed_s": 0.068,
+      "status": "OK"
+    },
+    {
+      "query": "DQ6_parquet_metadata",
+      "rows": 1,
+      "elapsed_s": 0.018,
+      "status": "OK"
+    }
+  ],
+  "timestamp": "2026-05-19T11:12:23.579341"
+}
