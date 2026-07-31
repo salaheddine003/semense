@@ -241,7 +241,7 @@ class HiveConnection:
                 "elapsed_s": round(time.time() - t0, 3),
                 "status":   f"ERROR: {e}",
             })
-            return None
+            raise RuntimeError(f"Hive query {query_id} failed: {e}") from e
 
     def close(self):
         self.con.close()
@@ -259,8 +259,7 @@ def run():
 
     fact_path = os.path.join(ENRICH_DIR, "fact_table.parquet")
     if not os.path.exists(fact_path):
-        print("  ⚠ Table de faits introuvable — veuillez lancer l'ETL d'abord (02_etl.py).")
-        return
+        raise FileNotFoundError("Table de faits introuvable; lancer 02_etl.py d'abord")
 
     conn      = HiveConnection("semences_db", ENRICH_DIR)
     fp        = fact_path.replace("\\", "/")
@@ -280,7 +279,11 @@ def run():
         if not execute_flag:
             print(f"  │ ► DDL affiché — non exécuté (table déjà gérée par DuckDB)")
             continue
-        df = conn.execute(qid, qdef["hiveql"], fp, execute=execute_flag)
+        try:
+            df = conn.execute(qid, qdef["hiveql"], fp, execute=execute_flag)
+        except RuntimeError as exc:
+            print(f"  ERROR: {exc}")
+            continue
         if df is not None and not df.empty:
             print(f"  ► {len(df)} lignes  |  colonnes : {list(df.columns)}")
             print(df.head(5).to_string(index=False))
@@ -312,6 +315,9 @@ def run():
         json.dump(report, f, ensure_ascii=False, indent=2)
     print(f"\n  Rapport Hive    : reports/hive_report.json")
     print(f"  Résultats CSV   : hive/*.csv")
+    errors = [entry for entry in conn._log if entry["status"] != "OK"]
+    if errors:
+        raise RuntimeError(f"{len(errors)} requête(s) Hive en erreur; voir reports/hive_report.json")
 
 
 if __name__ == "__main__":

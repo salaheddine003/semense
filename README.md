@@ -22,7 +22,7 @@ Plateforme d'analyse de données d'essais agronomiques pour une organisation de 
 
 Le projet simule une architecture Big Data d'entreprise complète, exécutable en local sans cluster. Chaque composant (Sqoop, NiFi, HBase, Kafka, Hive, Spark, Drill) est implémenté en Python de façon structurellement fidèle aux vraies API, avec une adaptation possible vers un cluster réel.
 
-**Point d'entrée** : `main.py` orchestre les 12 phases en séquence, affiche des bandeaux de progression et produit un tableau récapitulatif des temps d'exécution.
+**Point d'entrée** : `main.py` orchestre les 17 phases en séquence, affiche des bandeaux de progression, persiste le monitoring et produit un tableau récapitulatif des temps d'exécution.
 
 **Portail de résultats** : `INDEX.html` — hub de documentation avec liens vers tous les rapports générés, KPIs et badges technologiques.
 
@@ -72,7 +72,13 @@ Le projet simule une architecture Big Data d'entreprise complète, exécutable e
                           ▼
               reports/images/*.png · carte_essais.html
                           │
-              Phase 12 — Dashboard HTML (Bootstrap/Jinja)
+              Phases 12–14 — Prédiction · Catalogue/recherche · Rscript
+                          │
+              Phase 15 — Qualité, contrats et quarantaine
+                          │
+              Phase 16 — Diagramme et présentation PowerPoint
+                          │
+              Phase 17 — Dashboard HTML autonome (CSS/JS intégrés)
                           │
                           ▼
               reports/dashboard.html   ← Livrable final
@@ -94,7 +100,7 @@ Le projet simule une architecture Big Data d'entreprise complète, exécutable e
 | **Apache Drill** | DuckDB (syntaxe `dfs.*`) | SQL schema-free sur fichiers |
 | **R** | `R/analyse_statistique.R` | ANOVA, Tukey HSD, ggplot2 |
 | **Python** | pandas · numpy · scipy · matplotlib · seaborn · folium | Stats, graphiques, carte interactive |
-| **HTML/Bootstrap** | Rapports auto-contenus | Dashboard style Tableau/Spotfire |
+| **HTML/CSS/JavaScript** | Code local sans CDN | Dashboard autonome avec filtres |
 
 > **Note** : Kafka, Hive, HBase, Drill, NiFi et Sqoop sont **simulés en Python** pour fonctionner sans cluster. Le code est structuré pour être portable vers un vrai cluster.
 
@@ -104,7 +110,12 @@ Le projet simule une architecture Big Data d'entreprise complète, exécutable e
 
 ```
 Semance/
-├── main.py                      # Orchestrateur — exécute les 12 phases en séquence
+├── main.py                      # Orchestrateur — exécute les 17 phases en séquence
+├── platform_api.py              # API santé, catalogue, recherche et prédiction
+├── models/                      # Modèle prédictif versionné
+├── catalog/                     # Catalogue et index de recherche FTS
+├── docs/                        # Architecture, modèle et exploitation
+├── tests/                       # Tests automatisés
 ├── INDEX.html                   # Portail de documentation et de résultats
 ├── pipeline_output.txt          # Capture de sortie d'une exécution complète
 │
@@ -119,16 +130,21 @@ Semance/
 ├── src/                         # Modules du pipeline (une phase = un fichier)
 │   ├── 01_profiling.py          # Phase 2  — Gouvernance des données
 │   ├── 02_etl.py                # Phase 4  — ETL Talend (table de faits)
-│   ├── 03_analyse.py            # Phase 10 — Statistiques + R
+│   ├── 03_analyse.py            # Phase 10 — Statistiques Python
 │   ├── 04_visualisation.py      # Phase 11 — Graphiques + carte Folium
-│   ├── 05_dashboard.py          # Phase 12 — Dashboard HTML final
+│   ├── 05_dashboard.py          # Phase 17 — Dashboard HTML final
 │   ├── 06_sqoop_import.py       # Phase 1  — Ingestion Sqoop
 │   ├── 07_nifi_flow.py          # Phase 3  — Flux NiFi
 │   ├── 08_hbase_store.py        # Phase 5  — Stockage HBase
 │   ├── 09_kafka_streaming.py    # Phase 6  — Streaming Kafka
 │   ├── 10_hive_queries.py       # Phase 7  — Requêtes Hive/DuckDB
 │   ├── 11_spark_analysis.py     # Phase 8  — Analyses Spark
-│   └── 12_drill_queries.py      # Phase 9  — SQL Drill/DuckDB
+│   ├── 12_drill_queries.py      # Phase 9  — SQL Drill/DuckDB
+│   ├── 13_prediction.py         # Phase 12 — Modèle et validation temporelle
+│   ├── 14_catalog_search.py     # Phase 13 — Catalogue, lineage et recherche
+│   ├── 15_r_integration.py      # Phase 14 — Exécution Rscript
+│   ├── 16_quality_gates.py      # Phase 15 — Qualité et quarantaine
+│   └── 17_deliverables.py       # Phase 16 — Diagramme et PowerPoint
 │
 ├── data/
 │   ├── raw/                     # Parquet bruts post-Sqoop
@@ -271,8 +287,36 @@ Génère tous les graphiques PNG (Matplotlib/Seaborn) :
 
 Construit `reports/carte_essais.html` : carte Folium interactive avec marqueurs GPS clusterisés de tous les sites d'essai.
 
-### Phase 12 — Dashboard HTML (`05_dashboard.py`)
-Consolide tout en `reports/dashboard.html` : KPIs JSON, tableaux ANOVA, top matériaux, graphiques PNG encodés en base64 inline, iframe de la carte Folium. Rapport final auto-contenu, style Tableau/Spotfire.
+### Phase 12 — Prédiction culturale (`13_prediction.py`)
+
+Entraîne un modèle `HistGradientBoostingRegressor` pour prédire `YD15QH`.
+La dernière année est réservée au test afin d'éviter une validation aléatoire
+trop optimiste. Produit le modèle Joblib, les prédictions et les métriques
+MAE/RMSE/R² comparées à une baseline.
+
+### Phase 13 — Catalogue et recherche (`14_catalog_search.py`)
+
+Construit un catalogue SQLite avec dictionnaire technique, propriétaires,
+lineage et index FTS5 des matériels génétiques.
+
+### Phase 14 — R (`15_r_integration.py`)
+
+Exécute réellement `R/analyse_pipeline.R` via Rscript et contrôle son code de
+retour. Produit statistiques, ANOVA et graphique dans `reports/r/`.
+
+### Phase 15 — Qualité et quarantaine (`16_quality_gates.py`)
+
+Contrôle les contrats de schéma, champs obligatoires, clés, doublons et valeurs
+invalides. Les sources restent intactes; les lignes invalides sont exportées
+dans `data/quarantine/`.
+
+### Phase 16 — Livrables (`17_deliverables.py`)
+
+Génère `deliverables/architecture_big_data.png` et une présentation PowerPoint
+de sept diapositives prête à être adaptée pour la soutenance.
+
+### Phase 17 — Dashboard HTML (`05_dashboard.py`)
+Consolide tout en `reports/dashboard.html` : KPIs JSON, tableaux ANOVA, top matériaux, graphiques PNG encodés en base64, iframe locale de la carte Folium et filtres de tableaux. Le dashboard n'utilise aucun CDN; la carte reste un fichier local associé (`reports/carte_essais.html`).
 
 ---
 
@@ -308,9 +352,11 @@ Consolide tout en `reports/dashboard.html` : KPIs JSON, tableaux ANOVA, top mat�
 
 ### Prérequis
 
-- Python 3.8+
-- (Optionnel) R + packages `anova`, `TukeyHSD`, `ggplot2`
-- (Optionnel) PySpark pour les analyses Spark natives
+- Python 3.12.6 (version validée)
+- Java 11 (requis par PySpark 3.5.5)
+- R 4.6.1 avec `Rscript` accessible; le pipeline cherche aussi l'installation Windows standard
+- R 4.6.1 est requis pour la phase R; `aov`, `TukeyHSD` et les graphiques utilisés appartiennent à l'installation R standard
+- PySpark 3.5.5 est requis pour valider la phase Spark native
 
 ### Installation des dépendances Python
 
@@ -321,7 +367,7 @@ python -m venv .venv
 # Linux/macOS
 source .venv/bin/activate
 
-pip install pandas numpy scipy matplotlib seaborn folium duckdb pyarrow
+pip install -r requirements.txt
 ```
 
 ### Exécution complète du pipeline
@@ -330,11 +376,33 @@ pip install pandas numpy scipy matplotlib seaborn folium duckdb pyarrow
 python main.py
 ```
 
-Le pipeline exécute les 12 phases en séquence et affiche un tableau récapitulatif des temps et statuts.
+Le pipeline exécute les 17 phases en séquence et affiche un tableau récapitulatif des temps et statuts.
+
+Pour reprendre explicitement les phases déjà réussies :
+
+```bash
+python main.py --resume
+```
+
+### API locale
+
+```bash
+set SEMENCES_API_KEY=une-cle-secrete
+python platform_api.py
+```
+
+Routes : `/api/health`, `/api/catalog`, `/api/search?q=Blé` et
+`POST /api/predict`. Les détails sont dans `docs/OPERATIONS.md`.
+
+### Tests
+
+```bash
+python -m unittest discover -s tests -v
+```
 
 ### Consultation des résultats
 
-Ouvrir `reports/dashboard.html` dans un navigateur pour le rapport final, ou `INDEX.html` pour le portail de navigation complet.
+Ouvrir `reports/dashboard.html` dans un navigateur pour le rapport final, ou `INDEX.html` pour le portail de navigation complet. Le dashboard et ses graphiques sont locaux; la carte Folium intégrée nécessite une connexion Internet pour charger Leaflet et les tuiles CARTO.
 
 ---
 

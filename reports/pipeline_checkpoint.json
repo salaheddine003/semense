@@ -1,0 +1,41 @@
+{
+  "phases": {
+    "1": {
+      "phase": 1,
+      "label": "SQOOP",
+      "module": "06_sqoop_import",
+      "elapsed_s": 2.9,
+      "status": "OK"
+    },
+    "2": {
+      "phase": 2,
+      "label": "PROFILING",
+      "module": "01_profiling",
+      "elapsed_s": 3.3,
+      "status": "OK"
+    },
+    "3": {
+      "phase": 3,
+      "label": "NIFI",
+      "module": "07_nifi_flow",
+      "elapsed_s": 6.6,
+      "status": "OK"
+    },
+    "4": {
+      "phase": 4,
+      "label": "TALEND ETL",
+      "module": "02_etl",
+      "elapsed_s": 5.3,
+      "status": "OK"
+    },
+    "5": {
+      "phase": 5,
+      "label": "HBASE",
+      "module": "08_hbase_store",
+      "elapsed_s": 61.4,
+      "status": "OK"
+    }
+  },
+  "updated_at": "2026-07-31T12:14:01.573571",
+  "pipeline_total": 17
+}

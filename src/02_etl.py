@@ -9,16 +9,21 @@ Produit :
 import pandas as pd
 import numpy as np
 import os
+import json
+from datetime import datetime
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RAW_DIR = os.path.join(BASE_DIR, "data", "raw")
 TRANS_DIR = os.path.join(BASE_DIR, "data", "transformed")
 ENRICH_DIR = os.path.join(BASE_DIR, "data", "enriched")
+REPORT_DIR = os.path.join(BASE_DIR, "reports")
 
+# S is confirmed by CSV/REF_ESPECES_20190108.csv. The other labels are
+# historical project conventions and are kept explicit rather than inferred.
 ESPECES_FR = {
     "C": "Colza",
     "O": "Colza",
-    "S": "Tournesol",
+    "S": "Soja",
     "W": "Blé tendre",
     "T": "Triticale",
     "B": "Blé dur/Orge",
@@ -26,6 +31,14 @@ ESPECES_FR = {
     "L": "Lin",
     "P": "Pois",
 }
+
+
+def map_species(series: pd.Series) -> pd.Series:
+    """Map known codes and make every unknown code visible and auditable."""
+    codes = series.fillna("").astype(str).str.strip().str.upper()
+    mapped = codes.map(ESPECES_FR)
+    unknown = "INCONNU_CODE_" + codes.replace("", "VIDE")
+    return mapped.fillna(unknown)
 
 
 # ─────────────────────────────────────────────
@@ -64,7 +77,7 @@ def clean_essai(df: pd.DataFrame) -> pd.DataFrame:
     # Mettre lat/lon invalides (0,0) à NaN
     df.loc[(df["LAT"] == 0) & (df["LON"] == 0), ["LAT", "LON"]] = np.nan
     df["SPECIES"] = df["SPECIES"].astype(str).str.strip()
-    df["ESPECE_FR"] = df["SPECIES"].map(ESPECES_FR).fillna(df["SPECIES"])
+    df["ESPECE_FR"] = map_species(df["SPECIES"])
     df["FIABILITY_EXPERIMENTAL"] = pd.to_numeric(df["FIABILITY_EXPERIMENTAL"], errors="coerce")
     df["FIABILITY_BREEDER"] = pd.to_numeric(df["FIABILITY_BREEDER"], errors="coerce")
     # Supprimer les essais sans ID valide
@@ -77,7 +90,7 @@ def clean_resultats(df: pd.DataFrame) -> pd.DataFrame:
     df["LK_EXPERIMENT_EXPERIMENT_ID"] = _to_id_str(df["LK_EXPERIMENT_EXPERIMENT_ID"])
     df["YEAR"] = pd.to_numeric(df["YEAR"], errors="coerce").astype("Int64")
     df["SL_TRIAL"] = df["SL_TRIAL"].astype(str).str.strip()
-    df["ESPECE_FR"] = df["SPECIES"].astype(str).str.strip().map(ESPECES_FR).fillna(df["SPECIES"].astype(str).str.strip())
+    df["ESPECE_FR"] = map_species(df["SPECIES"])
     df["TRAIT"] = df["TRAIT"].astype(str).str.strip()
     # La valeur RESULT est au format français (virgule décimale)
     df["RESULT_NUM"] = (
@@ -105,7 +118,7 @@ def clean_materiel(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
     df["LK_STOCK_S1_DATA_ID"] = _to_id_str(df["LK_STOCK_S1_DATA_ID"])
     df["SPECIES"] = df["SPECIES"].astype(str).str.strip()
-    df["ESPECE_FR"] = df["SPECIES"].map(ESPECES_FR).fillna(df["SPECIES"])
+    df["ESPECE_FR"] = map_species(df["SPECIES"])
     df["MAIN_NAME"] = df["MAIN_NAME"].astype(str).str.strip()
     df["PEDIGREE"] = df["PEDIGREE"].astype(str).str.strip()
     df["STRUCTURE"] = df["STRUCTURE"].astype(str).str.strip()
@@ -155,7 +168,7 @@ def build_fact_table(essai, resultats, parcelle, materiel, especes, qual_pivot) 
     )
     # ESPECE_FR is already on resultats from clean_resultats; backfill from ESSAI if missing
     if "ESPECE_FR" not in fact.columns:
-        fact["ESPECE_FR"] = fact["SPECIES"].astype(str).map(ESPECES_FR)
+        fact["ESPECE_FR"] = map_species(fact["SPECIES"])
 
     print("  Jointure ← PARCELLE (LK_STOCK_S1_DATA_ID)...")
     parcelle_key = parcelle[["LK_EXPERIMENT_EXPERIMENT_ID", "SL_TRIAL", "REPLICATION_NUM",
@@ -230,6 +243,24 @@ def run():
     # Export CSV pour accès R
     fact.to_csv(os.path.join(ENRICH_DIR, "fact_table.csv"), index=False, sep=";", encoding="utf-8-sig")
     print(f"  Export CSV : data/enriched/fact_table.csv")
+
+    os.makedirs(REPORT_DIR, exist_ok=True)
+    encountered = sorted(resultats["SPECIES"].dropna().astype(str).str.strip().str.upper().unique())
+    mapping_report = {
+        "confirmed_mapping": {
+            "S": {
+                "label": "Soja",
+                "evidence": "CSV/REF_ESPECES_20190108.csv (COMMON_NAME_EN=Soybean, COMMON_NAME_FR=Soja)",
+            }
+        },
+        "project_conventions": {k: v for k, v in ESPECES_FR.items() if k != "S"},
+        "unknown_policy": "INCONNU_CODE_<CODE>",
+        "encountered_codes": encountered,
+        "unknown_codes": [code for code in encountered if code not in ESPECES_FR],
+        "generated_at": datetime.now().isoformat(),
+    }
+    with open(os.path.join(REPORT_DIR, "species_mapping.json"), "w", encoding="utf-8") as handle:
+        json.dump(mapping_report, handle, ensure_ascii=False, indent=2)
 
     print("\n  ETL terminé avec succès.")
     return fact

@@ -7,3 +7,14 @@ __pycache__/
 .DS_Store
 Thumbs.db
 ~$*
+backups/
+.env
+.env.*
+!.env.example
+reports/pipeline_console.log
+reports/pipeline_resume_console.log
+reports/pipeline_history.jsonl
+reports/pipeline_resume_run.json
+reports/api_audit.jsonl
+reports/dashboard_validation.png
+reports/validation_slides/

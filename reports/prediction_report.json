@@ -1,0 +1,229 @@
+{
+  "status": "OK",
+  "objective": "Prédire YD15QH avant sa mesure",
+  "target": "RESULT_NUM",
+  "target_trait": "YD15QH",
+  "features": [
+    "YEAR",
+    "REPLICATION_NUM",
+    "ENTRY_NUM",
+    "SPECIES",
+    "SPECIES_SPECIFICITY",
+    "REGION"
+  ],
+  "validation": "Dernière année réservée au test; groupes isolés",
+  "train_years": [
+    2015,
+    2016,
+    2017
+  ],
+  "test_year": 2018,
+  "train_rows": 42940,
+  "test_rows": 12306,
+  "prediction_rows": 12306,
+  "prediction_full_duplicates": 0,
+  "quality_filter": "0 <= YD15QH <= 250",
+  "metrics": {
+    "mae": 13.2904,
+    "rmse": 16.9167,
+    "r2": 0.4548,
+    "baseline_mae": 18.6639,
+    "baseline_rmse": 22.9662
+  },
+  "classification_evaluation": {
+    "protocol": "GroupKFold 2015-2017; test temporel final 2018 intact",
+    "features": [
+      "YEAR",
+      "REPLICATION_NUM",
+      "ENTRY_NUM",
+      "SPECIES",
+      "SPECIES_SPECIFICITY",
+      "REGION"
+    ],
+    "excluded_leakage_features": [
+      "%MOIS",
+      "YD16QH",
+      "SL_TRIAL",
+      "LK_STOCK_S1_DATA_ID",
+      "MAIN_NAME"
+    ],
+    "train_rows": 42940,
+    "test_rows": 12306,
+    "train_years": [
+      2015,
+      2016,
+      2017
+    ],
+    "test_year": 2018,
+    "group_column": "LK_EXPERIMENT_EXPERIMENT_ID",
+    "train_test_group_overlap": 0,
+    "hyperparameter_search": [
+      {
+        "params": {
+          "learning_rate": 0.08,
+          "max_iter": 150,
+          "max_leaf_nodes": 15,
+          "l2_regularization": 1.0
+        },
+        "group_cv_f1": 0.7471,
+        "threshold": 0.41
+      },
+      {
+        "params": {
+          "learning_rate": 0.06,
+          "max_iter": 350,
+          "max_leaf_nodes": 31,
+          "l2_regularization": 2.0
+        },
+        "group_cv_f1": 0.7491,
+        "threshold": 0.41
+      },
+      {
+        "params": {
+          "learning_rate": 0.05,
+          "max_iter": 400,
+          "max_leaf_nodes": 31,
+          "l2_regularization": 10.0
+        },
+        "group_cv_f1": 0.7488,
+        "threshold": 0.42
+      }
+    ],
+    "selected_params": {
+      "learning_rate": 0.06,
+      "max_iter": 350,
+      "max_leaf_nodes": 31,
+      "l2_regularization": 2.0
+    },
+    "metrics": {
+      "yield_threshold_q_ha": 80.0,
+      "decision_probability_threshold": 0.41,
+      "accuracy": 0.7551,
+      "precision": 0.6587,
+      "recall": 0.9106,
+      "f1_score": 0.7645,
+      "confusion_matrix": {
+        "true_negative": 4401,
+        "false_positive": 2534,
+        "false_negative": 480,
+        "true_positive": 4891
+      }
+    },
+    "metrics_by_species": [
+      {
+        "species": "A",
+        "rows": 913,
+        "positive_rate": 0.1895,
+        "accuracy": 0.1895,
+        "precision": 0.1895,
+        "recall": 1.0,
+        "f1_score": 0.3186
+      },
+      {
+        "species": "B",
+        "rows": 1583,
+        "positive_rate": 0.0032,
+        "accuracy": 0.9968,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0
+      },
+      {
+        "species": "D",
+        "rows": 1161,
+        "positive_rate": 0.0663,
+        "accuracy": 0.8562,
+        "precision": 0.1484,
+        "recall": 0.2468,
+        "f1_score": 0.1854
+      },
+      {
+        "species": "O",
+        "rows": 2254,
+        "positive_rate": 0.1713,
+        "accuracy": 0.6965,
+        "precision": 0.2281,
+        "recall": 0.3238,
+        "f1_score": 0.2677
+      },
+      {
+        "species": "T",
+        "rows": 1104,
+        "positive_rate": 0.365,
+        "accuracy": 0.5888,
+        "precision": 0.4532,
+        "recall": 0.6129,
+        "f1_score": 0.5211
+      },
+      {
+        "species": "W",
+        "rows": 5291,
+        "positive_rate": 0.8178,
+        "accuracy": 0.8178,
+        "precision": 0.8178,
+        "recall": 1.0,
+        "f1_score": 0.8998
+      }
+    ],
+    "annual_positive_rates": {
+      "2015": 0.5346,
+      "2016": 0.2748,
+      "2017": 0.5248,
+      "2018": 0.4365
+    },
+    "permutation_importance": [
+      {
+        "feature": "SPECIES",
+        "importance_mean": 0.322542,
+        "importance_std": 0.00857
+      },
+      {
+        "feature": "REPLICATION_NUM",
+        "importance_mean": 0.000404,
+        "importance_std": 0.000966
+      },
+      {
+        "feature": "YEAR",
+        "importance_mean": 0.0,
+        "importance_std": 0.0
+      },
+      {
+        "feature": "REGION",
+        "importance_mean": -0.005719,
+        "importance_std": 0.001784
+      },
+      {
+        "feature": "ENTRY_NUM",
+        "importance_mean": -0.006332,
+        "importance_std": 0.001779
+      },
+      {
+        "feature": "SPECIES_SPECIFICITY",
+        "importance_mean": -0.007408,
+        "importance_std": 0.000692
+      }
+    ],
+    "data_quality": {
+      "rows": 55246,
+      "experiments": 1952,
+      "full_duplicates": 0,
+      "missing_rates": {
+        "YEAR": 0.0,
+        "REPLICATION_NUM": 0.0,
+        "ENTRY_NUM": 0.0,
+        "SPECIES": 0.0,
+        "SPECIES_SPECIFICITY": 0.0,
+        "REGION": 0.8264
+      }
+    },
+    "limitations": [
+      "Les données météo, sol et conduite culturale ne sont pas disponibles",
+      "Le seuil de 80 q/ha doit être validé par espèce avec un agronome",
+      "Les espèces peu représentées nécessitent davantage de données"
+    ]
+  },
+  "model": "HistGradientBoostingRegressor",
+  "model_path": "models/yield_yd15qh.joblib",
+  "classifier_path": "models/high_yield_classifier.joblib",
+  "timestamp": "2026-07-31T12:07:30.224604"
+}

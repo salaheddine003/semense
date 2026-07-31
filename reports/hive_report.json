@@ -33,31 +33,31 @@
     {
       "query_id": "Q1_rendement_moyen_espece_annee",
       "rows": 26,
-      "elapsed_s": 0.083,
+      "elapsed_s": 0.025,
       "status": "OK"
     },
     {
       "query_id": "Q2_top_materiels_rendement",
       "rows": 20,
-      "elapsed_s": 0.076,
+      "elapsed_s": 0.058,
       "status": "OK"
     },
     {
       "query_id": "Q3_analyse_regionale",
       "rows": 96,
-      "elapsed_s": 0.049,
+      "elapsed_s": 0.036,
       "status": "OK"
     },
     {
       "query_id": "Q4_evolution_tendance",
       "rows": 26,
-      "elapsed_s": 0.038,
+      "elapsed_s": 0.03,
       "status": "OK"
     },
     {
       "query_id": "Q5_qualification_trials",
       "rows": 31,
-      "elapsed_s": 0.047,
+      "elapsed_s": 0.055,
       "status": "OK"
     }
   ],
@@ -65,28 +65,28 @@
     {
       "query": "Q1_rendement_moyen_espece_annee",
       "rows": 26,
-      "file": "C:\\Users\\HOME\\Desktop\\Semance\\hive\\Q1_rendement_moyen_espece_annee.csv"
+      "file": "C:\\Users\\HOME\\Desktop\\semense2\\hive\\Q1_rendement_moyen_espece_annee.csv"
     },
     {
       "query": "Q2_top_materiels_rendement",
       "rows": 20,
-      "file": "C:\\Users\\HOME\\Desktop\\Semance\\hive\\Q2_top_materiels_rendement.csv"
+      "file": "C:\\Users\\HOME\\Desktop\\semense2\\hive\\Q2_top_materiels_rendement.csv"
     },
     {
       "query": "Q3_analyse_regionale",
       "rows": 96,
-      "file": "C:\\Users\\HOME\\Desktop\\Semance\\hive\\Q3_analyse_regionale.csv"
+      "file": "C:\\Users\\HOME\\Desktop\\semense2\\hive\\Q3_analyse_regionale.csv"
     },
     {
       "query": "Q4_evolution_tendance",
       "rows": 26,
-      "file": "C:\\Users\\HOME\\Desktop\\Semance\\hive\\Q4_evolution_tendance.csv"
+      "file": "C:\\Users\\HOME\\Desktop\\semense2\\hive\\Q4_evolution_tendance.csv"
     },
     {
       "query": "Q5_qualification_trials",
       "rows": 31,
-      "file": "C:\\Users\\HOME\\Desktop\\Semance\\hive\\Q5_qualification_trials.csv"
+      "file": "C:\\Users\\HOME\\Desktop\\semense2\\hive\\Q5_qualification_trials.csv"
     }
   ],
-  "timestamp": "2026-05-19T11:11:42.906065"
+  "timestamp": "2026-07-31T12:06:36.388377"
 }

@@ -1,21 +1,26 @@
 """
 main.py — Orchestrateur du projet Semences
-Pipeline Big Data complet — 12 phases technologiques
+Pipeline Big Data complet — 17 phases technologiques
 
-Stack complète :
-  Hadoop/HDFS · MapR/Cloudera/HortonWorks · Talend · Apache NiFi · Sqoop
-  HBase · Cassandra/MapR-DB · Apache Kafka · MapR-Streams · Talend ESB
-  Apache Drill · Apache Hive · R · Apache Spark · Spotfire · Tableau
+Stack du prototype : Python/pandas, Parquet, SQLite, DuckDB, PySpark local,
+Rscript, scikit-learn et dashboard HTML. Les technologies distribuées sont
+représentées par des adaptations fonctionnelles locales documentées.
 """
 
 import os
 import sys
 import time
+import json
+import argparse
 from datetime import datetime
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SRC_DIR  = os.path.join(BASE_DIR, "src")
 sys.path.insert(0, SRC_DIR)
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 
 PHASES = [
@@ -30,8 +35,13 @@ PHASES = [
     ( 8, "SPARK",       "11_spark_analysis", "Apache Spark    — Calcul distribué (PySpark)"),
     ( 9, "DRILL",       "12_drill_queries",  "Apache Drill    — SQL ad-hoc sur fichiers (dfs)"),
     (10, "ANALYSE",     "03_analyse",        "Python + R      — Statistiques, ANOVA, corrélations"),
-    (11, "VISU",        "04_visualisation",  "Tableau/Spotfire— Visualisations & Carte interactive"),
-    (12, "DASHBOARD",   "05_dashboard",      "Reporting       — Dashboard HTML consolidé"),
+    (11, "VISU",        "04_visualisation",  "Visualisation   — Graphiques locaux & carte Folium"),
+    (12, "PREDICTION",  "13_prediction",     "Machine Learning— Prédiction rendement & métriques"),
+    (13, "CATALOGUE",   "14_catalog_search", "Gouvernance     — Catalogue, lineage & recherche"),
+    (14, "R",           "15_r_integration",  "R obligatoire   — ANOVA & statistiques via Rscript"),
+    (15, "QUALITY",     "16_quality_gates",  "Qualité         — Contrats, doublons & quarantaine"),
+    (16, "LIVRABLES",   "17_deliverables",   "Documentation   — Diagramme & présentation"),
+    (17, "DASHBOARD",   "05_dashboard",      "Reporting       — Dashboard HTML consolidé"),
 ]
 
 TOTAL = len(PHASES)
@@ -100,13 +110,29 @@ def print_architecture():
   │                                    ▼                                   │
   │                      ┌────────────────────────┐                       │
   │                      │  Dashboard HTML         │                      │
-  │                      │  Tableau / Spotfire     │                      │
+  │                      │  Dashboard HTML local  │                      │
   │                      └────────────────────────┘                       │
   └──────────────────────────────────────────────────────────────────────┘
 """)
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Pipeline Big Data Semences")
+    parser.add_argument(
+        "--resume", action="store_true",
+        help="reprendre uniquement les phases déjà réussies du dernier checkpoint",
+    )
+    args = parser.parse_args()
+    checkpoint_path = os.path.join(BASE_DIR, "reports", "pipeline_checkpoint.json")
+    checkpoint = {"phases": {}}
+    if args.resume and os.path.exists(checkpoint_path):
+        with open(checkpoint_path, encoding="utf-8") as handle:
+            checkpoint = json.load(handle)
+    elif not args.resume:
+        os.makedirs(os.path.dirname(checkpoint_path), exist_ok=True)
+        with open(checkpoint_path, "w", encoding="utf-8") as handle:
+            json.dump(checkpoint, handle, ensure_ascii=False, indent=2)
+
     print("\n" + "╔" + "═" * 70 + "╗")
     print("║" + " " * 10 + "PROJET SEMENCES — PIPELINE BIG DATA COMPLET" + " " * 17 + "║")
     print("║" + " " * 8  + "Système d'Information Semencier — Pôle R&D (300+ experts)" + " " * 4 + "║")
@@ -119,10 +145,44 @@ def main():
     results     = []
 
     for phase_tuple in PHASES:
-        r = run_phase(phase_tuple)
+        num, label, module_name, _ = phase_tuple
+        previous = checkpoint.get("phases", {}).get(str(num), {})
+        if args.resume and previous.get("status") == "OK" and previous.get("module") == module_name:
+            print(f"\n  ↷  Phase {num:02d}/{TOTAL} [{label}] déjà réussie — checkpoint")
+            r = {
+                "phase": num, "label": label, "module": module_name,
+                "elapsed_s": 0.0, "status": "OK", "resumed": True,
+            }
+        else:
+            r = run_phase(phase_tuple)
         results.append(r)
+        if r["status"] == "OK":
+            checkpoint.setdefault("phases", {})[str(num)] = r
+            checkpoint["updated_at"] = datetime.now().isoformat()
+            checkpoint["pipeline_total"] = TOTAL
+            os.makedirs(os.path.dirname(checkpoint_path), exist_ok=True)
+            with open(checkpoint_path, "w", encoding="utf-8") as handle:
+                json.dump(checkpoint, handle, ensure_ascii=False, indent=2)
+        else:
+            break
 
     total_elapsed = round(time.time() - total_start, 1)
+
+    # Persist technical monitoring for the administration API and run history.
+    run_report = {
+        "started_at": datetime.fromtimestamp(total_start).isoformat(),
+        "finished_at": datetime.now().isoformat(),
+        "elapsed_s": total_elapsed,
+        "status": "OK" if all(r["status"] == "OK" for r in results) else "ERROR",
+        "phases": results,
+    }
+    report_dir = os.path.join(BASE_DIR, "reports")
+    os.makedirs(report_dir, exist_ok=True)
+    run_filename = "pipeline_resume_run.json" if args.resume else "pipeline_run.json"
+    with open(os.path.join(report_dir, run_filename), "w", encoding="utf-8") as f:
+        json.dump(run_report, f, ensure_ascii=False, indent=2)
+    with open(os.path.join(report_dir, "pipeline_history.jsonl"), "a", encoding="utf-8") as f:
+        f.write(json.dumps(run_report, ensure_ascii=False) + "\n")
 
     # ── Résumé final ──────────────────────────────────────────────────────
     print("\n" + "╔" + "═" * 70 + "╗")
@@ -145,18 +205,17 @@ def main():
 
     print("\n  Technologies utilisées :")
     tech_list = [
-        "Hadoop/HDFS (data/raw, transformed, enriched)",
-        "Apache Sqoop  (import CSV → HDFS Parquet)",
-        "Apache NiFi   (orchestration flux, processor chain)",
-        "Talend ETL    (nettoyage, jointures, fact table)",
-        "Apache HBase  (NoSQL SQLite column-family simulation)",
-        "Apache Kafka  (bus de données, producer/consumer)",
-        "Apache Hive   (HiveQL analytique via DuckDB)",
+        "HDFS          (adaptation locale: data/raw, transformed, enriched)",
+        "Apache Sqoop  (adaptation locale CSV vers Parquet)",
+        "Apache NiFi   (adaptation locale de chaîne de processeurs)",
+        "Talend ETL    (adaptation locale avec pandas)",
+        "Apache HBase  (adaptation locale SQLite column-family)",
+        "Apache Kafka  (adaptation locale queue producer/consumer)",
+        "Apache Hive   (adaptation locale HiveQL via DuckDB)",
         "Apache Spark  (PySpark local[*] ou pandas fallback)",
-        "Apache Drill  (SQL on files, dfs workspace, DuckDB)",
+        "Apache Drill  (adaptation locale SQL sur fichiers via DuckDB)",
         "R             (ANOVA, Tukey HSD, ggplot2)",
-        "Tableau       (style export + visualisations)",
-        "Spotfire      (dashboard HTML interactif)",
+        "Dashboard HTML local (BI entreprise: cible optionnelle)",
     ]
     for t in tech_list:
         print(f"  • {t}")
@@ -179,9 +238,23 @@ def main():
     for path, desc in outputs:
         print(f"  • {path:<38} — {desc}")
 
+    summary_lines = [
+        "SEMENCES - RESULTAT DU DERNIER PIPELINE COMPLET",
+        f"Statut: {run_report['status']}",
+        f"Phases executees: {len(results)}/{TOTAL}",
+        f"Phases reussies: {ok_count}/{TOTAL}",
+        f"Duree: {total_elapsed} secondes",
+        f"Debut: {run_report['started_at']}",
+        f"Fin: {run_report['finished_at']}",
+    ]
+    if not args.resume:
+        with open(os.path.join(BASE_DIR, "pipeline_output.txt"), "w", encoding="utf-8") as handle:
+            handle.write("\n".join(summary_lines) + "\n")
+
     print()
+    return 0 if run_report["status"] == "OK" and len(results) == TOTAL else 1
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
 

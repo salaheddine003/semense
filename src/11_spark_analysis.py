@@ -184,11 +184,11 @@ def run():
 
     fact_path = os.path.join(ENRICH_DIR, "fact_table.parquet")
     if not os.path.exists(fact_path):
-        print("  ⚠ Table de faits introuvable.")
-        return
+        raise FileNotFoundError("Table de faits introuvable")
 
     results_log = []
     t0          = time.time()
+    actual_engine = "pandas-fallback"
 
     if PYSPARK_AVAILABLE:
         try:
@@ -203,6 +203,7 @@ def run():
             spark.sparkContext.setLogLevel("ERROR")
             print(f"  SparkContext démarré — version Spark {spark.version}")
             agg_pd, best_pd = spark_analyse(spark, fact_path.replace("\\", "/"), results_log)
+            actual_engine = "PySpark"
             spark.stop()
             print("\n  SparkSession arrêtée.")
         except Exception as e:
@@ -226,7 +227,7 @@ def run():
     # Rapport
     os.makedirs(REPORT_DIR, exist_ok=True)
     report = {
-        "engine":    "PySpark" if PYSPARK_AVAILABLE else "pandas-fallback",
+        "engine":    actual_engine,
         "steps":     results_log,
         "elapsed_s": elapsed,
         "outputs": {

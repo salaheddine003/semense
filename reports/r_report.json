@@ -1,0 +1,15 @@
+{
+  "status": "OK",
+  "engine": "Rscript",
+  "timestamp": "2026-07-31T12:07:32.784757",
+  "script": "R/analyse_pipeline.R",
+  "outputs": [
+    "reports/r/stats_r.csv",
+    "reports/r/anova_r.csv",
+    "reports/r/rendement_espece_r.png"
+  ],
+  "rscript": "C:\\Program Files\\R\\R-4.6.1\\bin\\Rscript.exe",
+  "return_code": 0,
+  "stdout": "null device \n          1 \nR_OK rows=55268 species=7 anova_rows=2\n",
+  "stderr": ""
+}

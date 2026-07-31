@@ -1,0 +1,35 @@
+{
+  "confirmed_mapping": {
+    "S": {
+      "label": "Soja",
+      "evidence": "CSV/REF_ESPECES_20190108.csv (COMMON_NAME_EN=Soybean, COMMON_NAME_FR=Soja)"
+    }
+  },
+  "project_conventions": {
+    "C": "Colza",
+    "O": "Colza",
+    "W": "Blé tendre",
+    "T": "Triticale",
+    "B": "Blé dur/Orge",
+    "M": "Maïs",
+    "L": "Lin",
+    "P": "Pois"
+  },
+  "unknown_policy": "INCONNU_CODE_<CODE>",
+  "encountered_codes": [
+    "A",
+    "B",
+    "D",
+    "F",
+    "O",
+    "S",
+    "T",
+    "W"
+  ],
+  "unknown_codes": [
+    "A",
+    "D",
+    "F"
+  ],
+  "generated_at": "2026-07-31T12:13:00.161441"
+}

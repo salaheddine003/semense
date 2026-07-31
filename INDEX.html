@@ -128,13 +128,13 @@
   <div class="hero-content">
     <div class="hero-logo">🌱</div>
     <h1>Plateforme Big Data Semences R&amp;D</h1>
-    <p>Portail de visualisation de la réalisation du projet — Pipeline 12 phases</p>
+    <p>Portail de visualisation de la réalisation du projet — Pipeline 17 phases</p>
     <div class="hero-badges">
-      <span class="badge green">✔ 12/12 phases OK</span>
-      <span class="badge blue">183.8 secondes</span>
+      <span class="badge green">✔ 17/17 phases OK</span>
+      <span class="badge blue">Durée : voir reports/pipeline_run.json</span>
       <span class="badge gold">326 688 lignes ingérées</span>
       <span class="badge">2 116 essais · 8 espèces · 17 régions</span>
-      <span class="badge">PySpark 3.5.5 · DuckDB · Kafka · HBase</span>
+      <span class="badge">PySpark 3.5.5 · DuckDB · adaptations Kafka/HBase locales</span>
     </div>
   </div>
 </div>
@@ -162,7 +162,7 @@
         </div>
       </div>
       <div class="card-body">
-        Rapport complet en 10 sections : contexte, architecture Big Data, justifications de tous les choix technologiques (Sqoop, NiFi, Talend, HBase, Kafka, Hive, Spark, Drill, R, Tableau), visualisations, statistiques et conclusions.
+        Rapport vérifiable distinguant les moteurs réellement exécutés, les adaptations fonctionnelles locales et la cible distribuée.
         <br><br>
         <span class="tag tag-report">Rapport principal</span>
         <span class="tag tag-view">HTML autonome</span>
@@ -179,10 +179,10 @@
         </div>
       </div>
       <div class="card-body">
-        Dashboard style Spotfire/Tableau avec KPIs en temps réel, graphiques interactifs (rendements par espèce, tendances annuelles, top matériels génétiques), filtres dynamiques et tableaux comparatifs.
+        Dashboard HTML local avec KPIs calculés lors du dernier pipeline, graphiques statiques, filtres de tableaux et résultats ML.
         <br><br>
         <span class="tag tag-view">Dashboard interactif</span>
-        <span class="tag tag-data">Chart.js</span>
+        <span class="tag tag-data">CSS/JavaScript local</span>
       </div>
       <div class="card-footer"><span>665 KB — Ouvrir ↗</span><span class="arrow">→</span></div>
     </a>
@@ -196,7 +196,7 @@
         </div>
       </div>
       <div class="card-body">
-        Carte de France interactive (Folium/Leaflet) avec les 424 essais géolocalisés. Chaque point est cliquable et affiche les métadonnées : espèce, région, année, coordonnées GPS. Filtrage et zoom disponible.
+        Carte de France Folium/Leaflet avec 424 marqueurs. Une connexion Internet est requise pour Leaflet et les tuiles CARTO.
         <br><br>
         <span class="tag tag-view">Carte Folium</span>
         <span class="tag tag-data">424 points GPS</span>
@@ -207,24 +207,29 @@
   </div>
 
   <!-- ══ PIPELINE PHASES ══════════════════════════ -->
-  <h2 class="section-title">⚙️ Pipeline Big Data — 12 phases exécutées</h2>
+  <h2 class="section-title">⚙️ Pipeline Big Data — 17 phases exécutées</h2>
   <div class="timeline">
-    <div class="phase-box"><div class="num">Phase 01</div><div class="name">Sqoop</div><div class="dur">5.5s</div><div class="ok">✔</div></div>
-    <div class="phase-box"><div class="num">Phase 02</div><div class="name">Profiling</div><div class="dur">8.6s</div><div class="ok">✔</div></div>
-    <div class="phase-box"><div class="num">Phase 03</div><div class="name">NiFi</div><div class="dur">10.7s</div><div class="ok">✔</div></div>
-    <div class="phase-box"><div class="num">Phase 04</div><div class="name">Talend ETL</div><div class="dur">7.1s</div><div class="ok">✔</div></div>
-    <div class="phase-box"><div class="num">Phase 05</div><div class="name">HBase</div><div class="dur">57.7s</div><div class="ok">✔</div></div>
-    <div class="phase-box"><div class="num">Phase 06</div><div class="name">Kafka</div><div class="dur">34.5s</div><div class="ok">✔</div></div>
-    <div class="phase-box"><div class="num">Phase 07</div><div class="name">Hive</div><div class="dur">0.7s</div><div class="ok">✔</div></div>
-    <div class="phase-box"><div class="num">Phase 08</div><div class="name">Spark</div><div class="dur">40.4s</div><div class="ok">✔</div></div>
-    <div class="phase-box"><div class="num">Phase 09</div><div class="name">Drill</div><div class="dur">0.3s</div><div class="ok">✔</div></div>
-    <div class="phase-box"><div class="num">Phase 10</div><div class="name">Analyse R</div><div class="dur">5.7s</div><div class="ok">✔</div></div>
-    <div class="phase-box"><div class="num">Phase 11</div><div class="name">Visualisation</div><div class="dur">12.5s</div><div class="ok">✔</div></div>
-    <div class="phase-box"><div class="num">Phase 12</div><div class="name">Dashboard</div><div class="dur">0.1s</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 01</div><div class="name">Sqoop</div><div class="dur">rapport JSON</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 02</div><div class="name">Profiling</div><div class="dur">rapport JSON</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 03</div><div class="name">NiFi local</div><div class="dur">rapport JSON</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 04</div><div class="name">ETL pandas</div><div class="dur">rapport JSON</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 05</div><div class="name">HBase local</div><div class="dur">rapport JSON</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 06</div><div class="name">Kafka local</div><div class="dur">rapport JSON</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 07</div><div class="name">Hive local</div><div class="dur">rapport JSON</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 08</div><div class="name">PySpark local</div><div class="dur">rapport JSON</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 09</div><div class="name">Drill local</div><div class="dur">rapport JSON</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 10</div><div class="name">Analyse Python</div><div class="dur">rapport JSON</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 11</div><div class="name">Visualisation</div><div class="dur">rapport JSON</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 12</div><div class="name">Prédiction</div><div class="dur">rapport JSON</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 13</div><div class="name">Catalogue</div><div class="dur">rapport JSON</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 14</div><div class="name">Rscript</div><div class="dur">rapport JSON</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 15</div><div class="name">Qualité</div><div class="dur">rapport JSON</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 16</div><div class="name">Livrables</div><div class="dur">rapport JSON</div><div class="ok">✔</div></div>
+    <div class="phase-box"><div class="num">Phase 17</div><div class="name">Dashboard</div><div class="dur">rapport JSON</div><div class="ok">✔</div></div>
   </div>
 
   <!-- ══ GRAPHIQUES ══════════════════════════ -->
-  <h2 class="section-title">📈 Graphiques générés (Tableau / Spotfire style)</h2>
+  <h2 class="section-title">📈 Graphiques générés localement</h2>
   <div class="img-preview">
     <a class="img-thumb" href="reports/images/01_essais_par_espece.png" target="_blank">
       <img src="reports/images/01_essais_par_espece.png" alt="Essais par espèce">
@@ -273,11 +278,11 @@
     </a>
     <a class="json-card" href="reports/kafka_report.json" target="_blank">
       <h4>⚡ kafka_report.json <span class="size">54 KB</span></h4>
-      <p>4 topics Kafka, 535 messages produits/consommés (taux 100%), 15 alertes qualité outliers, 20 événements géo NDVI/drones.</p>
+      <p>Adaptation Kafka locale : 4 topics, 535 messages produits/consommés, 15 alertes qualité et 20 événements géographiques de démonstration.</p>
     </a>
     <a class="json-card" href="reports/spark_report.json" target="_blank">
       <h4>🔥 spark_report.json <span class="size">37 KB</span></h4>
-      <p>PySpark 3.5.5 local[*], 40.01s, corrélation YD×humidité = 0.2464, 38 agrégats espèce×trait, top 30 matériels exportés.</p>
+      <p>PySpark 3.5.5 local[*], corrélation YD×humidité = 0.2464, 38 agrégats espèce×trait, top 30 matériels exportés. Durée dans le rapport JSON.</p>
     </a>
     <a class="json-card" href="reports/hive_report.json" target="_blank">
       <h4>🐝 hive_report.json <span class="size">45 KB</span></h4>
@@ -339,7 +344,7 @@
   <div class="src-grid">
     <div class="src-card">
       <span class="ext ext-py">PY</span>
-      <div><div class="name">main.py</div><div class="desc">Orchestrateur 12 phases</div></div>
+      <div><div class="name">main.py</div><div class="desc">Orchestrateur 17 phases avec reprise</div></div>
     </div>
     <div class="src-card">
       <span class="ext ext-py">PY</span>
@@ -400,8 +405,7 @@
     <span style="background:rgba(46,204,113,.15);color:#2ecc71;border:1px solid rgba(46,204,113,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">🔥 Apache Spark</span>
     <span style="background:rgba(52,73,94,.3);color:#bdc3c7;border:1px solid rgba(189,195,199,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">🔍 Apache Drill</span>
     <span style="background:rgba(142,68,173,.15);color:#8e44ad;border:1px solid rgba(142,68,173,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">📐 Langage R</span>
-    <span style="background:rgba(41,128,185,.15);color:#2980b9;border:1px solid rgba(41,128,185,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">📊 Tableau Style</span>
-    <span style="background:rgba(39,174,96,.15);color:#27ae60;border:1px solid rgba(39,174,96,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">📈 Spotfire Style</span>
+    <span style="background:rgba(41,128,185,.15);color:#2980b9;border:1px solid rgba(41,128,185,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">📊 Dashboard HTML local</span>
     <span style="background:rgba(52,152,219,.15);color:#3498db;border:1px solid rgba(52,152,219,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">🗺️ Folium / Leaflet</span>
     <span style="background:rgba(243,156,18,.15);color:#f39c12;border:1px solid rgba(243,156,18,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">🦆 DuckDB</span>
     <span style="background:rgba(46,204,113,.15);color:#2ecc71;border:1px solid rgba(46,204,113,.3);padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;">🐍 Python 3.12</span>
@@ -412,7 +416,7 @@
 
 <footer>
   <strong>🌱 Plateforme Big Data Semences R&amp;D</strong> — Mai 2026 —
-  300+ experts · 6 sources CSV · 12 phases · 326 688 lignes · 183.8s
+  300+ experts · 6 sources CSV · 17 phases · 326 688 lignes
   <br><br>
   <span style="color:#3498db;">📋 Rapport</span> &nbsp;|&nbsp;
   <span style="color:#2ecc71;">📊 Dashboard</span> &nbsp;|&nbsp;

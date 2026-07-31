@@ -13,39 +13,39 @@
     {
       "query": "DQ1_schema_discovery",
       "rows": 47,
-      "elapsed_s": 0.013,
+      "elapsed_s": 0.005,
       "status": "OK"
     },
     {
       "query": "DQ2_exploration_rapide",
       "rows": 8,
-      "elapsed_s": 0.014,
+      "elapsed_s": 0.012,
       "status": "OK"
     },
     {
       "query": "DQ3_cross_file_join",
-      "rows": 0,
-      "elapsed_s": 0.03,
-      "status": "IO Error: No files found that match the pattern \"C:/Users/HOME/Desktop/Semance/data/raw/resultat_essais.parquet\"\n\nLINE 6: JOIN read_parquet('C:/Users/HOME/Desktop/Semance/data/raw/result...\n             ^"
+      "rows": 15,
+      "elapsed_s": 0.024,
+      "status": "OK"
     },
     {
       "query": "DQ4_outliers_detection",
       "rows": 20,
-      "elapsed_s": 0.044,
+      "elapsed_s": 0.017,
       "status": "OK"
     },
     {
       "query": "DQ5_topN_by_region",
       "rows": 57,
-      "elapsed_s": 0.068,
+      "elapsed_s": 0.036,
       "status": "OK"
     },
     {
       "query": "DQ6_parquet_metadata",
       "rows": 1,
-      "elapsed_s": 0.018,
+      "elapsed_s": 0.011,
       "status": "OK"
     }
   ],
-  "timestamp": "2026-05-19T11:12:23.579341"
+  "timestamp": "2026-07-31T12:06:58.378938"
 }

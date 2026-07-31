@@ -3,7 +3,7 @@
     "table": "essai",
     "processors": [
       {
-        "uuid": "proc-4f4b3dd1d30e264d",
+        "uuid": "proc-44074a3000154db7",
         "name": "GetFile_essai",
         "type": "org.apache.nifi.processors.standard.GetFile",
         "in": 1,
@@ -11,7 +11,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-21c73f5359083c4a",
+        "uuid": "proc-23ef9994286394fe",
         "name": "ValidateRecord_essai",
         "type": "org.apache.nifi.processors.standard.ValidateRecord",
         "in": 1,
@@ -19,7 +19,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-707c8c1a7cd642ad",
+        "uuid": "proc-6dceaaaeae9cac37",
         "name": "RouteOnAttribute",
         "type": "org.apache.nifi.processors.standard.RouteOnAttribute",
         "in": 1,
@@ -27,7 +27,7 @@
         "err": 1
       },
       {
-        "uuid": "proc-5e1afcdd7a306bb2",
+        "uuid": "proc-6616be19f0099e09",
         "name": "TransformRecord_essai",
         "type": "org.apache.nifi.processors.record.TransformRecord",
         "in": 1,
@@ -35,7 +35,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-3cda7a5bf5e82d6b",
+        "uuid": "proc-6a32ca3721be587e",
         "name": "PutHDFS_transformed",
         "type": "org.apache.nifi.processors.hadoop.PutHDFS",
         "in": 1,
@@ -43,7 +43,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-735aabd6f91cde0d",
+        "uuid": "proc-352cb4f3032000b3",
         "name": "LogMessage",
         "type": "org.apache.nifi.processors.standard.LogMessage",
         "in": 1,
@@ -55,32 +55,32 @@
       {
         "processor": "GetFile_essai",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:09:52.412312"
+        "timestamp": "2026-07-31T12:12:48.391401"
       },
       {
         "processor": "ValidateRecord_essai",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:09:52.436471"
+        "timestamp": "2026-07-31T12:12:48.399956"
       },
       {
         "processor": "RouteOnAttribute",
         "relationship": "essai",
-        "timestamp": "2026-05-19T11:09:52.436471"
+        "timestamp": "2026-07-31T12:12:48.399956"
       },
       {
         "processor": "TransformRecord_essai",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:09:52.471119"
+        "timestamp": "2026-07-31T12:12:48.418518"
       },
       {
         "processor": "PutHDFS_transformed",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:09:52.488984"
+        "timestamp": "2026-07-31T12:12:48.428995"
       },
       {
         "processor": "LogMessage",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:09:52.488984"
+        "timestamp": "2026-07-31T12:12:48.430002"
       }
     ],
     "final_attrs": {
@@ -95,17 +95,17 @@
       "route": "essai",
       "transform.applied": "true",
       "transform.rows": "492",
-      "hdfs.path": "C:\\Users\\HOME\\Desktop\\Semance\\data\\transformed\\essai_nifi.parquet",
+      "hdfs.path": "C:\\Users\\HOME\\Desktop\\semense2\\data\\transformed\\essai_nifi.parquet",
       "hdfs.layer": "transformed",
       "output.size": "39451",
-      "log.timestamp": "2026-05-19T11:09:52.488984"
+      "log.timestamp": "2026-07-31T12:12:48.430002"
     }
   },
   {
     "table": "resultats",
     "processors": [
       {
-        "uuid": "proc-279e7ff54c762c37",
+        "uuid": "proc-30d08b78b3ce6945",
         "name": "GetFile_resultats",
         "type": "org.apache.nifi.processors.standard.GetFile",
         "in": 1,
@@ -113,7 +113,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-41aa76687d1723db",
+        "uuid": "proc-63720485195acb51",
         "name": "ValidateRecord_resultats",
         "type": "org.apache.nifi.processors.standard.ValidateRecord",
         "in": 1,
@@ -121,7 +121,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-707c8c1a7cd642ad",
+        "uuid": "proc-6dceaaaeae9cac37",
         "name": "RouteOnAttribute",
         "type": "org.apache.nifi.processors.standard.RouteOnAttribute",
         "in": 1,
@@ -129,7 +129,7 @@
         "err": 1
       },
       {
-        "uuid": "proc-19e3422fa536551e",
+        "uuid": "proc-691a59d0ae0bf061",
         "name": "TransformRecord_resultats",
         "type": "org.apache.nifi.processors.record.TransformRecord",
         "in": 1,
@@ -137,7 +137,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-3cda7a5bf5e82d6b",
+        "uuid": "proc-6a32ca3721be587e",
         "name": "PutHDFS_transformed",
         "type": "org.apache.nifi.processors.hadoop.PutHDFS",
         "in": 1,
@@ -145,7 +145,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-735aabd6f91cde0d",
+        "uuid": "proc-352cb4f3032000b3",
         "name": "LogMessage",
         "type": "org.apache.nifi.processors.standard.LogMessage",
         "in": 1,
@@ -157,32 +157,32 @@
       {
         "processor": "GetFile_resultats",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:09:52.571837"
+        "timestamp": "2026-07-31T12:12:48.483814"
       },
       {
         "processor": "ValidateRecord_resultats",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:09:52.821995"
+        "timestamp": "2026-07-31T12:12:48.632011"
       },
       {
         "processor": "RouteOnAttribute",
         "relationship": "resultats",
-        "timestamp": "2026-05-19T11:09:52.821995"
+        "timestamp": "2026-07-31T12:12:48.632011"
       },
       {
         "processor": "TransformRecord_resultats",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:09:54.785483"
+        "timestamp": "2026-07-31T12:12:49.698476"
       },
       {
         "processor": "PutHDFS_transformed",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:09:55.008108"
+        "timestamp": "2026-07-31T12:12:49.856337"
       },
       {
         "processor": "LogMessage",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:09:55.008108"
+        "timestamp": "2026-07-31T12:12:49.856337"
       }
     ],
     "final_attrs": {
@@ -197,17 +197,17 @@
       "route": "resultats",
       "transform.applied": "true",
       "transform.rows": "136358",
-      "hdfs.path": "C:\\Users\\HOME\\Desktop\\Semance\\data\\transformed\\resultats_nifi.parquet",
+      "hdfs.path": "C:\\Users\\HOME\\Desktop\\semense2\\data\\transformed\\resultats_nifi.parquet",
       "hdfs.layer": "transformed",
       "output.size": "990346",
-      "log.timestamp": "2026-05-19T11:09:55.008108"
+      "log.timestamp": "2026-07-31T12:12:49.856337"
     }
   },
   {
     "table": "materiel",
     "processors": [
       {
-        "uuid": "proc-ce30bdb63c7df62",
+        "uuid": "proc-cfcf7ac8a6e5735",
         "name": "GetFile_materiel",
         "type": "org.apache.nifi.processors.standard.GetFile",
         "in": 1,
@@ -215,7 +215,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-96c8a7b0de30a3d",
+        "uuid": "proc-5ed9f63a24c835ef",
         "name": "ValidateRecord_materiel",
         "type": "org.apache.nifi.processors.standard.ValidateRecord",
         "in": 1,
@@ -223,7 +223,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-707c8c1a7cd642ad",
+        "uuid": "proc-6dceaaaeae9cac37",
         "name": "RouteOnAttribute",
         "type": "org.apache.nifi.processors.standard.RouteOnAttribute",
         "in": 1,
@@ -231,7 +231,7 @@
         "err": 1
       },
       {
-        "uuid": "proc-5cfba54acd2cc76b",
+        "uuid": "proc-bc3aa0d0eeda381",
         "name": "TransformRecord_materiel",
         "type": "org.apache.nifi.processors.record.TransformRecord",
         "in": 1,
@@ -239,7 +239,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-3cda7a5bf5e82d6b",
+        "uuid": "proc-6a32ca3721be587e",
         "name": "PutHDFS_transformed",
         "type": "org.apache.nifi.processors.hadoop.PutHDFS",
         "in": 1,
@@ -247,7 +247,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-735aabd6f91cde0d",
+        "uuid": "proc-352cb4f3032000b3",
         "name": "LogMessage",
         "type": "org.apache.nifi.processors.standard.LogMessage",
         "in": 1,
@@ -259,39 +259,39 @@
       {
         "processor": "GetFile_materiel",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:09:55.370189"
+        "timestamp": "2026-07-31T12:12:50.091728"
       },
       {
         "processor": "ValidateRecord_materiel",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:09:56.363763"
+        "timestamp": "2026-07-31T12:12:50.490820"
       },
       {
         "processor": "RouteOnAttribute",
         "relationship": "materiel",
-        "timestamp": "2026-05-19T11:09:56.363763"
+        "timestamp": "2026-07-31T12:12:50.490820"
       },
       {
         "processor": "TransformRecord_materiel",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:10:00.823813"
+        "timestamp": "2026-07-31T12:12:53.570329"
       },
       {
         "processor": "PutHDFS_transformed",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:10:01.524105"
+        "timestamp": "2026-07-31T12:12:54.085544"
       },
       {
         "processor": "LogMessage",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:10:01.524105"
+        "timestamp": "2026-07-31T12:12:54.085544"
       }
     ],
     "final_attrs": {
       "filename": "materiel.parquet",
       "table.name": "materiel",
       "record.count": "112886",
-      "file.size.bytes": "8007604",
+      "file.size.bytes": "8007621",
       "mime.type": "application/parquet",
       "validation.issues": "1",
       "validation.duplicate": "0",
@@ -299,17 +299,17 @@
       "route": "materiel",
       "transform.applied": "true",
       "transform.rows": "112886",
-      "hdfs.path": "C:\\Users\\HOME\\Desktop\\Semance\\data\\transformed\\materiel_nifi.parquet",
+      "hdfs.path": "C:\\Users\\HOME\\Desktop\\semense2\\data\\transformed\\materiel_nifi.parquet",
       "hdfs.layer": "transformed",
-      "output.size": "8007604",
-      "log.timestamp": "2026-05-19T11:10:01.524105"
+      "output.size": "8007621",
+      "log.timestamp": "2026-07-31T12:12:54.085544"
     }
   },
   {
     "table": "parcelle",
     "processors": [
       {
-        "uuid": "proc-16266a681137cd86",
+        "uuid": "proc-7c7494a5c1069113",
         "name": "GetFile_parcelle",
         "type": "org.apache.nifi.processors.standard.GetFile",
         "in": 1,
@@ -317,7 +317,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-4cf1cf229fe28999",
+        "uuid": "proc-2a26dd95832f22a3",
         "name": "ValidateRecord_parcelle",
         "type": "org.apache.nifi.processors.standard.ValidateRecord",
         "in": 1,
@@ -325,7 +325,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-707c8c1a7cd642ad",
+        "uuid": "proc-6dceaaaeae9cac37",
         "name": "RouteOnAttribute",
         "type": "org.apache.nifi.processors.standard.RouteOnAttribute",
         "in": 1,
@@ -333,7 +333,7 @@
         "err": 1
       },
       {
-        "uuid": "proc-58a0a35b32f4fa94",
+        "uuid": "proc-6d35565e0f033e1b",
         "name": "TransformRecord_parcelle",
         "type": "org.apache.nifi.processors.record.TransformRecord",
         "in": 1,
@@ -341,7 +341,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-3cda7a5bf5e82d6b",
+        "uuid": "proc-6a32ca3721be587e",
         "name": "PutHDFS_transformed",
         "type": "org.apache.nifi.processors.hadoop.PutHDFS",
         "in": 1,
@@ -349,7 +349,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-735aabd6f91cde0d",
+        "uuid": "proc-352cb4f3032000b3",
         "name": "LogMessage",
         "type": "org.apache.nifi.processors.standard.LogMessage",
         "in": 1,
@@ -361,32 +361,32 @@
       {
         "processor": "GetFile_parcelle",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:10:01.565246"
+        "timestamp": "2026-07-31T12:12:54.121814"
       },
       {
         "processor": "ValidateRecord_parcelle",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:10:01.690567"
+        "timestamp": "2026-07-31T12:12:54.209984"
       },
       {
         "processor": "RouteOnAttribute",
         "relationship": "parcelle",
-        "timestamp": "2026-05-19T11:10:01.690567"
+        "timestamp": "2026-07-31T12:12:54.209984"
       },
       {
         "processor": "TransformRecord_parcelle",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:10:02.588296"
+        "timestamp": "2026-07-31T12:12:54.684886"
       },
       {
         "processor": "PutHDFS_transformed",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:10:02.746520"
+        "timestamp": "2026-07-31T12:12:54.797838"
       },
       {
         "processor": "LogMessage",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:10:02.746520"
+        "timestamp": "2026-07-31T12:12:54.798855"
       }
     ],
     "final_attrs": {
@@ -401,17 +401,17 @@
       "route": "parcelle",
       "transform.applied": "true",
       "transform.rows": "74805",
-      "hdfs.path": "C:\\Users\\HOME\\Desktop\\Semance\\data\\transformed\\parcelle_nifi.parquet",
+      "hdfs.path": "C:\\Users\\HOME\\Desktop\\semense2\\data\\transformed\\parcelle_nifi.parquet",
       "hdfs.layer": "transformed",
       "output.size": "1414988",
-      "log.timestamp": "2026-05-19T11:10:02.746520"
+      "log.timestamp": "2026-07-31T12:12:54.798855"
     }
   },
   {
     "table": "especes",
     "processors": [
       {
-        "uuid": "proc-6482c99c1e985b7c",
+        "uuid": "proc-51e4ba1fc3a770da",
         "name": "GetFile_especes",
         "type": "org.apache.nifi.processors.standard.GetFile",
         "in": 1,
@@ -419,7 +419,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-2a2f27d4d2970dee",
+        "uuid": "proc-1880bf13e04c81f1",
         "name": "ValidateRecord_especes",
         "type": "org.apache.nifi.processors.standard.ValidateRecord",
         "in": 1,
@@ -427,7 +427,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-707c8c1a7cd642ad",
+        "uuid": "proc-6dceaaaeae9cac37",
         "name": "RouteOnAttribute",
         "type": "org.apache.nifi.processors.standard.RouteOnAttribute",
         "in": 1,
@@ -435,7 +435,7 @@
         "err": 1
       },
       {
-        "uuid": "proc-4565390d3f16a6c2",
+        "uuid": "proc-2d9dbe10eae76436",
         "name": "TransformRecord_especes",
         "type": "org.apache.nifi.processors.record.TransformRecord",
         "in": 1,
@@ -443,7 +443,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-3cda7a5bf5e82d6b",
+        "uuid": "proc-6a32ca3721be587e",
         "name": "PutHDFS_transformed",
         "type": "org.apache.nifi.processors.hadoop.PutHDFS",
         "in": 1,
@@ -451,7 +451,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-735aabd6f91cde0d",
+        "uuid": "proc-352cb4f3032000b3",
         "name": "LogMessage",
         "type": "org.apache.nifi.processors.standard.LogMessage",
         "in": 1,
@@ -463,32 +463,32 @@
       {
         "processor": "GetFile_especes",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:10:02.770564"
+        "timestamp": "2026-07-31T12:12:54.817671"
       },
       {
         "processor": "ValidateRecord_especes",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:10:02.780523"
+        "timestamp": "2026-07-31T12:12:54.822841"
       },
       {
         "processor": "RouteOnAttribute",
         "relationship": "reference",
-        "timestamp": "2026-05-19T11:10:02.780523"
+        "timestamp": "2026-07-31T12:12:54.822841"
       },
       {
         "processor": "TransformRecord_especes",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:10:02.796554"
+        "timestamp": "2026-07-31T12:12:54.830935"
       },
       {
         "processor": "PutHDFS_transformed",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:10:02.811112"
+        "timestamp": "2026-07-31T12:12:54.838073"
       },
       {
         "processor": "LogMessage",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:10:02.811112"
+        "timestamp": "2026-07-31T12:12:54.839084"
       }
     ],
     "final_attrs": {
@@ -503,17 +503,17 @@
       "route": "reference",
       "transform.applied": "true",
       "transform.rows": "10",
-      "hdfs.path": "C:\\Users\\HOME\\Desktop\\Semance\\data\\transformed\\especes_nifi.parquet",
+      "hdfs.path": "C:\\Users\\HOME\\Desktop\\semense2\\data\\transformed\\especes_nifi.parquet",
       "hdfs.layer": "transformed",
       "output.size": "13872",
-      "log.timestamp": "2026-05-19T11:10:02.811112"
+      "log.timestamp": "2026-07-31T12:12:54.839084"
     }
   },
   {
     "table": "qualification",
     "processors": [
       {
-        "uuid": "proc-124a9638e676882b",
+        "uuid": "proc-190ad56da23805ee",
         "name": "GetFile_qualification",
         "type": "org.apache.nifi.processors.standard.GetFile",
         "in": 1,
@@ -521,7 +521,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-4c8532c1a3089730",
+        "uuid": "proc-36f592bc4ca41c6b",
         "name": "ValidateRecord_qualification",
         "type": "org.apache.nifi.processors.standard.ValidateRecord",
         "in": 1,
@@ -529,7 +529,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-707c8c1a7cd642ad",
+        "uuid": "proc-6dceaaaeae9cac37",
         "name": "RouteOnAttribute",
         "type": "org.apache.nifi.processors.standard.RouteOnAttribute",
         "in": 1,
@@ -537,7 +537,7 @@
         "err": 1
       },
       {
-        "uuid": "proc-4ad4c943c184d31d",
+        "uuid": "proc-60768a4a15cd0dea",
         "name": "TransformRecord_qualification",
         "type": "org.apache.nifi.processors.record.TransformRecord",
         "in": 1,
@@ -545,7 +545,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-3cda7a5bf5e82d6b",
+        "uuid": "proc-6a32ca3721be587e",
         "name": "PutHDFS_transformed",
         "type": "org.apache.nifi.processors.hadoop.PutHDFS",
         "in": 1,
@@ -553,7 +553,7 @@
         "err": 0
       },
       {
-        "uuid": "proc-735aabd6f91cde0d",
+        "uuid": "proc-352cb4f3032000b3",
         "name": "LogMessage",
         "type": "org.apache.nifi.processors.standard.LogMessage",
         "in": 1,
@@ -565,32 +565,32 @@
       {
         "processor": "GetFile_qualification",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:10:02.823939"
+        "timestamp": "2026-07-31T12:12:54.845280"
       },
       {
         "processor": "ValidateRecord_qualification",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:10:02.832315"
+        "timestamp": "2026-07-31T12:12:54.850330"
       },
       {
         "processor": "RouteOnAttribute",
         "relationship": "reference",
-        "timestamp": "2026-05-19T11:10:02.832315"
+        "timestamp": "2026-07-31T12:12:54.850330"
       },
       {
         "processor": "TransformRecord_qualification",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:10:02.870193"
+        "timestamp": "2026-07-31T12:12:54.878935"
       },
       {
         "processor": "PutHDFS_transformed",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:10:02.894619"
+        "timestamp": "2026-07-31T12:12:54.889909"
       },
       {
         "processor": "LogMessage",
         "relationship": "success",
-        "timestamp": "2026-05-19T11:10:02.894619"
+        "timestamp": "2026-07-31T12:12:54.889909"
       }
     ],
     "final_attrs": {
@@ -605,10 +605,10 @@
       "route": "reference",
       "transform.applied": "true",
       "transform.rows": "2137",
-      "hdfs.path": "C:\\Users\\HOME\\Desktop\\Semance\\data\\transformed\\qualification_nifi.parquet",
+      "hdfs.path": "C:\\Users\\HOME\\Desktop\\semense2\\data\\transformed\\qualification_nifi.parquet",
       "hdfs.layer": "transformed",
       "output.size": "16775",
-      "log.timestamp": "2026-05-19T11:10:02.894619"
+      "log.timestamp": "2026-07-31T12:12:54.889909"
     }
   }
 ]

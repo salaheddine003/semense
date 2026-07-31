@@ -30,6 +30,14 @@ def load_kpi() -> dict:
     return {}
 
 
+def load_prediction() -> dict:
+    p = os.path.join(REPORT_DIR, "prediction_report.json")
+    if os.path.exists(p):
+        with open(p, encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+
 def load_anova() -> str:
     p = os.path.join(ENRICH_DIR, "anova_region.csv")
     if not os.path.exists(p):
@@ -87,6 +95,10 @@ def img_card(name: str, title: str, description: str = "") -> str:
 
 def generate_dashboard():
     kpi = load_kpi()
+    prediction = load_prediction()
+    pred_metrics = prediction.get("metrics", {})
+    class_report = prediction.get("classification_evaluation", {})
+    class_metrics = class_report.get("metrics", {})
     now = datetime.now().strftime("%d/%m/%Y à %H:%M")
 
     annees = kpi.get("annees_couvertes", [])
@@ -104,11 +116,21 @@ def generate_dashboard():
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Semences — Plateforme d'analyse Big Data</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
+    * {{ box-sizing: border-box; }}
     body {{ background: #f4f6f9; font-family: 'Segoe UI', sans-serif; }}
+    body {{ margin: 0; color: #212529; }}
+    .container {{ width: min(1180px, calc(100% - 32px)); margin: 0 auto; }}
+    .row {{ display: flex; flex-wrap: wrap; margin: -6px; }}
+    [class*="col-"] {{ padding: 6px; width: 100%; }}
+    .col-6 {{ width: 50%; }} .col-12 {{ width: 100%; }}
+    @media (min-width: 768px) {{
+      .col-md-1 {{ width: 8.333%; }} .col-md-2 {{ width: 16.666%; }}
+      .col-md-3 {{ width: 25%; }} .col-md-4 {{ width: 33.333%; }}
+      .col-md-6 {{ width: 50%; }}
+    }}
     .navbar {{ background: linear-gradient(135deg, #1a3a2a 0%, #2d6a4f 100%); }}
+    .navbar-brand {{ color: white; }}
     .hero {{ background: linear-gradient(135deg, #2d6a4f 0%, #40916c 50%, #52b788 100%);
              color: white; padding: 3rem 0 2rem; }}
     .kpi-card {{ border-left: 4px solid #40916c; }}
@@ -119,7 +141,27 @@ def generate_dashboard():
     .badge {{ font-size: 0.85rem; }}
     .map-container {{ border-radius: 8px; overflow: hidden; border: 1px solid #dee2e6; }}
     footer {{ background: #1a3a2a; color: #adb5bd; }}
-    .card {{ border: none; border-radius: 10px; }}
+    .card {{ background: white; border: none; border-radius: 8px; }}
+    .p-3 {{ padding: 1rem; }} .p-4 {{ padding: 1.5rem; }}
+    .py-2 {{ padding-block: .5rem; }} .py-3 {{ padding-block: 1rem; }}
+    .mt-1 {{ margin-top: .25rem; }} .mt-2 {{ margin-top: .5rem; }}
+    .mt-3 {{ margin-top: 1rem; }} .mt-4 {{ margin-top: 1.5rem; }} .mt-5 {{ margin-top: 3rem; }}
+    .mb-1 {{ margin-bottom: .25rem; }} .mb-2 {{ margin-bottom: .5rem; }}
+    .mb-3 {{ margin-bottom: 1rem; }} .mb-4 {{ margin-bottom: 1.5rem; }}
+    .text-center {{ text-align: center; }} .text-muted {{ color: #667085; }} .text-white-50 {{ color: #d2ded7; }}
+    .small {{ font-size: .875rem; }} .fw-bold {{ font-weight: 700; }}
+    .display-5 {{ font-size: 2.5rem; }} .lead {{ font-size: 1.15rem; }}
+    .shadow-sm {{ box-shadow: 0 2px 8px rgba(20,40,30,.10); }}
+    .badge {{ display:inline-block; padding:.35rem .55rem; border-radius:4px; color:white; background:#287a50; }}
+    .bg-primary {{ background:#2463a8; }} .bg-success {{ background:#287a50; }}
+    .bg-warning {{ background:#e0a000; color:#17200f; }} .bg-light {{ background:#f1f3f5; }}
+    .table-responsive {{ overflow-x:auto; }} table {{ width:100%; border-collapse:collapse; background:white; }}
+    th, td {{ padding:.55rem .7rem; border-bottom:1px solid #dee2e6; text-align:left; }}
+    .nav {{ display:flex; flex-wrap:wrap; gap:4px; padding:0; list-style:none; }}
+    .nav-link {{ border:1px solid #ccd5cf; background:white; padding:.65rem .9rem; cursor:pointer; }}
+    .nav-link.active {{ color:white; background:#2d6a4f; }}
+    .tab-pane {{ display:none; }} .tab-pane.active {{ display:block; }}
+    .table-filter {{ width:min(420px,100%); padding:.65rem; border:1px solid #aeb8b2; margin-bottom:1rem; }}
   </style>
 </head>
 <body>
@@ -191,6 +233,40 @@ def generate_dashboard():
   </div>
 
   <!-- GRAPHIQUES -->
+  <h2 class="section-title mt-5"><i class="fa fa-wand-magic-sparkles me-2"></i>Prédiction culturale</h2>
+  <div class="row g-3 mb-4">
+    <div class="col-md-3"><div class="card kpi-card p-3 shadow-sm text-center">
+      <div class="kpi-value">{pred_metrics.get('mae', 'N/A')}</div><div class="text-muted small">MAE test temporel</div>
+    </div></div>
+    <div class="col-md-3"><div class="card kpi-card p-3 shadow-sm text-center">
+      <div class="kpi-value">{pred_metrics.get('rmse', 'N/A')}</div><div class="text-muted small">RMSE test temporel</div>
+    </div></div>
+    <div class="col-md-3"><div class="card kpi-card p-3 shadow-sm text-center">
+      <div class="kpi-value">{pred_metrics.get('r2', 'N/A')}</div><div class="text-muted small">R²</div>
+    </div></div>
+    <div class="col-md-3"><div class="card kpi-card p-3 shadow-sm text-center">
+      <div class="kpi-value">{prediction.get('test_year', 'N/A')}</div><div class="text-muted small">Année de validation</div>
+    </div></div>
+  </div>
+  <div class="row g-3 mb-4">
+    <div class="col-md-3"><div class="card kpi-card p-3 shadow-sm text-center">
+      <div class="kpi-value">{class_metrics.get('accuracy', 'N/A')}</div><div class="text-muted small">Accuracy 2018 sans fuite</div>
+    </div></div>
+    <div class="col-md-3"><div class="card kpi-card p-3 shadow-sm text-center">
+      <div class="kpi-value">{class_metrics.get('precision', 'N/A')}</div><div class="text-muted small">Précision</div>
+    </div></div>
+    <div class="col-md-3"><div class="card kpi-card p-3 shadow-sm text-center">
+      <div class="kpi-value">{class_metrics.get('recall', 'N/A')}</div><div class="text-muted small">Rappel</div>
+    </div></div>
+    <div class="col-md-3"><div class="card kpi-card p-3 shadow-sm text-center">
+      <div class="kpi-value">{class_metrics.get('f1_score', 'N/A')}</div><div class="text-muted small">F1-score</div>
+    </div></div>
+  </div>
+  <p class="text-muted small">
+    Validation officielle : GroupKFold par essai sur 2015–2017, test temporel
+    final 2018, aucun essai partagé et variables de fuite exclues.
+  </p>
+
   <h2 class="section-title mt-5"><i class="fa fa-chart-pie me-2"></i>Répartition & distribution</h2>
   <div class="row">
     {img_card("01_essais_par_espece", "Essais par espèce", "Nombre total d'essais réalisés pour chaque espèce cultivée.")}
@@ -209,6 +285,7 @@ def generate_dashboard():
 
   <!-- CARTE -->
   <h2 class="section-title"><i class="fa fa-map-location-dot me-2"></i>Géolocalisation des essais</h2>
+  <p class="text-muted small">La carte contient 424 marqueurs locaux mais nécessite Internet pour charger Leaflet et les tuiles CARTO.</p>
   <div class="map-container mb-4">
     <iframe src="carte_essais.html" width="100%" height="520" frameborder="0"
             style="border:0;" allowfullscreen title="Carte des essais"></iframe>
@@ -216,6 +293,8 @@ def generate_dashboard():
 
   <!-- TABLEAUX -->
   <h2 class="section-title"><i class="fa fa-table me-2"></i>Statistiques détaillées</h2>
+  <label for="tableFilter" class="small fw-bold">Filtrer les lignes affichées</label><br>
+  <input id="tableFilter" class="table-filter" type="search" placeholder="Espèce, région, trait ou matériel">
 
   <ul class="nav nav-tabs mb-3" id="statsTabs" role="tablist">
     <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-stats">Stats espèce × trait</button></li>
@@ -289,7 +368,7 @@ def generate_dashboard():
         <div class="bg-success bg-opacity-10 border border-success rounded p-3">
           <i class="fa fa-gauge-high fa-2x text-success"></i>
           <div class="small fw-bold mt-1">Dashboard & Reporting</div>
-          <div class="text-muted" style="font-size:0.75rem">Tableau de bord HTML interactif • Carte Folium • Export Excel/CSV</div>
+          <div class="text-muted" style="font-size:0.75rem">Tableau de bord HTML local • Carte Folium avec accès Internet</div>
         </div>
       </div>
     </div>
@@ -303,9 +382,9 @@ def generate_dashboard():
           <div class="col-md-4"><span class="badge bg-success me-1">R / ggplot2</span> Analyse statistique avancée</div>
           <div class="col-md-4"><span class="badge bg-success me-1">SciPy ANOVA</span> Tests statistiques</div>
           <div class="col-md-4"><span class="badge bg-success me-1">Seaborn / Matplotlib</span> Visualisation</div>
-          <div class="col-md-4"><span class="badge bg-warning text-dark me-1">Apache Kafka</span> Bus de données (flux futurs)</div>
-          <div class="col-md-4"><span class="badge bg-warning text-dark me-1">Apache NiFi</span> Ingestion (météo, drones)</div>
-          <div class="col-md-4"><span class="badge bg-warning text-dark me-1">Hadoop / HDFS</span> Plateforme Big Data</div>
+          <div class="col-md-4"><span class="badge bg-warning text-dark me-1">Kafka</span> Adaptation fonctionnelle locale</div>
+          <div class="col-md-4"><span class="badge bg-warning text-dark me-1">NiFi</span> Adaptation fonctionnelle locale</div>
+          <div class="col-md-4"><span class="badge bg-warning text-dark me-1">HDFS</span> Adaptation fonctionnelle locale sur fichiers</div>
         </div>
       </div>
     </div>
@@ -317,7 +396,22 @@ def generate_dashboard():
   <small>Pôle R&D — Système de prédiction culturale · Généré le {now}</small>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.querySelectorAll('[data-bs-target]').forEach(function(button) {{
+  button.addEventListener('click', function() {{
+    document.querySelectorAll('.nav-link').forEach(function(x) {{ x.classList.remove('active'); }});
+    document.querySelectorAll('.tab-pane').forEach(function(x) {{ x.classList.remove('active'); }});
+    button.classList.add('active');
+    document.querySelector(button.dataset.bsTarget).classList.add('active');
+  }});
+}});
+document.getElementById('tableFilter').addEventListener('input', function(event) {{
+  var term = event.target.value.toLowerCase();
+  document.querySelectorAll('.tab-pane tbody tr').forEach(function(row) {{
+    row.style.display = row.textContent.toLowerCase().includes(term) ? '' : 'none';
+  }});
+}});
+</script>
 </body>
 </html>"""
 

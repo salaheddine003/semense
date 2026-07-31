@@ -16,10 +16,10 @@
     "Colza": 21523,
     "Blé dur/Orge": 16560,
     "Triticale": 13420,
-    "D": 8622,
-    "Tournesol": 8480,
-    "A": 7435,
-    "F": 1094
+    "INCONNU_CODE_D": 8622,
+    "Soja": 8480,
+    "INCONNU_CODE_A": 7435,
+    "INCONNU_CODE_F": 1094
   },
   "traits_top20": {
     "YD15QH": 55268,

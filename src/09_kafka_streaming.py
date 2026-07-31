@@ -3,7 +3,7 @@ Apache Kafka — Bus de données / Streaming (simulation Python)
 =============================================================
 Kafka est un bus de messages distribué orienté log.
 Topics simulés :
-  - experimental-results  : nouveaux résultats culturaux en temps réel
+  - experimental-results  : résultats culturaux de démonstration
   - material-updates      : mises à jour matériel génétique
   - quality-alerts        : alertes qualité données
   - geo-stream            : données géolocalisées (météo/drones - futur)

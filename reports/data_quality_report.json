@@ -1,0 +1,143 @@
+{
+  "status": "OK",
+  "policy": {
+    "source_immutability": true,
+    "invalid_rows_are_quarantined": true,
+    "duplicates_are_reported_not_silently_deleted": true
+  },
+  "tables": [
+    {
+      "dataset": "essai",
+      "rows": 492,
+      "columns": 35,
+      "full_duplicates": 0,
+      "duplicate_key_rows": 7,
+      "required_null_rows": 1,
+      "invalid_value_rows": 0,
+      "quarantined_rows": 1,
+      "quarantine_rate": 0.002033,
+      "required_columns": [
+        "LK_EXPERIMENT_EXPERIMENT_ID",
+        "YEAR",
+        "SPECIES"
+      ],
+      "unique_key": [
+        "LK_EXPERIMENT_EXPERIMENT_ID"
+      ],
+      "status": "PASS"
+    },
+    {
+      "dataset": "resultats",
+      "rows": 136358,
+      "columns": 20,
+      "full_duplicates": 0,
+      "duplicate_key_rows": 0,
+      "required_null_rows": 1,
+      "invalid_value_rows": 22,
+      "quarantined_rows": 23,
+      "quarantine_rate": 0.000169,
+      "required_columns": [
+        "LK_EXPERIMENT_EXPERIMENT_ID",
+        "YEAR",
+        "SPECIES",
+        "TRAIT",
+        "RESULT"
+      ],
+      "unique_key": [
+        "LK_SL_TRIAL_L2_DATA_ID",
+        "TRAIT"
+      ],
+      "status": "PASS"
+    },
+    {
+      "dataset": "materiel",
+      "rows": 112886,
+      "columns": 36,
+      "full_duplicates": 0,
+      "duplicate_key_rows": 10,
+      "required_null_rows": 2,
+      "invalid_value_rows": 0,
+      "quarantined_rows": 2,
+      "quarantine_rate": 1.8e-05,
+      "required_columns": [
+        "LK_STOCK_S1_DATA_ID",
+        "SPECIES",
+        "MAIN_NAME"
+      ],
+      "unique_key": [
+        "LK_STOCK_S1_DATA_ID"
+      ],
+      "status": "PASS"
+    },
+    {
+      "dataset": "parcelle",
+      "rows": 74805,
+      "columns": 22,
+      "full_duplicates": 0,
+      "duplicate_key_rows": 7,
+      "required_null_rows": 1,
+      "invalid_value_rows": 0,
+      "quarantined_rows": 1,
+      "quarantine_rate": 1.3e-05,
+      "required_columns": [
+        "LK_SL_TRIAL_L4_DATA_ID",
+        "LK_EXPERIMENT_EXPERIMENT_ID",
+        "LK_STOCK_S1_DATA_ID"
+      ],
+      "unique_key": [
+        "LK_SL_TRIAL_L4_DATA_ID"
+      ],
+      "status": "PASS"
+    },
+    {
+      "dataset": "especes",
+      "rows": 10,
+      "columns": 24,
+      "full_duplicates": 0,
+      "duplicate_key_rows": 6,
+      "required_null_rows": 1,
+      "invalid_value_rows": 0,
+      "quarantined_rows": 1,
+      "quarantine_rate": 0.1,
+      "required_columns": [
+        "SPECIES_ID",
+        "COMMON_NAME_FR"
+      ],
+      "unique_key": [
+        "SPECIES_ID",
+        "SPECIES_SPECIFICITY_ID"
+      ],
+      "status": "PASS"
+    },
+    {
+      "dataset": "qualification",
+      "rows": 2137,
+      "columns": 11,
+      "full_duplicates": 0,
+      "duplicate_key_rows": 4,
+      "required_null_rows": 4,
+      "invalid_value_rows": 0,
+      "quarantined_rows": 4,
+      "quarantine_rate": 0.001872,
+      "required_columns": [
+        "SL_TRIAL",
+        "YEAR",
+        "QUALIFICATION",
+        "RESULT"
+      ],
+      "unique_key": [
+        "SL_TRIAL",
+        "YEAR",
+        "QUALIFICATION"
+      ],
+      "status": "PASS"
+    }
+  ],
+  "totals": {
+    "rows": 326688,
+    "full_duplicates": 0,
+    "duplicate_key_rows": 34,
+    "quarantined_rows": 32
+  },
+  "timestamp": "2026-07-31T12:07:38.209430"
+}

@@ -95,23 +95,25 @@ ORDER BY nb DESC
             "desc": "Jointure cross-fichiers (Drill relie fichiers sans ETL préalable)",
             "drill_sql": f"""
 -- Apache Drill — join between two autonomous files
-SELECT e.LK_EXPERIMENT_NAME, r.TRAIT, COUNT(*) AS nb_mesures
+SELECT e.SL_TRIAL, r.TRAIT, COUNT(*) AS nb_mesures
 FROM dfs.raw.`essai.parquet` e
 JOIN dfs.raw.`resultat_essais.parquet` r
-  ON CAST(e.EXPERIMENT_ID AS VARCHAR) = r.LK_EXPERIMENT_EXPERIMENT_ID
-GROUP BY e.LK_EXPERIMENT_NAME, r.TRAIT
+  ON CAST(e.LK_EXPERIMENT_EXPERIMENT_ID AS BIGINT) =
+     CAST(r.LK_EXPERIMENT_EXPERIMENT_ID AS BIGINT)
+GROUP BY e.SL_TRIAL, r.TRAIT
 HAVING nb_mesures > 10
 ORDER BY nb_mesures DESC
 LIMIT 15
 """,
             "duckdb_sql": f"""
-SELECT e.LK_EXPERIMENT_NAME,
+SELECT e.SL_TRIAL,
        r.TRAIT,
        COUNT(*) AS nb_mesures
 FROM read_parquet({raw_essai}) e
 JOIN read_parquet({ws["dfs.raw.resultat"]}) r
-  ON CAST(e.EXPERIMENT_ID AS VARCHAR) = r.LK_EXPERIMENT_EXPERIMENT_ID
-GROUP BY e.LK_EXPERIMENT_NAME, r.TRAIT
+  ON TRY_CAST(e.LK_EXPERIMENT_EXPERIMENT_ID AS BIGINT) =
+     TRY_CAST(r.LK_EXPERIMENT_EXPERIMENT_ID AS BIGINT)
+GROUP BY e.SL_TRIAL, r.TRAIT
 HAVING COUNT(*) > 10
 ORDER BY nb_mesures DESC
 LIMIT 15
@@ -276,6 +278,9 @@ def run():
         json.dump(report, f, ensure_ascii=False, indent=2)
     print(f"\n  Rapport Drill   : reports/drill_report.json")
     print(f"  Résultats CSV   : drill/*.csv")
+
+    if ok != len(log):
+        raise RuntimeError(f"{len(log) - ok} requête(s) Drill en échec")
 
 
 if __name__ == "__main__":

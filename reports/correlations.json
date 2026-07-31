@@ -73,7 +73,7 @@
       "YD16QH": 1.0
     }
   },
-  "D": {
+  "INCONNU_CODE_D": {
     "%MOIS": {
       "%MOIS": 1.0,
       "LOD1": 0.119,
@@ -125,7 +125,7 @@
       "YD16QH": 1.0
     }
   },
-  "Tournesol": {
+  "Soja": {
     "%MOIS": {
       "%MOIS": 1.0,
       "LOD1": -0.065,
@@ -151,7 +151,7 @@
       "YD16QH": 1.0
     }
   },
-  "A": {
+  "INCONNU_CODE_A": {
     "%MOIS": {
       "%MOIS": 1.0,
       "CT": 0.409,
@@ -238,7 +238,7 @@
       "YD16QH": 1.0
     }
   },
-  "F": {
+  "INCONNU_CODE_F": {
     "%MOIS": {
       "%MOIS": 1.0,
       "CT": -0.06,

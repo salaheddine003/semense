@@ -1,0 +1,9 @@
+{
+  "status": "OK",
+  "database": "catalog/semences_catalog.db",
+  "datasets": 6,
+  "indexed_materials": 28697,
+  "example_query": "Blé",
+  "example_results": 25,
+  "timestamp": "2026-07-31T12:07:32.741280"
+}

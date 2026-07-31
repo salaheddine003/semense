@@ -98,6 +98,9 @@ def create_tables(con: sqlite3.Connection):
     for tbl, cmd in HBASE_SHELL_CMDS.items():
         print(f"    hbase> {cmd}")
     cur = con.cursor()
+    # Rebuild the local adaptation so counts cannot include stale rows.
+    for table in DDL:
+        cur.execute(f'DROP TABLE IF EXISTS "{table}"')
     for stmt in DDL.values():
         cur.execute(stmt)
     con.commit()
@@ -109,7 +112,7 @@ def create_tables(con: sqlite3.Connection):
 # ─────────────────────────────────────────────────────────────
 
 ESPECES_FR = {
-    "C": "Colza", "O": "Colza", "S": "Tournesol", "W": "Blé tendre",
+    "C": "Colza", "O": "Colza", "S": "Soja", "W": "Blé tendre",
     "T": "Triticale", "B": "Blé dur/Orge", "M": "Maïs",
 }
 
@@ -150,10 +153,18 @@ def load_results(con: sqlite3.Connection, fact: pd.DataFrame):
     print("\n  hbase> put 'results' ...")
     ts   = datetime.now().isoformat()
     rows = []
+    rejected = 0
     sample = fact[fact["RESULT_NUM"].notna()].head(50000)
-    for _, r in sample.iterrows():
-        rk = (f"{r['LK_EXPERIMENT_EXPERIMENT_ID']}#"
+    for source_index, r in sample.iterrows():
+        if pd.isna(r.get("LK_EXPERIMENT_EXPERIMENT_ID")) or pd.isna(r.get("TRAIT")):
+            rejected += 1
+            continue
+        source_id = r.get("LK_SL_TRIAL_L2_DATA_ID", source_index)
+        source_id = source_index if pd.isna(source_id) else source_id
+        rk = (f"{source_id}#"
+              f"{r['LK_EXPERIMENT_EXPERIMENT_ID']}#"
               f"{r.get('SL_TRIAL', '')}#"
+              f"{r.get('REPLICATION_NUM', '')}#"
               f"{r.get('ENTRY_NUM', 0)}#"
               f"{r.get('TRAIT', '')}")
         rows.append((
@@ -168,13 +179,24 @@ def load_results(con: sqlite3.Connection, fact: pd.DataFrame):
             int(r["TRANSFER_APPY"]) if pd.notna(r.get("TRANSFER_APPY")) else None,
             ts,
         ))
-    con.executemany(
-        """INSERT OR REPLACE INTO results VALUES (?,?,?,?,?,?,?,?,?,?)""",
-        rows
-    )
+    keys = [row[0] for row in rows]
+    collisions = len(keys) - len(set(keys))
+    if collisions:
+        raise ValueError(f"HBase results row-key collisions detected: {collisions}")
+    con.executemany("""INSERT INTO results VALUES (?,?,?,?,?,?,?,?,?,?)""", rows)
     con.commit()
-    print(f"  ✔  results : {len(rows):,} rows written")
-    return len(rows)
+    actual = con.execute("SELECT COUNT(*) FROM results").fetchone()[0]
+    if actual != len(rows):
+        raise AssertionError(f"HBase results count mismatch: expected {len(rows)}, got {actual}")
+    stats = {
+        "received": int(len(sample)),
+        "inserted": int(actual),
+        "updated": 0,
+        "rejected": int(rejected),
+        "collisions": int(collisions),
+    }
+    print(f"  results : {actual:,} inserted | {rejected:,} rejected | {collisions:,} collisions")
+    return stats
 
 
 def load_materials(con: sqlite3.Connection):
@@ -184,7 +206,8 @@ def load_materials(con: sqlite3.Connection):
         print("  Matériel non disponible, ignoré.")
         return 0
     mat = pd.read_parquet(mat_p)
-    mat["ESPECE_FR"] = mat["SPECIES"].map(ESPECES_FR).fillna(mat["SPECIES"])
+    codes = mat["SPECIES"].fillna("").astype(str).str.strip().str.upper()
+    mat["ESPECE_FR"] = codes.map(ESPECES_FR).fillna("INCONNU_CODE_" + codes.replace("", "VIDE"))
     ts = datetime.now().isoformat()
     rows = []
     for _, r in mat.head(20000).iterrows():
@@ -286,7 +309,7 @@ def run():
     create_tables(con)
 
     n_exp = load_experiments(con, fact)
-    n_res = load_results(con, fact)
+    result_stats = load_results(con, fact)
     n_mat = load_materials(con)
 
     hbase_scan_examples(con)
@@ -297,7 +320,12 @@ def run():
         "db": DB_PATH,
         "tables": {
             "experiments": {"rows": n_exp, "column_families": ["info", "geo", "quality", "meta"]},
-            "results":     {"rows": n_res, "column_families": ["measurement", "metadata", "meta"]},
+            "results":     {
+                "rows": result_stats["inserted"],
+                "load": result_stats,
+                "row_key": "SOURCE_ROW_ID#EXPERIMENT_ID#SL_TRIAL#REPLICATION#ENTRY#TRAIT",
+                "column_families": ["measurement", "metadata", "meta"],
+            },
             "materials":   {"rows": n_mat, "column_families": ["identity", "genetics", "taxonomy", "meta"]},
         },
         "timestamp": datetime.now().isoformat(),
@@ -306,7 +334,7 @@ def run():
     with open(os.path.join(REPORT_DIR, "hbase_summary.json"), "w", encoding="utf-8") as f:
         json.dump(summary, f, ensure_ascii=False, indent=2)
 
-    print(f"\n  HBase : {n_exp:,} essais | {n_res:,} mesures | {n_mat:,} matériels")
+    print(f"\n  HBase : {n_exp:,} essais | {result_stats['inserted']:,} mesures | {n_mat:,} matériels")
     print(f"  DB SQLite : {DB_PATH}")
     print(f"  Rapport   : reports/hbase_summary.json")
 
