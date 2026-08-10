@@ -95,7 +95,7 @@
       "route": "essai",
       "transform.applied": "true",
       "transform.rows": "492",
-      "hdfs.path": "C:\\Users\\HOME\\Desktop\\semense2\\data\\transformed\\essai_nifi.parquet",
+      "hdfs.path": "data/transformed/essai_nifi.parquet",
       "hdfs.layer": "transformed",
       "output.size": "39451",
       "log.timestamp": "2026-07-31T12:12:48.430002"
@@ -197,7 +197,7 @@
       "route": "resultats",
       "transform.applied": "true",
       "transform.rows": "136358",
-      "hdfs.path": "C:\\Users\\HOME\\Desktop\\semense2\\data\\transformed\\resultats_nifi.parquet",
+      "hdfs.path": "data/transformed/resultats_nifi.parquet",
       "hdfs.layer": "transformed",
       "output.size": "990346",
       "log.timestamp": "2026-07-31T12:12:49.856337"
@@ -299,7 +299,7 @@
       "route": "materiel",
       "transform.applied": "true",
       "transform.rows": "112886",
-      "hdfs.path": "C:\\Users\\HOME\\Desktop\\semense2\\data\\transformed\\materiel_nifi.parquet",
+      "hdfs.path": "data/transformed/materiel_nifi.parquet",
       "hdfs.layer": "transformed",
       "output.size": "8007621",
       "log.timestamp": "2026-07-31T12:12:54.085544"
@@ -401,7 +401,7 @@
       "route": "parcelle",
       "transform.applied": "true",
       "transform.rows": "74805",
-      "hdfs.path": "C:\\Users\\HOME\\Desktop\\semense2\\data\\transformed\\parcelle_nifi.parquet",
+      "hdfs.path": "data/transformed/parcelle_nifi.parquet",
       "hdfs.layer": "transformed",
       "output.size": "1414988",
       "log.timestamp": "2026-07-31T12:12:54.798855"
@@ -503,7 +503,7 @@
       "route": "reference",
       "transform.applied": "true",
       "transform.rows": "10",
-      "hdfs.path": "C:\\Users\\HOME\\Desktop\\semense2\\data\\transformed\\especes_nifi.parquet",
+      "hdfs.path": "data/transformed/especes_nifi.parquet",
       "hdfs.layer": "transformed",
       "output.size": "13872",
       "log.timestamp": "2026-07-31T12:12:54.839084"
@@ -605,7 +605,7 @@
       "route": "reference",
       "transform.applied": "true",
       "transform.rows": "2137",
-      "hdfs.path": "C:\\Users\\HOME\\Desktop\\semense2\\data\\transformed\\qualification_nifi.parquet",
+      "hdfs.path": "data/transformed/qualification_nifi.parquet",
       "hdfs.layer": "transformed",
       "output.size": "16775",
       "log.timestamp": "2026-07-31T12:12:54.889909"

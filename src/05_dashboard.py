@@ -94,6 +94,12 @@ def img_card(name: str, title: str, description: str = "") -> str:
 
 
 def generate_dashboard():
+    out = os.path.join(REPORT_DIR, "dashboard.html")
+    if os.path.exists(out):
+        with open(out, encoding="utf-8") as handle:
+            if 'data-static-dashboard="v2"' in handle.read(500):
+                print("  Dashboard éditorial v2 conservé : reports/dashboard.html")
+                return out
     kpi = load_kpi()
     prediction = load_prediction()
     pred_metrics = prediction.get("metrics", {})

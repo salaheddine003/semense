@@ -65,27 +65,27 @@
     {
       "query": "Q1_rendement_moyen_espece_annee",
       "rows": 26,
-      "file": "C:\\Users\\HOME\\Desktop\\semense2\\hive\\Q1_rendement_moyen_espece_annee.csv"
+      "file": "hive/Q1_rendement_moyen_espece_annee.csv"
     },
     {
       "query": "Q2_top_materiels_rendement",
       "rows": 20,
-      "file": "C:\\Users\\HOME\\Desktop\\semense2\\hive\\Q2_top_materiels_rendement.csv"
+      "file": "hive/Q2_top_materiels_rendement.csv"
     },
     {
       "query": "Q3_analyse_regionale",
       "rows": 96,
-      "file": "C:\\Users\\HOME\\Desktop\\semense2\\hive\\Q3_analyse_regionale.csv"
+      "file": "hive/Q3_analyse_regionale.csv"
     },
     {
       "query": "Q4_evolution_tendance",
       "rows": 26,
-      "file": "C:\\Users\\HOME\\Desktop\\semense2\\hive\\Q4_evolution_tendance.csv"
+      "file": "hive/Q4_evolution_tendance.csv"
     },
     {
       "query": "Q5_qualification_trials",
       "rows": 31,
-      "file": "C:\\Users\\HOME\\Desktop\\semense2\\hive\\Q5_qualification_trials.csv"
+      "file": "hive/Q5_qualification_trials.csv"
     }
   ],
   "timestamp": "2026-07-31T12:06:36.388377"

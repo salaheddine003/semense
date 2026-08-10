@@ -173,8 +173,11 @@ class PlatformTests(unittest.TestCase):
     def test_map_images_and_powerpoint_content(self):
         with open(os.path.join(ROOT, "reports", "carte_essais.html"), encoding="utf-8") as handle:
             map_html = handle.read()
-        self.assertEqual(map_html.count("L.marker("), 424)
+        self.assertEqual(map_html.count('"id":'), 424)
         self.assertIn("basemaps.cartocdn.com", map_html)
+        self.assertIn('id="category"', map_html)
+        self.assertIn('id="franceOnly"', map_html)
+        self.assertIn("points affichés sur", map_html)
         with open(os.path.join(ROOT, "reports", "dashboard.html"), encoding="utf-8") as handle:
             dashboard = handle.read()
         self.assertIn("nécessite Internet", dashboard)

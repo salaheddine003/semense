@@ -8,7 +8,7 @@
     "reports/r/anova_r.csv",
     "reports/r/rendement_espece_r.png"
   ],
-  "rscript": "C:\\Program Files\\R\\R-4.6.1\\bin\\Rscript.exe",
+  "rscript": "Rscript.exe",
   "return_code": 0,
   "stdout": "null device \n          1 \nR_OK rows=55268 species=7 anova_rows=2\n",
   "stderr": ""

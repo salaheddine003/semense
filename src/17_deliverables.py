@@ -170,6 +170,11 @@ def presentation():
 
 
 def technical_report():
+    if os.path.exists(TECH_REPORT_PATH):
+        with open(TECH_REPORT_PATH, encoding="utf-8") as handle:
+            if 'data-static-report="v2"' in handle.read(500):
+                print("  Rapport technique éditorial v2 conservé")
+                return
     prediction = load_json("prediction_report.json")
     quality = load_json("data_quality_report.json")
     hbase = load_json("hbase_summary.json")

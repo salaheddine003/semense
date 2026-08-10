@@ -290,7 +290,7 @@ def run():
             # Sauvegarde
             out = os.path.join(HIVE_DIR, f"{qid}.csv")
             df.to_csv(out, index=False, sep=";")
-            all_rows.append({"query": qid, "rows": len(df), "file": out})
+            all_rows.append({"query": qid, "rows": len(df), "file": os.path.relpath(out, BASE_DIR).replace(os.sep, "/")})
         elif df is not None:
             print("  ► 0 lignes retournées")
 

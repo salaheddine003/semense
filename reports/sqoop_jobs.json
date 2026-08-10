@@ -2,7 +2,7 @@
   {
     "job_id": "sqoop_job_essai_20260731121242",
     "table": "essai",
-    "source": "C:\\Users\\HOME\\Desktop\\semense2\\CSV\\ESSAI.csv",
+    "source": "CSV/ESSAI.csv",
     "hdfs_target": "hdfs://namenode:9000/user/semences/raw/essai",
     "rows": 492,
     "status": "SUCCESS",
@@ -12,7 +12,7 @@
   {
     "job_id": "sqoop_job_materiel_20260731121242",
     "table": "materiel",
-    "source": "C:\\Users\\HOME\\Desktop\\semense2\\CSV\\LK_CRISP_MATERIAL_20190108.csv",
+    "source": "CSV/LK_CRISP_MATERIAL_20190108.csv",
     "hdfs_target": "hdfs://namenode:9000/user/semences/raw/materiel",
     "rows": 112886,
     "status": "SUCCESS",
@@ -22,7 +22,7 @@
   {
     "job_id": "sqoop_job_parcelle_20260731121244",
     "table": "parcelle",
-    "source": "C:\\Users\\HOME\\Desktop\\semense2\\CSV\\PARCELLE_SPECIFICATION_20190108.csv",
+    "source": "CSV/PARCELLE_SPECIFICATION_20190108.csv",
     "hdfs_target": "hdfs://namenode:9000/user/semences/raw/parcelle",
     "rows": 74805,
     "status": "SUCCESS",
@@ -32,7 +32,7 @@
   {
     "job_id": "sqoop_job_especes_20260731121244",
     "table": "especes",
-    "source": "C:\\Users\\HOME\\Desktop\\semense2\\CSV\\REF_ESPECES_20190108.csv",
+    "source": "CSV/REF_ESPECES_20190108.csv",
     "hdfs_target": "hdfs://namenode:9000/user/semences/raw/especes",
     "rows": 10,
     "status": "SUCCESS",
@@ -42,7 +42,7 @@
   {
     "job_id": "sqoop_job_resultats_20260731121244",
     "table": "resultats",
-    "source": "C:\\Users\\HOME\\Desktop\\semense2\\CSV\\RESULTAT_ESSAIS.csv",
+    "source": "CSV/RESULTAT_ESSAIS.csv",
     "hdfs_target": "hdfs://namenode:9000/user/semences/raw/resultats",
     "rows": 136358,
     "status": "SUCCESS",
@@ -52,7 +52,7 @@
   {
     "job_id": "sqoop_job_qualification_20260731121244",
     "table": "qualification",
-    "source": "C:\\Users\\HOME\\Desktop\\semense2\\CSV\\TRIAL_QUALIFICATION_20190108.csv",
+    "source": "CSV/TRIAL_QUALIFICATION_20190108.csv",
     "hdfs_target": "hdfs://namenode:9000/user/semences/raw/qualification",
     "rows": 2137,
     "status": "SUCCESS",

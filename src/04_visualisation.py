@@ -62,10 +62,10 @@ def plot_essais_especes(fact: pd.DataFrame):
         ax.text(bar.get_width() + 1, bar.get_y() + bar.get_height() / 2,
                 str(val), va="center", fontsize=10)
     ax.set_xlabel("Nombre d'essais")
-    ax.set_title("Répartition des essais par espèce", fontweight="bold")
+    ax.set_title("Répartition des essais par catégorie", fontweight="bold")
     ax.invert_yaxis()
     plt.tight_layout()
-    save_fig("01_essais_par_espece")
+    save_fig("01_essais_par_categorie")
 
 
 # ─────────────────────────────────────────────
@@ -263,47 +263,50 @@ def plot_top_materiels(fact: pd.DataFrame):
 # ─────────────────────────────────────────────
 
 def plot_carte_essais(fact: pd.DataFrame):
-    base_cols = ["LK_EXPERIMENT_EXPERIMENT_ID", "ESPECE_FR", "YEAR",
-                 "CULTURE_UNIT", "REGION", "LAT", "LON"]
-    available = [c for c in base_cols if c in fact.columns]
-    essais = fact.drop_duplicates("LK_EXPERIMENT_EXPERIMENT_ID")[available].copy()
-    essais = essais[essais["LAT"].notna() & essais["LON"].notna()]
-    essais = essais[essais["LAT"].between(40, 55) & essais["LON"].between(-5, 12)]
-
-    if essais.empty:
+    key = "LK_EXPERIMENT_EXPERIMENT_ID"
+    base_cols = [key, "ESPECE_FR", "YEAR", "CULTURE_UNIT", "REGION", "LAT", "LON"]
+    base = fact.drop_duplicates(key)[base_cols].copy()
+    base = base[base["LAT"].notna() & base["LON"].notna()]
+    base = base[base["LAT"].between(40, 55) & base["LON"].between(-5, 12)]
+    if base.empty:
         print("  Aucune coordonnée valide pour la carte.")
         return
-
-    center_lat = essais["LAT"].mean()
-    center_lon = essais["LON"].mean()
-    m = folium.Map(location=[center_lat, center_lon], zoom_start=6, tiles="CartoDB positron")
-
-    icon_colors = {
-        "Maïs": "orange", "Tournesol": "beige", "Blé tendre": "green",
-        "Triticale": "blue", "Colza": "purple", "Blé dur/Orge": "gray",
-    }
-
-    cluster = MarkerCluster(name="Essais").add_to(m)
+    counts = fact.groupby(key).size().rename("NB_MESURES")
+    traits = fact.groupby(key)["TRAIT"].agg(lambda values: sorted(set(map(str, values.dropna())))).rename("TRAITS")
+    essais = base.join(counts, on=key).join(traits, on=key)
+    essais["PAYS"] = np.where(essais["REGION"].astype(str).str.upper().isin(["TOLNA", "BARANYA"]), "Hongrie", "France")
+    records = []
     for _, row in essais.iterrows():
-        color = icon_colors.get(str(row["ESPECE_FR"]), "lightblue")
-        popup_html = f"""
-        <b>Essai :</b> {row['LK_EXPERIMENT_EXPERIMENT_ID']}<br>
-        <b>Espèce :</b> {row.get('ESPECE_FR', 'N/A')}<br>
-        <b>Année :</b> {row.get('YEAR', 'N/A')}<br>
-        <b>Site :</b> {row.get('CULTURE_UNIT', 'N/A')}<br>
-        <b>Région :</b> {row.get('REGION', 'N/A')}
-        """
-        folium.Marker(
-            location=[row["LAT"], row["LON"]],
-            popup=folium.Popup(popup_html, max_width=280),
-            tooltip=f"{row['ESPECE_FR']} – {row['YEAR']}",
-            icon=folium.Icon(color=color, icon="leaf", prefix="fa"),
-        ).add_to(cluster)
-
-    folium.LayerControl().add_to(m)
-
+        records.append({
+            "id": str(row[key]), "categorie": str(row.get("ESPECE_FR", "Non renseignée")),
+            "annee": int(row["YEAR"]) if pd.notna(row["YEAR"]) else None,
+            "site": str(row.get("CULTURE_UNIT", "Non renseigné")),
+            "region": str(row.get("REGION", "Non renseignée")), "pays": str(row["PAYS"]),
+            "lat": round(float(row["LAT"]), 6), "lon": round(float(row["LON"]), 6),
+            "mesures": int(row["NB_MESURES"]), "traits": list(row["TRAITS"]),
+        })
+    data = json.dumps(records, ensure_ascii=False).replace("</", "<\\/")
+    categories = json.dumps(sorted(essais["ESPECE_FR"].astype(str).unique()), ensure_ascii=False)
+    years = json.dumps(sorted(int(v) for v in essais["YEAR"].dropna().unique()))
+    regions = json.dumps(sorted(essais["REGION"].astype(str).unique()), ensure_ascii=False)
+    trait_values = json.dumps(sorted({t for values in essais["TRAITS"] for t in values}), ensure_ascii=False)
     out = os.path.join(REPORT_DIR, "carte_essais.html")
-    m.save(out)
+    html = f'''<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Carte interactive des essais — Semences R&amp;D</title><meta name="description" content="Carte filtrable de 424 essais agronomiques en France et en Hongrie"><meta name="author" content="Salaheddine Abbar"><meta property="og:title" content="Carte des essais — Semences R&amp;D"><meta property="og:description" content="424 essais agronomiques filtrables en France et en Hongrie"><meta property="og:image" content="../og.png"><link rel="icon" type="image/png" href="../og.png"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css"><style>
+*{{box-sizing:border-box}}html,body{{height:100%;margin:0;font:14px Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:#07110f;color:#eef7f2}}a,button,select{{font:inherit}}:focus-visible{{outline:3px solid #f2bd59;outline-offset:2px}}header{{min-height:72px;padding:10px 16px;display:flex;align-items:center;gap:14px;background:#07110f}}h1{{font-size:20px;margin:0}}header p{{margin:2px 0;color:#a9beb5}}.back,.link,button{{border:1px solid #29443a;border-radius:9px;padding:9px 11px;background:#142720;color:#eef7f2;text-decoration:none;cursor:pointer}}.back{{background:#55d68b;color:#092016;font-weight:800}}#counter{{margin-left:auto;font-weight:800}}.layout{{height:calc(100% - 72px);display:grid;grid-template-columns:310px 1fr}}aside{{padding:14px;background:#0f1d19;overflow:auto;border-right:1px solid #29443a}}label{{display:block;margin:10px 0 4px;font-weight:750}}select{{width:100%;padding:8px;border:1px solid #355347;border-radius:7px;background:#142720;color:#fff}}.check{{display:flex;gap:8px;align-items:center;font-weight:600}}.check input{{width:auto}}.actions{{display:flex;gap:8px;margin:14px 0;flex-wrap:wrap}}.info,.offline{{padding:10px;border-left:3px solid #69aef8;background:#13251f;margin-top:12px}}.offline{{border-color:#f2bd59}}.legend span{{display:block;margin:5px 0}}.dot{{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:#55d68b;color:#07110f;font-size:10px;font-weight:900;margin-right:6px}}#map{{height:100%;min-height:420px}}.leaflet-control-layers-base label{{color:#17211d}}@media(max-width:800px){{header{{flex-wrap:wrap}}#counter{{margin-left:0}}.layout{{height:auto;grid-template-columns:1fr}}aside{{border:0}}#map{{height:65vh}}}}
+</style></head><body><header><a class="back" href="../INDEX.html">← Portail</a><div><h1>Carte interactive des essais</h1><p>Semences R&amp;D · France et Hongrie</p></div><strong id="counter" aria-live="polite">{len(records)} points affichés sur {len(records)}</strong><a class="link" href="dashboard.html">Dashboard</a></header><main class="layout"><aside aria-label="Filtres et légende"><h2>Filtrer les essais</h2><label for="category">Catégorie</label><select id="category"><option value="">Toutes</option></select><label for="year">Année</label><select id="year"><option value="">Toutes</option></select><label for="region">Région</label><select id="region"><option value="">Toutes</option></select><label for="country">Pays</label><select id="country"><option value="">Tous</option><option>France</option><option>Hongrie</option></select><label for="trait">Trait mesuré</label><select id="trait"><option value="">Tous</option></select><label class="check"><input id="franceOnly" type="checkbox"> Afficher uniquement la France</label><div class="actions"><button id="reset" type="button">Réinitialiser les filtres</button></div><div class="legend" aria-label="Légende"><h2>Légende</h2><span><i class="dot">1</i>Point individuel</span><span><i class="dot">12</i>Cluster : nombre d’essais regroupés</span><span>🇫🇷 France · 🇭🇺 Hongrie</span><span>Les essais sans coordonnées valides sont exclus de la carte.</span></div><div class="info"><strong>Pourquoi la Hongrie ?</strong><br>Le jeu de données inclut des essais français et hongrois. TOLNA et BARANYA sont conservées pour respecter la traçabilité des sources.</div><div class="offline" id="offline">La carte nécessite une connexion Internet. Les données restent disponibles dans le <a href="../data/enriched/essais_par_region.csv">tableau des régions</a>.</div></aside><div id="map" role="region" aria-label="Carte des essais géolocalisés"></div></main>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js"></script><script>
+const points={data},total=points.length,values={{category:{categories},year:{years},region:{regions},trait:{trait_values}}};
+const esc=value=>String(value??'').replace(/[&<>"']/g,char=>({{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}}[char]));
+const selects={{category:document.querySelector('#category'),year:document.querySelector('#year'),region:document.querySelector('#region'),country:document.querySelector('#country'),trait:document.querySelector('#trait')}};
+for(const [key,list] of Object.entries(values))for(const value of list)selects[key].insertAdjacentHTML('beforeend',`<option>${{esc(value)}}</option>`);
+let map,cluster;const offline=document.querySelector('#offline');
+if(window.L){{offline.hidden=true;map=L.map('map').setView([47.7,2.1],6);const tiles=L.tileLayer('https://{{s}}.basemaps.cartocdn.com/light_all/{{z}}/{{x}}/{{y}}{{r}}.png',{{attribution:'&copy; OpenStreetMap &copy; CARTO'}}).addTo(map);cluster=L.markerClusterGroup();map.addLayer(cluster);L.control.layers({{'Fond de carte clair':tiles}},{{'Essais géolocalisés':cluster}}).addTo(map);const zin=document.querySelector('.leaflet-control-zoom-in'),zout=document.querySelector('.leaflet-control-zoom-out');if(zin){{zin.title='Agrandir la carte';zin.setAttribute('aria-label','Agrandir la carte')}}if(zout){{zout.title='Réduire la carte';zout.setAttribute('aria-label','Réduire la carte')}}render()}}
+function popup(p){{return `<b>Essai :</b> ${{esc(p.id)}}<br><b>Catégorie :</b> ${{esc(p.categorie)}}<br><b>Région :</b> ${{esc(p.region)}}<br><b>Pays :</b> ${{esc(p.pays)}}<br><b>Année :</b> ${{esc(p.annee)}}<br><b>Coordonnées :</b> ${{p.lat.toLocaleString('fr-FR')}}, ${{p.lon.toLocaleString('fr-FR')}}<br><b>Mesures :</b> ${{p.mesures.toLocaleString('fr-FR')}}<br><b>Traits :</b> ${{p.traits.map(esc).join(', ')}}`}}
+function render(){{if(!cluster)return;cluster.clearLayers();const franceOnly=document.querySelector('#franceOnly').checked,filtered=points.filter(p=>(!selects.category.value||p.categorie===selects.category.value)&&(!selects.year.value||String(p.annee)===selects.year.value)&&(!selects.region.value||p.region===selects.region.value)&&(!selects.country.value||p.pays===selects.country.value)&&(!selects.trait.value||p.traits.includes(selects.trait.value))&&(!franceOnly||p.pays==='France'));for(const p of filtered)L.marker([p.lat,p.lon],{{title:`${{p.categorie}} — ${{p.region}}`}}).bindPopup(popup(p)).addTo(cluster);document.querySelector('#counter').textContent=`${{filtered.length.toLocaleString('fr-FR')}} points affichés sur ${{total.toLocaleString('fr-FR')}}`;if(filtered.length)map.fitBounds(cluster.getBounds(),{{padding:[25,25],maxZoom:9}})}}
+Object.values(selects).forEach(select=>select.addEventListener('change',render));document.querySelector('#franceOnly').addEventListener('change',render);document.querySelector('#reset').onclick=()=>{{Object.values(selects).forEach(select=>select.value='');document.querySelector('#franceOnly').checked=false;render()}};
+</script></body></html>'''
+    with open(out, "w", encoding="utf-8") as handle:
+        handle.write(html)
     print(f"  Carte interactive : reports/carte_essais.html  ({len(essais)} points)")
 
 

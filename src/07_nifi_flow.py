@@ -171,7 +171,7 @@ class PutHDFSProcessor(NiFiProcessor):
         os.makedirs(self.target_dir, exist_ok=True)
         out_path = os.path.join(self.target_dir, f"{table}_nifi.parquet")
         df.to_parquet(out_path, index=False)
-        flowfile["attributes"]["hdfs.path"]     = out_path
+        flowfile["attributes"]["hdfs.path"]     = os.path.relpath(out_path, BASE_DIR).replace(os.sep, "/")
         flowfile["attributes"]["hdfs.layer"]    = self.layer
         flowfile["attributes"]["output.size"]   = str(os.path.getsize(out_path))
         return "success", flowfile

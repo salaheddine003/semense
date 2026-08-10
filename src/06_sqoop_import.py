@@ -90,7 +90,7 @@ class SqoopJob:
         return {
             "job_id":   f"sqoop_job_{self.table}_{self.start.strftime('%Y%m%d%H%M%S')}",
             "table":    self.table,
-            "source":   self.source_csv,
+            "source":   os.path.relpath(self.source_csv, BASE_DIR).replace(os.sep, "/"),
             "hdfs_target": self.hdfs_target,
             "rows":     self.rows,
             "status":   self.status,

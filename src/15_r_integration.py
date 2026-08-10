@@ -44,7 +44,7 @@ def run():
         result = subprocess.run(command, cwd=BASE_DIR, capture_output=True, text=True, timeout=300)
         report.update({
             "status": "OK" if result.returncode == 0 else "ERROR",
-            "rscript": rscript, "return_code": result.returncode,
+            "rscript": os.path.basename(rscript), "return_code": result.returncode,
             "stdout": result.stdout[-4000:], "stderr": result.stderr[-4000:],
             "outputs": [
                 "reports/r/stats_r.csv", "reports/r/anova_r.csv",

@@ -1,5 +1,5 @@
 {
-  "db": "C:\\Users\\HOME\\Desktop\\semense2\\hbase\\semences_hbase.db",
+  "db": "hbase/semences_hbase.db",
   "tables": {
     "experiments": {
       "rows": 2116,

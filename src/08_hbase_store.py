@@ -317,7 +317,7 @@ def run():
 
     # Résumé
     summary = {
-        "db": DB_PATH,
+        "db": os.path.relpath(DB_PATH, BASE_DIR).replace(os.sep, "/"),
         "tables": {
             "experiments": {"rows": n_exp, "column_families": ["info", "geo", "quality", "meta"]},
             "results":     {
