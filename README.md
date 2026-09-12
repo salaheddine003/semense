@@ -17,7 +17,7 @@ Le projet transforme des fichiers CSV d’essais semenciers en données exploita
 
 | Données | Traitement | Résultats | Documentation |
 |---|---|---|---|
-| 6 fichiers CSV | 17 phases orchestrées | Dashboard, carte et API | Guide complet et PPTX de 26 slides |
+| 6 fichiers CSV | 17 phases orchestrées | Dashboard, carte et API | Guide complet et PPTX de 40 diapositives |
 | 136 358 mesures | Python, SQL, Spark et R | Statistiques et modèles ML | Architecture, installation et dépannage |
 
 ### Choisir son parcours
