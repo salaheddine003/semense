@@ -4,14 +4,14 @@
       "phase": 1,
       "label": "SQOOP",
       "module": "06_sqoop_import",
-      "elapsed_s": 2.9,
+      "elapsed_s": 2.7,
       "status": "OK"
     },
     "2": {
       "phase": 2,
       "label": "PROFILING",
       "module": "01_profiling",
-      "elapsed_s": 3.3,
+      "elapsed_s": 3.2,
       "status": "OK"
     },
     "3": {
@@ -25,17 +25,101 @@
       "phase": 4,
       "label": "TALEND ETL",
       "module": "02_etl",
-      "elapsed_s": 5.3,
+      "elapsed_s": 5.2,
       "status": "OK"
     },
     "5": {
       "phase": 5,
       "label": "HBASE",
       "module": "08_hbase_store",
-      "elapsed_s": 61.4,
+      "elapsed_s": 64.4,
+      "status": "OK"
+    },
+    "6": {
+      "phase": 6,
+      "label": "KAFKA",
+      "module": "09_kafka_streaming",
+      "elapsed_s": 30.6,
+      "status": "OK"
+    },
+    "7": {
+      "phase": 7,
+      "label": "HIVE",
+      "module": "10_hive_queries",
+      "elapsed_s": 0.3,
+      "status": "OK"
+    },
+    "8": {
+      "phase": 8,
+      "label": "SPARK",
+      "module": "11_spark_analysis",
+      "elapsed_s": 22.3,
+      "status": "OK"
+    },
+    "9": {
+      "phase": 9,
+      "label": "DRILL",
+      "module": "12_drill_queries",
+      "elapsed_s": 0.1,
+      "status": "OK"
+    },
+    "10": {
+      "phase": 10,
+      "label": "ANALYSE",
+      "module": "03_analyse",
+      "elapsed_s": 3.1,
+      "status": "OK"
+    },
+    "11": {
+      "phase": 11,
+      "label": "VISU",
+      "module": "04_visualisation",
+      "elapsed_s": 5.3,
+      "status": "OK"
+    },
+    "12": {
+      "phase": 12,
+      "label": "PREDICTION",
+      "module": "13_prediction",
+      "elapsed_s": 16.1,
+      "status": "OK"
+    },
+    "13": {
+      "phase": 13,
+      "label": "CATALOGUE",
+      "module": "14_catalog_search",
+      "elapsed_s": 2.0,
+      "status": "OK"
+    },
+    "14": {
+      "phase": 14,
+      "label": "R",
+      "module": "15_r_integration",
+      "elapsed_s": 3.6,
+      "status": "OK"
+    },
+    "15": {
+      "phase": 15,
+      "label": "QUALITY",
+      "module": "16_quality_gates",
+      "elapsed_s": 1.1,
+      "status": "OK"
+    },
+    "16": {
+      "phase": 16,
+      "label": "LIVRABLES",
+      "module": "17_deliverables",
+      "elapsed_s": 0.0,
+      "status": "OK"
+    },
+    "17": {
+      "phase": 17,
+      "label": "DASHBOARD",
+      "module": "05_dashboard",
+      "elapsed_s": 0.0,
       "status": "OK"
     }
   },
-  "updated_at": "2026-07-31T12:14:01.573571",
+  "updated_at": "2026-09-13T00:20:32.153717",
   "pipeline_total": 17
 }

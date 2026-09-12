@@ -83,12 +83,16 @@ class Handler(BaseHTTPRequestHandler):
             query = parse_qs(parsed.query).get("q", [""])[0].strip()
             if not query:
                 return json_response(self, 400, {"error": "Paramètre q obligatoire"})
-            with sqlite3.connect(CATALOG_PATH) as con:
-                con.row_factory = sqlite3.Row
-                rows = con.execute(
-                    "SELECT entity_type, entity_id, title, description "
-                    "FROM search_index WHERE search_index MATCH ? LIMIT 25", (query,)
-                ).fetchall()
+            try:
+                with sqlite3.connect(CATALOG_PATH) as con:
+                    con.row_factory = sqlite3.Row
+                    rows = con.execute(
+                        "SELECT entity_type, entity_id, title, description "
+                        "FROM search_index WHERE search_index MATCH ? LIMIT 25", (query,)
+                    ).fetchall()
+            except sqlite3.OperationalError:
+                self.audit(role, "search", 400)
+                return json_response(self, 400, {"error": "Recherche invalide ou index indisponible"})
             self.audit(role, "search", 200)
             return json_response(self, 200, {
                 "query": query, "role": role, "results": [dict(r) for r in rows]
@@ -107,15 +111,29 @@ class Handler(BaseHTTPRequestHandler):
         return json_response(self, 404, {"error": "Route inconnue"})
 
     def do_POST(self):
+        # Consume bounded request bodies before returning 403. On Windows,
+        # closing a socket with unread data can reset it before the client
+        # receives the HTTP response.
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+        except ValueError:
+            length = 0
+        body = self.rfile.read(length) if 0 < length <= 16384 else b""
         role = self.require_role({"researcher", "breeder"})
         if not role:
             return
         if urlparse(self.path).path != "/api/predict":
             return json_response(self, 404, {"error": "Route inconnue"})
         try:
-            length = int(self.headers.get("Content-Length", "0"))
-            payload = json.loads(self.rfile.read(length))
+            if not 0 < length <= 16384:
+                raise ValueError("Le corps JSON doit contenir entre 1 et 16384 octets")
+            payload = json.loads(body)
             features = importlib.import_module("src.13_prediction").FEATURES
+            if not isinstance(payload, dict):
+                raise ValueError("Un objet JSON est attendu")
+            missing = [key for key in features if key not in payload]
+            if missing:
+                raise ValueError("Champs obligatoires manquants : " + ", ".join(missing))
             row = pd.DataFrame([{key: payload.get(key) for key in features}])
             prediction = float(joblib.load(MODEL_PATH).predict(row)[0])
             classifier = joblib.load(CLASSIFIER_PATH)

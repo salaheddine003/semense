@@ -1,3 +1,7 @@
+if (.Platform$OS.type == "windows") {
+  # A POSIX locale inherited from the terminal is not a valid Windows locale.
+  Sys.setlocale("LC_CTYPE", ".UTF-8")
+}
 args <- commandArgs(trailingOnly = TRUE)
 input <- if (length(args) >= 1) args[[1]] else "data/enriched/fact_table.csv"
 output_dir <- if (length(args) >= 2) args[[2]] else "reports/r"

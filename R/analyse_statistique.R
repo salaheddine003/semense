@@ -10,12 +10,21 @@ library(tidyr)
 library(readr)
 library(scales)
 
+if (.Platform$OS.type == "windows") Sys.setlocale("LC_CTYPE", ".UTF-8")
+
 # ─────────────────────────────────────────────────────────────
 # 0. CHARGEMENT
 # ─────────────────────────────────────────────────────────────
 cat("Chargement de la table de faits...\n")
 
-base_dir <- dirname(dirname(rstudioapi::getSourceEditorContext()$path))
+script_arg <- grep("^--file=", commandArgs(), value = TRUE)
+if (length(script_arg) > 0) {
+  base_dir <- dirname(dirname(normalizePath(sub("^--file=", "", script_arg[[1]]))))
+} else if (requireNamespace("rstudioapi", quietly = TRUE) && rstudioapi::isAvailable()) {
+  base_dir <- dirname(dirname(rstudioapi::getSourceEditorContext()$path))
+} else {
+  base_dir <- getwd()
+}
 csv_path <- file.path(base_dir, "data", "enriched", "fact_table.csv")
 
 # Fallback si hors RStudio

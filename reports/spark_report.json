@@ -29,10 +29,10 @@
       "engine": "PySpark"
     }
   ],
-  "elapsed_s": 21.57,
+  "elapsed_s": 21.19,
   "outputs": {
     "agg_espece_trait": "data/enriched/spark/spark_agg_espece_trait.parquet",
     "top_materiels": "data/enriched/spark/spark_top_materiels.parquet"
   },
-  "timestamp": "2026-07-31T12:06:58.192005"
+  "timestamp": "2026-09-13T00:20:00.655384"
 }

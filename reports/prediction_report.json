@@ -225,5 +225,5 @@
   "model": "HistGradientBoostingRegressor",
   "model_path": "models/yield_yd15qh.joblib",
   "classifier_path": "models/high_yield_classifier.joblib",
-  "timestamp": "2026-07-31T12:07:30.224604"
+  "timestamp": "2026-09-13T00:20:25.384362"
 }

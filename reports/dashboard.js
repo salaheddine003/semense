@@ -30,7 +30,7 @@ function apply(){
   page=Math.min(page,Math.max(1,Math.ceil(filtered.length/size)));render();
 }
 function render(){
-  thead.innerHTML='<tr>'+headers.map(key=>`<th scope="col"><button class="sort-button" type="button" data-key="${esc(key)}" aria-label="Trier par ${esc(columnLabels[key]||key)}">${esc(columnLabels[key]||key.replaceAll('_',' '))}<span aria-hidden="true">${sortKey===key?(sortDirection===1?' ↑':' ↓'):''}</span></button></th>`).join('')+'</tr>';
+  thead.innerHTML='<tr>'+headers.map(key=>{const active=sortKey===key,dir=active?(sortDirection===1?'ascending':'descending'):'none',dirLabel=active?(sortDirection===1?', ordre croissant':', ordre décroissant'):'';return `<th scope="col" aria-sort="${dir}"><button class="sort-button" type="button" data-key="${esc(key)}" aria-label="Trier par ${esc(columnLabels[key]||key)}${dirLabel}">${esc(columnLabels[key]||key.replaceAll('_',' '))}<span aria-hidden="true">${active?(sortDirection===1?' ↑':' ↓'):''}</span></button></th>`}).join('')+'</tr>';
   const current=filtered.slice((page-1)*size,page*size);
   tbody.innerHTML=current.map(row=>'<tr>'+headers.map(key=>`<td>${displayValue(row[key],key)}</td>`).join('')+'</tr>').join('');
   empty.hidden=current.length>0;tbody.hidden=current.length===0;
@@ -43,7 +43,10 @@ function exportRows(){
   if(!filtered.length){count.textContent='Export impossible : aucun résultat.';return}
   const csv='\ufeff'+[headers.map(key=>columnLabels[key]||key).join(';'),...filtered.map(row=>headers.map(key=>`"${String(row[key]??'').replaceAll('"','""')}"`).join(';'))].join('\r\n');
   const link=document.createElement('a'),url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
-  link.href=url;link.download=`semences_${activeSlug}_${new Date().toISOString().slice(0,10)}.csv`;link.hidden=true;document.body.appendChild(link);link.click();setTimeout(()=>{link.remove();URL.revokeObjectURL(url)},1500);
+  link.href=url;link.download=`semences_${activeSlug}_${new Date().toISOString().slice(0,10)}.csv`;link.hidden=true;document.body.appendChild(link);link.click();
+  const previousLabel=count.textContent;
+  count.textContent=`Export CSV généré avec ${filtered.length.toLocaleString('fr-FR')} résultat${filtered.length>1?'s':''}.`;
+  setTimeout(()=>{link.remove();URL.revokeObjectURL(url);count.textContent=previousLabel},2500);
 }
 search.setAttribute('aria-label','Rechercher dans le tableau');
 const clear=document.createElement('button');clear.type='button';clear.className='button';clear.textContent='Effacer le filtre';search.insertAdjacentElement('afterend',clear);

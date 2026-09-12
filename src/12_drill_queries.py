@@ -219,8 +219,7 @@ def run():
 
     fact_path = os.path.join(ENRICH_DIR, "fact_table.parquet")
     if not os.path.exists(fact_path):
-        print("  ⚠ Table de faits introuvable.")
-        return
+        raise FileNotFoundError("Table de faits introuvable; lancer le pipeline complet")
 
     ws      = workspaces(RAW_DIR, ENRICH_DIR)
     queries = build_queries(ws)

@@ -186,7 +186,7 @@ class PlatformTests(unittest.TestCase):
         self.assertEqual(len(images), 9)
         self.assertTrue(all(os.path.getsize(path) > 5000 for path in images))
         presentation = Presentation(os.path.join(ROOT, "deliverables", "presentation_semences.pptx"))
-        self.assertEqual(len(presentation.slides), 7)
+        self.assertGreaterEqual(len(presentation.slides), 20)
 
     def test_pipeline_error_is_not_ok(self):
         orchestrator = importlib.import_module("main")

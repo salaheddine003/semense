@@ -1,0 +1,9 @@
+{
+  "tests_total": 25,
+  "tests_reussis": 25,
+  "tests_echoues": 0,
+  "tests_ignores": 0,
+  "commande": "python -m unittest discover -s tests -v",
+  "date_execution": "2026-09-13T00:21:15.541891",
+  "statut": "SUCCESS"
+}

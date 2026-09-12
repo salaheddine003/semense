@@ -300,8 +300,7 @@ def run():
 
     fact_path = os.path.join(ENRICH_DIR, "fact_table.parquet")
     if not os.path.exists(fact_path):
-        print("  ⚠ Table de faits non disponible. Lancer 02_etl.py d'abord.")
-        return
+        raise FileNotFoundError("Table de faits non disponible; lancer le pipeline complet")
 
     fact = pd.read_parquet(fact_path)
 

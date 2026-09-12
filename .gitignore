@@ -18,3 +18,10 @@ reports/pipeline_resume_run.json
 reports/api_audit.jsonl
 reports/dashboard_validation.png
 reports/validation_slides/
+.build-presentation/
+.tmp/
+tmp/
+output/
+*.pdf
+deliverables/_qa*
+semense/

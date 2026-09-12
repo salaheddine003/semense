@@ -189,6 +189,7 @@ def run():
     results_log = []
     t0          = time.time()
     actual_engine = "pandas-fallback"
+    spark = None
 
     if PYSPARK_AVAILABLE:
         try:
@@ -204,12 +205,14 @@ def run():
             print(f"  SparkContext démarré — version Spark {spark.version}")
             agg_pd, best_pd = spark_analyse(spark, fact_path.replace("\\", "/"), results_log)
             actual_engine = "PySpark"
-            spark.stop()
-            print("\n  SparkSession arrêtée.")
         except Exception as e:
             print(f"\n  ⚠ Spark échoué ({e}) — bascule sur pandas")
+            results_log.clear()
             fact = pd.read_parquet(fact_path)
             agg_pd, best_pd = pandas_analyse(fact, results_log)
+        finally:
+            if spark is not None:
+                spark.stop()
     else:
         fact = pd.read_parquet(fact_path)
         agg_pd, best_pd = pandas_analyse(fact, results_log)

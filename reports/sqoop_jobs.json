@@ -1,62 +1,62 @@
 [
   {
-    "job_id": "sqoop_job_essai_20260731121242",
+    "job_id": "sqoop_job_essai_20260913001746",
     "table": "essai",
     "source": "CSV/ESSAI.csv",
     "hdfs_target": "hdfs://namenode:9000/user/semences/raw/essai",
     "rows": 492,
     "status": "SUCCESS",
-    "duration_s": 0.053,
-    "timestamp": "2026-07-31T12:12:42.945390"
+    "duration_s": 0.044,
+    "timestamp": "2026-09-13T00:17:46.297530"
   },
   {
-    "job_id": "sqoop_job_materiel_20260731121242",
+    "job_id": "sqoop_job_materiel_20260913001746",
     "table": "materiel",
     "source": "CSV/LK_CRISP_MATERIAL_20190108.csv",
     "hdfs_target": "hdfs://namenode:9000/user/semences/raw/materiel",
     "rows": 112886,
     "status": "SUCCESS",
-    "duration_s": 1.188,
-    "timestamp": "2026-07-31T12:12:42.998637"
+    "duration_s": 1.083,
+    "timestamp": "2026-09-13T00:17:46.342259"
   },
   {
-    "job_id": "sqoop_job_parcelle_20260731121244",
+    "job_id": "sqoop_job_parcelle_20260913001747",
     "table": "parcelle",
     "source": "CSV/PARCELLE_SPECIFICATION_20190108.csv",
     "hdfs_target": "hdfs://namenode:9000/user/semences/raw/parcelle",
     "rows": 74805,
     "status": "SUCCESS",
-    "duration_s": 0.264,
-    "timestamp": "2026-07-31T12:12:44.204349"
+    "duration_s": 0.267,
+    "timestamp": "2026-09-13T00:17:47.442805"
   },
   {
-    "job_id": "sqoop_job_especes_20260731121244",
+    "job_id": "sqoop_job_especes_20260913001747",
     "table": "especes",
     "source": "CSV/REF_ESPECES_20190108.csv",
     "hdfs_target": "hdfs://namenode:9000/user/semences/raw/especes",
     "rows": 10,
     "status": "SUCCESS",
-    "duration_s": 0.01,
-    "timestamp": "2026-07-31T12:12:44.471023"
+    "duration_s": 0.011,
+    "timestamp": "2026-09-13T00:17:47.712160"
   },
   {
-    "job_id": "sqoop_job_resultats_20260731121244",
+    "job_id": "sqoop_job_resultats_20260913001747",
     "table": "resultats",
     "source": "CSV/RESULTAT_ESSAIS.csv",
     "hdfs_target": "hdfs://namenode:9000/user/semences/raw/resultats",
     "rows": 136358,
     "status": "SUCCESS",
-    "duration_s": 0.493,
-    "timestamp": "2026-07-31T12:12:44.482617"
+    "duration_s": 0.416,
+    "timestamp": "2026-09-13T00:17:47.723240"
   },
   {
-    "job_id": "sqoop_job_qualification_20260731121244",
+    "job_id": "sqoop_job_qualification_20260913001748",
     "table": "qualification",
     "source": "CSV/TRIAL_QUALIFICATION_20190108.csv",
     "hdfs_target": "hdfs://namenode:9000/user/semences/raw/qualification",
     "rows": 2137,
     "status": "SUCCESS",
-    "duration_s": 0.021,
-    "timestamp": "2026-07-31T12:12:44.980860"
+    "duration_s": 0.022,
+    "timestamp": "2026-09-13T00:17:48.144652"
   }
 ]

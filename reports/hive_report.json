@@ -33,31 +33,31 @@
     {
       "query_id": "Q1_rendement_moyen_espece_annee",
       "rows": 26,
-      "elapsed_s": 0.025,
+      "elapsed_s": 0.021,
       "status": "OK"
     },
     {
       "query_id": "Q2_top_materiels_rendement",
       "rows": 20,
-      "elapsed_s": 0.058,
+      "elapsed_s": 0.047,
       "status": "OK"
     },
     {
       "query_id": "Q3_analyse_regionale",
       "rows": 96,
-      "elapsed_s": 0.036,
+      "elapsed_s": 0.03,
       "status": "OK"
     },
     {
       "query_id": "Q4_evolution_tendance",
       "rows": 26,
-      "elapsed_s": 0.03,
+      "elapsed_s": 0.026,
       "status": "OK"
     },
     {
       "query_id": "Q5_qualification_trials",
       "rows": 31,
-      "elapsed_s": 0.055,
+      "elapsed_s": 0.035,
       "status": "OK"
     }
   ],
@@ -88,5 +88,5 @@
       "file": "hive/Q5_qualification_trials.csv"
     }
   ],
-  "timestamp": "2026-07-31T12:06:36.388377"
+  "timestamp": "2026-09-13T00:19:38.497244"
 }

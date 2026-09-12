@@ -47,7 +47,7 @@ class NiFiProcessor:
         self._start = datetime.now()
         self.input_count += 1
         rel, ff = self.process(flowfile)
-        if rel == "success":
+        if rel not in {"failure", "unmatched"}:
             self.success_count += 1
         else:
             self.failure_count += 1
@@ -99,7 +99,7 @@ class ValidateRecordProcessor(NiFiProcessor):
         issues = []
         missing = [c for c in self.required_cols if c not in df.columns]
         if missing:
-            issues.append(f"Colonnes manquantes : {missing}")
+            return "failure", {**flowfile, "error": f"Colonnes manquantes : {missing}"}
         null_pcts = {c: round(df[c].isna().mean() * 100, 1)
                      for c in df.columns if df[c].isna().mean() > 0.95}
         if null_pcts:
@@ -235,9 +235,8 @@ class NiFiPipeline:
                 "relationship": rel,
                 "timestamp": datetime.now().isoformat(),
             })
-            if rel == "failure":
-                print(f"  [NiFi ERROR] {proc.name} → failure: {flowfile.get('error', '?')}")
-                break
+            if rel in {"failure", "unmatched"}:
+                raise RuntimeError(f"NiFi {proc.name}: {flowfile.get('error', rel)}")
         return flowfile
 
 

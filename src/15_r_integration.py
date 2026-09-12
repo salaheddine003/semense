@@ -41,7 +41,10 @@ def run():
             os.path.join(BASE_DIR, "data", "enriched", "fact_table.csv"),
             os.path.join(BASE_DIR, "reports", "r"),
         ]
-        result = subprocess.run(command, cwd=BASE_DIR, capture_output=True, text=True, timeout=300)
+        result = subprocess.run(
+            command, cwd=BASE_DIR, capture_output=True, text=True,
+            encoding="utf-8", errors="replace", timeout=300,
+        )
         report.update({
             "status": "OK" if result.returncode == 0 else "ERROR",
             "rscript": os.path.basename(rscript), "return_code": result.returncode,

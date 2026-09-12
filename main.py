@@ -12,6 +12,7 @@ import sys
 import time
 import json
 import argparse
+import subprocess
 from datetime import datetime
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -61,11 +62,17 @@ def run_phase(phase_tuple: tuple) -> dict:
     t0 = time.time()
     status = "OK"
     try:
-        mod = __import__(module_name)
-        if hasattr(mod, "run"):
-            mod.run()
+        if module_name == "11_spark_analysis":
+            # Isolate the JVM and Spark signal handlers from later Python phases.
+            subprocess.run(
+                [sys.executable, "-X", "utf8", os.path.join(SRC_DIR, module_name + ".py")],
+                cwd=BASE_DIR, check=True,
+            )
         else:
-            print(f"  ⚠  Module {module_name} n'a pas de fonction run()")
+            mod = __import__(module_name)
+            if not callable(getattr(mod, "run", None)):
+                raise RuntimeError(f"Module {module_name} sans fonction run()")
+            mod.run()
         elapsed = round(time.time() - t0, 1)
         print(f"\n  ✔  Phase {num:02d} [{label}] terminée en {elapsed}s")
     except Exception as exc:
@@ -120,7 +127,7 @@ def main():
     parser = argparse.ArgumentParser(description="Pipeline Big Data Semences")
     parser.add_argument(
         "--resume", action="store_true",
-        help="reprendre uniquement les phases déjà réussies du dernier checkpoint",
+        help="ignorer les phases déjà réussies et reprendre au premier échec",
     )
     args = parser.parse_args()
     checkpoint_path = os.path.join(BASE_DIR, "reports", "pipeline_checkpoint.json")
